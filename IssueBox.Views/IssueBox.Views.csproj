@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B36DDE26-07EB-46F4-9C76-2B8F7B3532E6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IssueBox.Views</RootNamespace>
+    <AssemblyName>IssueBox.Views</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EntryCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntryCategory.Designer.cs">
+      <DependentUpon>EntryCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntryIssue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntryIssue.Designer.cs">
+      <DependentUpon>EntryIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntryMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntryMember.Designer.cs">
+      <DependentUpon>EntryMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntryProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntryProduct.Designer.cs">
+      <DependentUpon>EntryProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntryProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntryProject.Designer.cs">
+      <DependentUpon>EntryProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\DateMaskedTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\DropDownListEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\EnableRadioButtons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\EnableRadioButtons.Designer.cs">
+      <DependentUpon>EnableRadioButtons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\EntryFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\EntryFormBase.Designer.cs">
+      <DependentUpon>EntryFormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\IRequired.cs" />
+    <Compile Include="Infrastructure\IStatus.cs" />
+    <Compile Include="Infrastructure\Logger.cs" />
+    <Compile Include="Infrastructure\PanelBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\PanelBase.Designer.cs">
+      <DependentUpon>PanelBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\StatusRadioButtons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\StatusRadioButtons.Designer.cs">
+      <DependentUpon>StatusRadioButtons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\TaskStatusRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\TextBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchCategory.Designer.cs">
+      <DependentUpon>SearchCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchIssue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchIssue.Designer.cs">
+      <DependentUpon>SearchIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchMember.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchMember.Designer.cs">
+      <DependentUpon>SearchMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchProduct.Designer.cs">
+      <DependentUpon>SearchProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchProject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchProject.Designer.cs">
+      <DependentUpon>SearchProject.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="EntryCategory.resx">
+      <DependentUpon>EntryCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntryIssue.resx">
+      <DependentUpon>EntryIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntryMember.resx">
+      <DependentUpon>EntryMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntryProduct.resx">
+      <DependentUpon>EntryProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntryProject.resx">
+      <DependentUpon>EntryProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Infrastructure\EnableRadioButtons.resx">
+      <DependentUpon>EnableRadioButtons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Infrastructure\EntryFormBase.resx">
+      <DependentUpon>EntryFormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Infrastructure\PanelBase.resx">
+      <DependentUpon>PanelBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Infrastructure\StatusRadioButtons.resx">
+      <DependentUpon>StatusRadioButtons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="SearchCategory.resx">
+      <DependentUpon>SearchCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchIssue.resx">
+      <DependentUpon>SearchIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchMember.resx">
+      <DependentUpon>SearchMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchProduct.resx">
+      <DependentUpon>SearchProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchProject.resx">
+      <DependentUpon>SearchProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IssueBox.Models\IssueBox.Models.csproj">
+      <Project>{b6e77808-5cb1-4f3a-9e41-76a69cc711d5}</Project>
+      <Name>IssueBox.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
