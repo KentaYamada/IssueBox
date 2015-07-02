@@ -30,7 +30,7 @@ namespace IssueBox.Views.Infrastructure
         public static void Error(Exception ex)
         {
             //ログファイル書き出し
-            Write(ex);
+            Logger.Write(ex);
         }
     }
 }
