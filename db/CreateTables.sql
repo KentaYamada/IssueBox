@@ -85,7 +85,6 @@ CREATE TABLE ISSUES (
     ,issuing_member_id     int           NOT NULL
     ,responced_member_id   int           NULL
     ,checked_member_id     int           NULL
-    ,version               nvarchar(10)  NOT NULL
     ,deadline              datetime      NULL
     ,[status]              int           NOT NULL
     ,[comment]             nvarchar(max) NULL

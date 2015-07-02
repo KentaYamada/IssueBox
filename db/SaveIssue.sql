@@ -17,7 +17,6 @@ CREATE PROCEDURE SaveIssue (
   ,@IssuingMemberID   int
   ,@ResponcedMemberID int
   ,@CheckedMemberID   int
-  ,@Version           nvarchar(10)
   ,@Deadline          datetime
   ,@Status            int
   ,@Comment           nvarchar(10)
@@ -33,7 +32,6 @@ BEGIN TRY
       ,issuing_member_id = @IssuingMemberID
       ,responced_member_id = @ResponcedMemberID
       ,checked_member_id = @CheckedMemberID
-      ,version = @Version
       ,deadline = @Deadline
       ,[status] = @Status
       ,[comment] = @Comment
@@ -50,7 +48,6 @@ BEGIN TRY
         ,issuing_member_id
         ,responced_member_id
         ,checked_member_id
-        ,version
         ,deadline
         ,[status]
         ,[comment]
@@ -64,7 +61,6 @@ BEGIN TRY
        ,@IssuingMemberID
        ,@ResponcedMemberID
        ,@CheckedMemberID
-       ,@Version
        ,@Deadline
        ,@Status
        ,@Comment
