@@ -12,13 +12,16 @@ namespace IssueBox.Models
         private SQLCommander _db = null;
 
         /// <summary>案件ID</summary>
-        public string ProjectID { get; set; }
+        public int ProjectID { get; set; }
 
         /// <summary>製品ID</summary>
         public int ProductID { get; set; }
-        
+
+        /// <summary>カテゴリID</summary>
+        public int CategoryID { get; set; }
+
         /// <summary>期限</summary>
-        public DateTime? DeadLine { get; set; }
+        public DateTime? Deadline { get; set; }
 
         /// <summary>課題ステータス</summary>
         public int Status { get; set; }
@@ -27,15 +30,13 @@ namespace IssueBox.Models
 
         public IssueCondition()
         {
-            this.ProjectID = "";
+            this.ProjectID = 0;
             this.ProductID = 0;
-            this.DeadLine = null;
+            this.Deadline = null;
             this.Status = 0;
             this._db = new SQLCommander();
         }
 
         #endregion
-
-        
     }
 }
