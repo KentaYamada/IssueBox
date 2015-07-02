@@ -37,20 +37,19 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.grdList = new System.Windows.Forms.DataGridView();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.grpStatus = new IssueBox.Views.Infrastructure.StatusRadioButtons();
+            this.dtDeadLine = new IssueBox.Views.Infrastructure.DateMaskedTextBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShohinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResponcedMemberID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResponcedMemberName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeadLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.grpStatus = new IssueBox.Views.Infrastructure.StatusRadioButtons();
-            this.dtDeadLine = new System.Windows.Forms.DateTimePicker();
-            this.chkUndesided = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,7 +141,7 @@
             this.ProjectID,
             this.ProjectName,
             this.ProductID,
-            this.ProductName,
+            this.ShohinName,
             this.ResponcedMemberID,
             this.ResponcedMemberName,
             this.DeadLine,
@@ -153,6 +152,45 @@
             this.grdList.RowTemplate.Height = 21;
             this.grdList.Size = new System.Drawing.Size(774, 369);
             this.grdList.TabIndex = 14;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(625, 126);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 28);
+            this.btnSearch.TabIndex = 16;
+            this.btnSearch.Text = "検索";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(706, 126);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(75, 28);
+            this.btnNew.TabIndex = 15;
+            this.btnNew.Text = "新規登録";
+            this.btnNew.UseVisualStyleBackColor = true;
+            // 
+            // grpStatus
+            // 
+            this.grpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.grpStatus.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.grpStatus.Location = new System.Drawing.Point(371, 76);
+            this.grpStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpStatus.Name = "grpStatus";
+            this.grpStatus.SelectedStatus = 1;
+            this.grpStatus.Size = new System.Drawing.Size(260, 28);
+            this.grpStatus.TabIndex = 17;
+            // 
+            // dtDeadLine
+            // 
+            this.dtDeadLine.GetDate = null;
+            this.dtDeadLine.Location = new System.Drawing.Point(44, 76);
+            this.dtDeadLine.Mask = "0000/00/00";
+            this.dtDeadLine.Name = "dtDeadLine";
+            this.dtDeadLine.Size = new System.Drawing.Size(100, 27);
+            this.dtDeadLine.TabIndex = 18;
+            this.dtDeadLine.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // ID
             // 
@@ -191,14 +229,14 @@
             this.ProductID.Visible = false;
             this.ProductID.Width = 10;
             // 
-            // ProductName
+            // ShohinName
             // 
-            this.ProductName.DataPropertyName = "ProductName";
-            this.ProductName.Frozen = true;
-            this.ProductName.HeaderText = "製品";
-            this.ProductName.Name = "ProductName";
-            this.ProductName.ReadOnly = true;
-            this.ProductName.Width = 150;
+            this.ShohinName.DataPropertyName = "ProductName";
+            this.ShohinName.Frozen = true;
+            this.ShohinName.HeaderText = "製品";
+            this.ShohinName.Name = "ShohinName";
+            this.ShohinName.ReadOnly = true;
+            this.ShohinName.Width = 150;
             // 
             // ResponcedMemberID
             // 
@@ -235,57 +273,10 @@
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
             // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(625, 126);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 28);
-            this.btnSearch.TabIndex = 16;
-            this.btnSearch.Text = "検索";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(706, 126);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(75, 28);
-            this.btnNew.TabIndex = 15;
-            this.btnNew.Text = "新規登録";
-            this.btnNew.UseVisualStyleBackColor = true;
-            // 
-            // grpStatus
-            // 
-            this.grpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.grpStatus.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.grpStatus.Location = new System.Drawing.Point(371, 76);
-            this.grpStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpStatus.Name = "grpStatus";
-            this.grpStatus.SelectedStatus = 1;
-            this.grpStatus.Size = new System.Drawing.Size(260, 28);
-            this.grpStatus.TabIndex = 17;
-            // 
-            // dtDeadLine
-            // 
-            this.dtDeadLine.Location = new System.Drawing.Point(44, 76);
-            this.dtDeadLine.Name = "dtDeadLine";
-            this.dtDeadLine.Size = new System.Drawing.Size(143, 27);
-            this.dtDeadLine.TabIndex = 18;
-            // 
-            // chkUndesided
-            // 
-            this.chkUndesided.AutoSize = true;
-            this.chkUndesided.Location = new System.Drawing.Point(193, 79);
-            this.chkUndesided.Name = "chkUndesided";
-            this.chkUndesided.Size = new System.Drawing.Size(80, 24);
-            this.chkUndesided.TabIndex = 19;
-            this.chkUndesided.Text = "指定なし";
-            this.chkUndesided.UseVisualStyleBackColor = true;
-            // 
             // SearchIssue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.chkUndesided);
             this.Controls.Add(this.dtDeadLine);
             this.Controls.Add(this.grpStatus);
             this.Controls.Add(this.btnSearch);
@@ -315,7 +306,6 @@
             this.Controls.SetChildIndex(this.btnSearch, 0);
             this.Controls.SetChildIndex(this.grpStatus, 0);
             this.Controls.SetChildIndex(this.dtDeadLine, 0);
-            this.Controls.SetChildIndex(this.chkUndesided, 0);
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -335,17 +325,16 @@
         private System.Windows.Forms.DataGridView grdList;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnNew;
+        private Infrastructure.StatusRadioButtons grpStatus;
+        private Infrastructure.DateMaskedTextBox dtDeadLine;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProjectID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProjectName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShohinName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResponcedMemberID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResponcedMemberName;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeadLine;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private Infrastructure.StatusRadioButtons grpStatus;
-        private System.Windows.Forms.DateTimePicker dtDeadLine;
-        private System.Windows.Forms.CheckBox chkUndesided;
     }
 }

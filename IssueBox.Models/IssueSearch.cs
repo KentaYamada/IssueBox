@@ -46,6 +46,7 @@ namespace IssueBox.Models
                             ,prd.name              AS ProductName
                             ,i.responced_member_id AS ResponcedMemberID
                             ,m.name                AS ResponcedMemberName
+                            ,i.checked_member_id   AS CheckedMemberID
                             ,i.deadline
                             ,CASE i.[status]
                                 WHEN 1 THEN '起票'

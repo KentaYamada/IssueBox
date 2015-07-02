@@ -20,6 +20,7 @@ namespace IssueBox.Views
             InitializeComponent();
 
             this._issue = selectedModel;
+            this.Initialize();
         }
 
         /// <summary>
@@ -29,18 +30,18 @@ namespace IssueBox.Views
         {
             try
             {
+                //FixMe:メンバー取得方法詳細決める
                 this.cmbCategory.DataSource = DropDownModel.FindAllData(TABLE_NAME.CATEGORIES);
                 this.cmbProject.DataSource = DropDownModel.FindAllData(TABLE_NAME.PROJECTS);
                 this.cmbProduct.DataSource = DropDownModel.FindAllData(TABLE_NAME.PRODUCTS);
                 this.cmbIssuingMember.DataSource = DropDownModel.FindAllData(TABLE_NAME.MEMBERS);
                 this.cmbResponcedMember.DataSource = DropDownModel.FindAllData(TABLE_NAME.MEMBERS);
+                this.cmbCheckedMember.DataSource = DropDownModel.FindAllData(TABLE_NAME.MEMBERS);
             }
             catch(Exception ex)
             {
  
             }
-
-            this.Initialize();
         }
 
         private void Initialize()
@@ -49,7 +50,8 @@ namespace IssueBox.Views
             this.cmbIssuingMember.DataBindings.Add("SelectedValue", this._issue, "IssuingMemberID");
             this.cmbProject.DataBindings.Add("SelectedValue", this._issue, "ProjectID");
             this.cmbProduct.DataBindings.Add("SelectedValue", this._issue, "ProductID");
-            this.cmbResponcedMember.DataBindings.Add("SelectedValue", this._issue, "ResponcedMemberID");
+            this.cmbResponcedMember.DataBindings.Add("SelectedValue", this._issue, "ResponcedMemberID", true, DataSourceUpdateMode.OnValidation);
+            this.cmbCheckedMember.DataBindings.Add("SelectedValue", this._issue, "CheckedMemberID", true, DataSourceUpdateMode.OnValidation);
             this.dtDeadLine.DataBindings.Add("GetDate", this._issue, "Deadline", true, DataSourceUpdateMode.OnValidation);
             this.dtOrigination.DataBindings.Add("Value", this._issue, "OriginationDate");
             this.grpStatus.DataBindings.Add("SelectedStatus", this._issue, "Status");
