@@ -11,7 +11,7 @@ namespace IssueBox.Models.UnitTest
     public class TestMember
     {
         private readonly SQLCommander _db = null;
-        
+
         #region Default constructor
 
         public TestMember()
@@ -77,21 +77,25 @@ namespace IssueBox.Models.UnitTest
             Assert.IsTrue(result);
         }
 
+        private static readonly object[] TestCases = 
+        {
+            new object[] {3, new Condition() { Name = "", EnableFlag = null }},
+            new object[] {2, new Condition() { Name = "", EnableFlag = true }},
+            new object[] {1, new Condition() { Name = "", EnableFlag = false }},
+            new object[] {1, new Condition() { Name = "Yamada", EnableFlag = null }},
+            new object[] {1, new Condition() { Name = "Yamada", EnableFlag = true }},
+            new object[] {0, new Condition() { Name = "Yamada", EnableFlag = false }},
+        };
+
         /// <summary>
         /// FindMembersByメソッドテスト
         /// 比較条件:期待値と取得件数
         /// </summary>
-        /// <param name="name">メンバー名</param>
-        /// <param name="enableFlag">有効可否</param>
         /// <param name="expected">期待値</param>
-        [TestCase("", null, 3)]
-        [TestCase("", true, 2)]
-        [TestCase("Yamada", null, 1)]
-        [TestCase("Yamada", true, 1)]
-        [TestCase("Yamada", false, 0)]
-        public void TestFindMembersBy(string name, bool? enableFlag, int expected)
+        /// <param name="condition">検索条件</param>
+        [TestCaseSource("TestCases")]
+        public void TestFindMembersBy(int expected, Condition condition)
         {
-            var condition = new Condition() { Name = name, EnableFlag = enableFlag };
             var data = new Member().FindMembersBy(condition);
             Assert.AreEqual(expected, data.Count);
         }

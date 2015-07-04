@@ -52,6 +52,7 @@
     <Compile Include="CategoryTest.cs" />
     <Compile Include="ProductTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestMember.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IssueBox.Models\IssueBox.Models.csproj">
