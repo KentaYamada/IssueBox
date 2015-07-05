@@ -37,10 +37,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.grdList = new System.Windows.Forms.DataGridView();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.grpStatus = new IssueBox.Views.Infrastructure.StatusRadioButtons();
-            this.dtDeadLine = new IssueBox.Views.Infrastructure.DateMaskedTextBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +46,10 @@
             this.ResponcedMemberName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeadLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.grpStatus = new IssueBox.Views.Infrastructure.StatusRadioButtons();
+            this.dtDeadLine = new IssueBox.Views.Infrastructure.DateMaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +78,7 @@
             this.cmbCategories.DisplayMember = "Value";
             this.cmbCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategories.FormattingEnabled = true;
-            this.cmbCategories.Location = new System.Drawing.Point(238, 32);
+            this.cmbCategories.Location = new System.Drawing.Point(248, 32);
             this.cmbCategories.Name = "cmbCategories";
             this.cmbCategories.Size = new System.Drawing.Size(121, 28);
             this.cmbCategories.TabIndex = 4;
@@ -98,7 +98,7 @@
             this.cmbProducts.DisplayMember = "Value";
             this.cmbProducts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProducts.FormattingEnabled = true;
-            this.cmbProducts.Location = new System.Drawing.Point(406, 32);
+            this.cmbProducts.Location = new System.Drawing.Point(416, 32);
             this.cmbProducts.Name = "cmbProducts";
             this.cmbProducts.Size = new System.Drawing.Size(121, 28);
             this.cmbProducts.TabIndex = 6;
@@ -107,7 +107,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(365, 35);
+            this.label3.Location = new System.Drawing.Point(375, 35);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 20);
             this.label3.TabIndex = 5;
@@ -124,7 +124,7 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(279, 77);
+            this.label6.Location = new System.Drawing.Point(171, 76);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 27);
             this.label6.TabIndex = 12;
@@ -152,45 +152,6 @@
             this.grdList.RowTemplate.Height = 21;
             this.grdList.Size = new System.Drawing.Size(774, 369);
             this.grdList.TabIndex = 14;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(625, 126);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 28);
-            this.btnSearch.TabIndex = 16;
-            this.btnSearch.Text = "検索";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(706, 126);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(75, 28);
-            this.btnNew.TabIndex = 15;
-            this.btnNew.Text = "新規登録";
-            this.btnNew.UseVisualStyleBackColor = true;
-            // 
-            // grpStatus
-            // 
-            this.grpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.grpStatus.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.grpStatus.Location = new System.Drawing.Point(371, 76);
-            this.grpStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpStatus.Name = "grpStatus";
-            this.grpStatus.SelectedStatus = 1;
-            this.grpStatus.Size = new System.Drawing.Size(260, 28);
-            this.grpStatus.TabIndex = 17;
-            // 
-            // dtDeadLine
-            // 
-            this.dtDeadLine.GetDate = null;
-            this.dtDeadLine.Location = new System.Drawing.Point(44, 76);
-            this.dtDeadLine.Mask = "0000/00/00";
-            this.dtDeadLine.Name = "dtDeadLine";
-            this.dtDeadLine.Size = new System.Drawing.Size(100, 27);
-            this.dtDeadLine.TabIndex = 18;
-            this.dtDeadLine.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // ID
             // 
@@ -272,6 +233,47 @@
             this.Status.HeaderText = "ステータス";
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(625, 126);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 28);
+            this.btnSearch.TabIndex = 16;
+            this.btnSearch.Text = "検索";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(706, 126);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(75, 28);
+            this.btnNew.TabIndex = 15;
+            this.btnNew.Text = "新規登録";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // grpStatus
+            // 
+            this.grpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.grpStatus.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.grpStatus.Location = new System.Drawing.Point(248, 75);
+            this.grpStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpStatus.Name = "grpStatus";
+            this.grpStatus.SelectedStatus = 1;
+            this.grpStatus.Size = new System.Drawing.Size(260, 28);
+            this.grpStatus.TabIndex = 17;
+            // 
+            // dtDeadLine
+            // 
+            this.dtDeadLine.GetDate = null;
+            this.dtDeadLine.Location = new System.Drawing.Point(44, 76);
+            this.dtDeadLine.Mask = "0000/00/00";
+            this.dtDeadLine.Name = "dtDeadLine";
+            this.dtDeadLine.Size = new System.Drawing.Size(100, 27);
+            this.dtDeadLine.TabIndex = 18;
+            this.dtDeadLine.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // SearchIssue
             // 
