@@ -48,7 +48,8 @@ namespace IssueBox.Models
                               ,p.name           AS Name
                               ,p.enable_flag    AS EnableFlag
                             FROM PROJECTS AS p
-                            WHERE (p.name LIKE '%' + @Name +'%' OR @Name IS NULL)
+                            WHERE (p.project_id LIKE '%' + @ProjectID +'%' OR @ProjectID IS NULL)
+                              AND (p.name LIKE '%' + @Name +'%' OR @Name IS NULL)
                               AND (p.enable_flag = @EnableFlag OR @EnableFlag IS NULL)
                             ORDER BY p.id";
 
