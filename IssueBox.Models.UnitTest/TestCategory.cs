@@ -8,13 +8,13 @@ using IssueBox.Models.Infrastructure;
 namespace IssueBox.Models.UnitTest
 {
     [TestFixture]
-    public class CategoryTest
+    public class TestCategory
     {
         private readonly SQLCommander _db = null;
 
         #region Default constructor
 
-        public CategoryTest()
+        public TestCategory()
         {
             this._db = new SQLCommander();
         }
@@ -79,49 +79,27 @@ namespace IssueBox.Models.UnitTest
             Assert.IsTrue(result);
         }
 
+        private static readonly object[] TestCases = 
+        {
+            new object[] {3, new Condition() { Name = "", EnableFlag = null } },
+            new object[] {2, new Condition() { Name = "", EnableFlag = true } },
+            new object[] {1, new Condition() { Name = "", EnableFlag = false } },
+            new object[] {1, new Condition() { Name = "原因", EnableFlag = null } },
+            new object[] {1, new Condition() { Name = "原因", EnableFlag = true }},
+            new object[] {0, new Condition() { Name = "原因", EnableFlag = false } },
+        };
+
         /// <summary>
         /// FindCategoriesByメソッドテスト
-        /// 期待結果:3件分の取得データ
+        /// 比較条件:期待値と取得件数
         /// </summary>
-        [Test]
-        public void TestFindCategoriesByNoCondition()
+        /// <param name="expected">期待値</param>
+        /// <param name="condition">検索条件</param>
+        [TestCaseSource("TestCases")]
+        public void TestFindCategoriesBy(int expected, Condition condition)
         {
-            var condition = new Condition();
             var data = new Category().FindByCategories(condition);
-            Assert.AreEqual(3, data.Count);
-        }
-
-        [Test]
-        public void TestFindCategoriesByEnabledData()
-        {
-            var condition = new Condition()  { EnableFlag = true };
-            var data = new Category().FindByCategories(condition);
-            Assert.AreEqual(2, data.Count);
-
-        }
-
-        [Test]
-        public void TestFindCategoriesByName()
-        {
-            var condition = new Condition() { Name = "原因", EnableFlag = null };
-            var data = new Category().FindByCategories(condition);
-            Assert.AreEqual(1, data.Count);
-        }
-
-        [Test]
-        public void TestFindCategoriesByAllCondition()
-        {
-            var condition = new Condition() { Name = "出荷", EnableFlag = true };
-            var data = new Category().FindByCategories(condition);
-            Assert.AreEqual(1, data.Count);
-        }
-
-        [Test]
-        public void TestFindCategoriesBy_WhenSearchNoData()
-        {
-            var condition = new Condition() { Name = "出荷", EnableFlag = false };
-            var data = new Category().FindByCategories(condition);
-            Assert.AreEqual(0, data.Count);
+            Assert.AreEqual(expected, data.Count);
         }
     }
 }
