@@ -11,13 +11,13 @@ namespace IssueBox.Models.UnitTest
     /// <summary>
     /// 製品モデルクラス
     /// </summary>
-    public class ProductTest
+    public class TestProduct
     {
         private readonly SQLCommander _db = null;
 
         #region Default constructor
 
-        public ProductTest()
+        public TestProduct()
         {
             this._db = new SQLCommander();
         }
@@ -65,6 +65,7 @@ namespace IssueBox.Models.UnitTest
 
         #endregion
 
+        [Test]
         public void TestSave_WhenCommited()
         {
             var model = new Product() 
@@ -78,49 +79,25 @@ namespace IssueBox.Models.UnitTest
             Assert.IsTrue(result);
         }
 
+        private static readonly object[] TestCases = 
+        {
+            new object[] {3, new Condition() { Name = "", EnableFlag = null } },
+            new object[] {2, new Condition() { Name = "", EnableFlag = true } },
+            new object[] {1, new Condition() { Name = "", EnableFlag = false } },
+            new object[] {1, new Condition() { Name = "Apache", EnableFlag = null } },
+            new object[] {1, new Condition() { Name = "Apache", EnableFlag = true }},
+            new object[] {0, new Condition() { Name = "Apache", EnableFlag = false } },
+        };
+
         /// <summary>
         /// FindProductsByメソッドテスト
         /// 期待結果:3件分の取得データ
         /// </summary>
-        [Test]
-        public void TestFindProductsByNoCondition()
+        [TestCaseSource("TestCases")]
+        public void TestFindProductsBy(int expected, Condition condition)
         {
-            var condition = new Condition();
             var data = new Product().FindProductsBy(condition);
-            Assert.AreEqual(3, data.Count);
-        }
-
-        [Test]
-        public void TestFindProductsByEnabledData()
-        {
-            var condition = new Condition() { EnableFlag = true };
-            var data = new Product().FindProductsBy(condition);
-            Assert.AreEqual(2, data.Count);
-
-        }
-
-        [Test]
-        public void TestFindProductsByName()
-        {
-            var condition = new Condition() { Name = "Apache", EnableFlag = null };
-            var data = new Product().FindProductsBy(condition);
-            Assert.AreEqual(1, data.Count);
-        }
-
-        [Test]
-        public void TestFindProductsByAllCondition()
-        {
-            var condition = new Condition() { Name = "Apache", EnableFlag = true };
-            var data = new Product().FindProductsBy(condition);
-            Assert.AreEqual(1, data.Count);
-        }
-
-        [Test]
-        public void TestFindProductsBy_WhenSearchNoData()
-        {
-            var condition = new Condition() { Name = "Apache", EnableFlag = false };
-            var data = new Product().FindProductsBy(condition);
-            Assert.AreEqual(0, data.Count);
+            Assert.AreEqual(expected, data.Count);
         }
     }
 }
