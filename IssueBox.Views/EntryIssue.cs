@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 using IssueBox.Models;
 using IssueBox.Models.Infrastructure;
+using IssueBox.Views.Infrastructure;
 
 namespace IssueBox.Views
 {
@@ -40,7 +41,7 @@ namespace IssueBox.Views
             }
             catch(Exception ex)
             {
- 
+                Logger.Error(ex);
             }
         }
 
@@ -72,6 +73,7 @@ namespace IssueBox.Views
             {
                 //TODO:エラーログ出力機能実装
                 MessageBox.Show(ex.Message);
+                Logger.Error(ex);
             }
         }
 
