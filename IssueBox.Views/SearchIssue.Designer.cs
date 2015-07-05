@@ -130,6 +130,7 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "ステータス";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label6.Visible = false;
             // 
             // grdList
             // 
@@ -264,6 +265,7 @@
             this.grpStatus.SelectedStatus = 1;
             this.grpStatus.Size = new System.Drawing.Size(260, 28);
             this.grpStatus.TabIndex = 17;
+            this.grpStatus.Visible = false;
             // 
             // dtDeadLine
             // 

@@ -47,16 +47,16 @@ namespace IssueBox.Views
 
         private void Initialize()
         {
-            this.cmbCategory.DataBindings.Add("SelectedValue", this._issue, "CategoryID");
-            this.cmbIssuingMember.DataBindings.Add("SelectedValue", this._issue, "IssuingMemberID");
-            this.cmbProject.DataBindings.Add("SelectedValue", this._issue, "ProjectID");
-            this.cmbProduct.DataBindings.Add("SelectedValue", this._issue, "ProductID");
+            this.cmbCategory.DataBindings.Add("SelectedValue", this._issue, "CategoryID", true, DataSourceUpdateMode.OnValidation);
+            this.cmbIssuingMember.DataBindings.Add("SelectedValue", this._issue, "IssuingMemberID", true, DataSourceUpdateMode.OnValidation);
+            this.cmbProject.DataBindings.Add("SelectedValue", this._issue, "ProjectID", true, DataSourceUpdateMode.OnValidation);
+            this.cmbProduct.DataBindings.Add("SelectedValue", this._issue, "ProductID", true, DataSourceUpdateMode.OnValidation);
             this.cmbResponcedMember.DataBindings.Add("SelectedValue", this._issue, "ResponcedMemberID", true, DataSourceUpdateMode.OnValidation);
             this.cmbCheckedMember.DataBindings.Add("SelectedValue", this._issue, "CheckedMemberID", true, DataSourceUpdateMode.OnValidation);
             this.dtDeadLine.DataBindings.Add("GetDate", this._issue, "Deadline", true, DataSourceUpdateMode.OnValidation);
-            this.dtOrigination.DataBindings.Add("Value", this._issue, "OriginationDate");
-            this.grpStatus.DataBindings.Add("SelectedStatus", this._issue, "Status");
-            this.txtComment.DataBindings.Add("Text", this._issue, "Comment");
+            this.dtOrigination.DataBindings.Add("Value", this._issue, "OriginationDate", true, DataSourceUpdateMode.OnValidation);
+            this.grpStatus.DataBindings.Add("SelectedStatus", this._issue, "Status", true, DataSourceUpdateMode.OnValidation);
+            this.txtComment.DataBindings.Add("Text", this._issue, "Comment", true, DataSourceUpdateMode.OnValidation);
         }
 
         /// <summary>

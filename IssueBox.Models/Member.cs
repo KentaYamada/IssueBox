@@ -81,5 +81,30 @@ namespace IssueBox.Models
                 throw;
             }
         }
+
+        /// <summary>
+        /// ログイン認証
+        /// </summary>
+        /// <param name="condition">ログイン情報</param>
+        /// <returns>成功:メンバー情報 / 失敗:null</returns>
+        public Member LoginAuthorication(LoginCondition condition)
+        {
+            string sql = @"SELECT
+                              m.id
+                             ,m.name
+                             ,m.login_id
+                           FROM MEMBERS AS m
+                           WHERE m.enable_flag = 'TRUE'
+                             AND m.login_id = @LoginID
+                             AND m.login_password = @LoginPassword";
+            try
+            {
+                return this._db.Find<Member, LoginCondition>(sql, condition);
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

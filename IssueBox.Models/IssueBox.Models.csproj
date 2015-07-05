@@ -54,6 +54,7 @@
     <Compile Include="Infrastructure\SQLCommander.cs" />
     <Compile Include="IssueCondition.cs" />
     <Compile Include="IssueSearch.cs" />
+    <Compile Include="LoginCondition.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Project.cs" />
