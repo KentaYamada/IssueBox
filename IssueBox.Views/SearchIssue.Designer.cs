@@ -289,6 +289,7 @@
             this.DispStatus.HeaderText = "ステータス";
             this.DispStatus.Name = "DispStatus";
             this.DispStatus.ReadOnly = true;
+            this.DispStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Status
             // 

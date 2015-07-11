@@ -13,6 +13,9 @@ namespace IssueBox.Models.Infrastructure
         DONE             //完了
     }
 
+    /// <summary>
+    /// テーブル名
+    /// </summary>
     public enum TABLE_NAME
     {
         CATEGORIES = 0,  //カテゴリマスタ

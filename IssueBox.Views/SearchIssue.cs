@@ -27,13 +27,13 @@ namespace IssueBox.Views
         /// </summary>
         private void SearchIssue_Load(object sender, EventArgs e)
         {
-            this.Initialize();
+            //this.Initialize();
 
             try
             {
-                this.cmbCategories.DataSource = DropDownModel.FindAllData(TABLE_NAME.CATEGORIES);
-                this.cmbProjects.DataSource = DropDownModel.FindAllData(TABLE_NAME.PROJECTS);
-                this.cmbProducts.DataSource = DropDownModel.FindAllData(TABLE_NAME.PRODUCTS);
+                //this.cmbCategories.DataSource = DropDownModel.FindAllData(TABLE_NAME.CATEGORIES);
+                //this.cmbProjects.DataSource = DropDownModel.FindAllData(TABLE_NAME.PROJECTS);
+                //this.cmbProducts.DataSource = DropDownModel.FindAllData(TABLE_NAME.PRODUCTS);
                 this.SetIssues();
             }
             catch(SqlException ex)

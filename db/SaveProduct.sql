@@ -22,13 +22,13 @@ BEGIN TRY
     WHEN MATCHED THEN
       UPDATE SET
         name = @Name
-       ,version = @Version
+       ,[version] = @Version
        ,enable_flag = @EnableFlag
        ,upd_date = GETDATE()
     WHEN NOT MATCHED THEN
       INSERT (
         name
-       ,version
+       ,[version]
        ,enable_flag
        ,upd_date
       )

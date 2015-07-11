@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
 
 using IssueBox.Views.Infrastructure;
@@ -21,9 +22,11 @@ namespace IssueBox.Views
         /// </summary>
         private void menu_Click(object sender, EventArgs e)
         {
+            string panelName = (sender as ToolStripMenuItem).Name.Replace("menu", "Search");
+
             try
             {
-                this.ShowPanel();
+                this.ShowPanel(panelName);
             }
             catch(Exception ex)
             {
@@ -43,11 +46,15 @@ namespace IssueBox.Views
         /// <summary>
         /// 検索画面表示
         /// </summary>
-        private void ShowPanel()
+        private void ShowPanel(string panelName)
         {
+            
+
             try
             {
-                var panel = Activator.CreateInstance<SearchIssue>();
+                var asm = Assembly.LoadFrom("IssueBox.Views.dll");
+                var type = asm.GetType(panelName);
+                var panel = Activator.CreateInstance(type) as PanelBase;
                 this.Controls.Add(panel);
                 panel.Location = new Point(0, 0);
                 panel.Dock = DockStyle.Fill;

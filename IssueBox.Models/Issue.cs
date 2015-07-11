@@ -60,7 +60,7 @@ namespace IssueBox.Models
             this.ResponcedMemberID = null;
             this.CheckedMemberID = null;
             this.Deadline = null;
-            this.Status = 0;
+            this.Status = 1;
             this.FinishedDate = null;
             this.Comment = "";
             this._db = new SQLCommander();
@@ -118,7 +118,7 @@ namespace IssueBox.Models
                             ,i.comment             AS Comment
                         FROM ISSUES AS i
                         LEFT JOIN PROJECTS AS prj
-                          ON i.product_id = prj.project_id
+                          ON i.project_id = prj.id
                          AND prj.enable_flag = @Enable
                         LEFT JOIN PRODUCTS AS prd
                           ON i.product_id = prd.id
@@ -126,9 +126,9 @@ namespace IssueBox.Models
                         LEFT JOIN MEMBERS AS m
                           ON i.responced_member_id = m.id
                          AND m.enable_flag = @Enable
-                        WHERE (i.project_id = @ProjectID OR @ProjectID IS NULL)
-                          AND (i.product_id = @ProductID OR @ProductID IS NULL)
-                          AND (i.deadline = @DeadLine OR @DeadLine IS NULL)
+                        --WHERE (i.project_id = @ProjectID OR @ProjectID IS NULL)
+                          --AND (i.product_id = @ProductID OR @ProductID IS NULL)
+                          --AND (i.deadline = @DeadLine OR @DeadLine IS NULL)
                           --AND (i.[status] = @Status OR @Status = 0)
                         ORDER BY i.id";
 

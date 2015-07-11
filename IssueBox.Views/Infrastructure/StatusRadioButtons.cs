@@ -24,7 +24,7 @@ namespace IssueBox.Views.Infrastructure
                 var target = this.Controls.OfType<TaskStatusRadioButton>()
                                           .Where(x => x.Status == (TASK_STATUS)value)
                                           .ToList();
-                if(target.Count > 0)
+                if (target.Count > 0)
                 {
                     target[0].Checked = true;
                 }
