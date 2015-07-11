@@ -102,9 +102,6 @@ namespace IssueBox.Views
         /// </summary>
         private void Initialize()
         {
-            this.cmbEnable.DataSource = Constants.EnableList;
-            this.cmbEnable.DataBindings.Add("SelectedValue", this._cond, "EnableFlag");
-            this.cmbEnable.SelectedIndex = 0;
             this.txtName.DataBindings.Add("Text", this._cond, "Name");
             this.txtName.Focus();
         }
@@ -114,11 +111,9 @@ namespace IssueBox.Views
         /// </summary>
         private void SetCategories()
         {
-            var model = new Category();
-
             try
             {
-                this._categories = model.FindByCategories(this._cond);
+                this._categories = Category.FindByCategories(this._cond);
             }
             catch
             {

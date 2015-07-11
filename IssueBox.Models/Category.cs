@@ -25,7 +25,7 @@ namespace IssueBox.Models
         {
             this.ID = 0;
             this.Name = "";
-            this.EnableFlag = false;
+            this.EnableFlag = true;
             this._db = new SQLCommander();
         }
 
@@ -34,9 +34,9 @@ namespace IssueBox.Models
         /// <summary>
         /// カテゴリ取得
         /// </summary>
-        /// <param name="condition">検索条件モデル</param>
+        /// <param name="condition">検索条件</param>
         /// <returns>条件に合致するカテゴリ一覧</returns>
-        public List<Category> FindByCategories(Condition condition)
+        public static List<Category> FindByCategories(Condition condition)
         {
             string sql = @"SELECT
                              c.id          AS ID
@@ -44,11 +44,13 @@ namespace IssueBox.Models
                             ,c.enable_flag AS EnableFlag
                         FROM CATEGORIES AS c
                         WHERE (c.name LIKE '%' + @Name + '%' OR @Name IS NULL)
-                          AND (c.enable_flag = @EnableFlag OR @EnableFlag IS NULL)
+                          --AND (c.enable_flag = @EnableFlag OR @EnableFlag IS NULL)
                         ORDER BY c.id";
+            var model = new Category();
+
             try
             {
-                return this._db.FindBy<Category, Condition>(sql, condition);
+                return model._db.FindBy<Category, Condition>(sql, condition);
             }
             catch
             {

@@ -31,8 +31,6 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmbEnable = new IssueBox.Views.Infrastructure.DropDownListEx();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtName = new IssueBox.Views.Infrastructure.TextBoxEx();
             this.label1 = new System.Windows.Forms.Label();
             this.grdList = new System.Windows.Forms.DataGridView();
@@ -71,26 +69,6 @@
             this.label2.TabIndex = 19;
             this.label2.Text = "(部分一致)";
             // 
-            // cmbEnable
-            // 
-            this.cmbEnable.DisplayMember = "Value";
-            this.cmbEnable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEnable.FormattingEnabled = true;
-            this.cmbEnable.Location = new System.Drawing.Point(233, 66);
-            this.cmbEnable.Name = "cmbEnable";
-            this.cmbEnable.Size = new System.Drawing.Size(121, 28);
-            this.cmbEnable.TabIndex = 18;
-            this.cmbEnable.ValueMember = "ID";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(153, 69);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 20);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "データ有効";
-            // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(233, 30);
@@ -103,9 +81,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(153, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 20);
+            this.label1.Size = new System.Drawing.Size(74, 20);
             this.label1.TabIndex = 15;
-            this.label1.Text = "名前";
+            this.label1.Text = "カテゴリ名";
             // 
             // grdList
             // 
@@ -157,8 +135,6 @@
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cmbEnable);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grdList);
@@ -168,8 +144,6 @@
             this.Controls.SetChildIndex(this.grdList, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtName, 0);
-            this.Controls.SetChildIndex(this.label6, 0);
-            this.Controls.SetChildIndex(this.cmbEnable, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.btnNew, 0);
             this.Controls.SetChildIndex(this.btnSearch, 0);
@@ -184,8 +158,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Label label2;
-        private Infrastructure.DropDownListEx cmbEnable;
-        private System.Windows.Forms.Label label6;
         private Infrastructure.TextBoxEx txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView grdList;
