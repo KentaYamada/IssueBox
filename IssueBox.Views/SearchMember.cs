@@ -34,6 +34,7 @@ namespace IssueBox.Views
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
+                Logger.Error(ex);
             }
         }
 
@@ -46,6 +47,7 @@ namespace IssueBox.Views
             catch(SqlException ex)
             {
                 MessageBox.Show(ex.Message);
+                Logger.Error(ex);
             }
         }
 
@@ -60,6 +62,7 @@ namespace IssueBox.Views
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
+                Logger.Error(ex);
             }
         }
 
@@ -74,6 +77,7 @@ namespace IssueBox.Views
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
+                Logger.Error(ex);
             }
         }
 
@@ -82,9 +86,6 @@ namespace IssueBox.Views
         /// </summary>
         private void Initialize()
         {
-            this.cmbEnable.DataSource = Constants.EnableList;
-            this.cmbEnable.DataBindings.Add("SelectedValue", this._cond, "EnableFlag");
-            this.cmbEnable.SelectedIndex = 0;
             this.txtName.DataBindings.Add("Text", this._cond, "Name");
             this.txtName.Focus();
         }
@@ -106,11 +107,9 @@ namespace IssueBox.Views
         /// </summary>
         private void SetMembers()
         {
-            var model = new Member();
-
             try
             {
-                this._members = model.FindMembersBy(this._cond);
+                this._members = Member.FindMembersBy(this._cond);
             }
             catch
             {

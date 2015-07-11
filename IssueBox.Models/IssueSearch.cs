@@ -15,6 +15,9 @@ namespace IssueBox.Models
         /// <summary>対応者名</summary>
         public string ResponcedMemberName { get; set; }
 
+        /// <summary>ステータス(表示用文字)</summary>
+        public string DispStatus { get; set; }
+
         #region Default constructor
 
         public IssueSearch()

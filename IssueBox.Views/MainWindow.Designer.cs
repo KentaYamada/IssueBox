@@ -41,6 +41,7 @@
             this.menuMember = new System.Windows.Forms.ToolStripMenuItem();
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.menuIO = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -50,6 +51,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.メインメニューToolStripMenuItem,
             this.設定ToolStripMenuItem,
+            this.menuIO,
             this.終了ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -68,7 +70,7 @@
             // menuIssueSearch
             // 
             this.menuIssueSearch.Name = "menuIssueSearch";
-            this.menuIssueSearch.Size = new System.Drawing.Size(152, 22);
+            this.menuIssueSearch.Size = new System.Drawing.Size(136, 22);
             this.menuIssueSearch.Text = "タスク登録";
             this.menuIssueSearch.Click += new System.EventHandler(this.menu_Click);
             // 
@@ -134,6 +136,12 @@
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             // 
+            // menuIO
+            // 
+            this.menuIO.Name = "menuIO";
+            this.menuIO.Size = new System.Drawing.Size(92, 22);
+            this.menuIO.Text = "データ入出力";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -168,5 +176,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuCategory;
         private System.Windows.Forms.ToolStripMenuItem menuProduct;
         private System.Windows.Forms.ToolStripMenuItem menuProject;
+        private System.Windows.Forms.ToolStripMenuItem menuIO;
     }
 }

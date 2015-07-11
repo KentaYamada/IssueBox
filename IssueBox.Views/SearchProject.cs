@@ -95,11 +95,9 @@ namespace IssueBox.Views
         /// </summary>
         private void SetProjects()
         {
-            var model = new Project();
-
             try
             {
-                this._projects = model.FindProjectsBy(this._cond);
+                this._projects = Project.FindProjectsBy(this._cond);
             }
             catch
             {

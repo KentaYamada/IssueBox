@@ -91,11 +91,9 @@ namespace IssueBox.Views
         /// </summary>
         private void SetIssues()
         {
-            var model = new IssueSearch();
-
             try
             {
-                this._issues = model.FindIssuesBy(this._condition);
+                this._issues = Issue.FindIssuesBy(this._condition);
             }
             catch
             {

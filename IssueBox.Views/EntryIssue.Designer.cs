@@ -50,11 +50,13 @@
             this.txtComment = new IssueBox.Views.Infrastructure.TextBoxEx();
             this.cmbCheckedMember = new IssueBox.Views.Infrastructure.DropDownListEx();
             this.label8 = new System.Windows.Forms.Label();
+            this.dtFinishedDate = new IssueBox.Views.Infrastructure.DateMaskedTextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(12, 74);
+            this.label11.Location = new System.Drawing.Point(12, 82);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 27);
             this.label11.TabIndex = 4;
@@ -63,7 +65,7 @@
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(12, 172);
+            this.label10.Location = new System.Drawing.Point(12, 183);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 27);
             this.label10.TabIndex = 10;
@@ -72,7 +74,7 @@
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(12, 305);
+            this.label7.Location = new System.Drawing.Point(12, 355);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 27);
             this.label7.TabIndex = 16;
@@ -81,7 +83,7 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(12, 270);
+            this.label6.Location = new System.Drawing.Point(12, 287);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 27);
             this.label6.TabIndex = 14;
@@ -90,7 +92,7 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(12, 203);
+            this.label5.Location = new System.Drawing.Point(12, 216);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 27);
             this.label5.TabIndex = 12;
@@ -99,7 +101,7 @@
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(12, 106);
+            this.label4.Location = new System.Drawing.Point(12, 115);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 27);
             this.label4.TabIndex = 6;
@@ -108,7 +110,7 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(12, 137);
+            this.label3.Location = new System.Drawing.Point(12, 149);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 27);
             this.label3.TabIndex = 8;
@@ -117,7 +119,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(12, 42);
+            this.label2.Location = new System.Drawing.Point(12, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 27);
             this.label2.TabIndex = 2;
@@ -126,7 +128,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 27);
             this.label1.TabIndex = 0;
@@ -135,14 +137,14 @@
             // 
             // dtOrigination
             // 
-            this.dtOrigination.Location = new System.Drawing.Point(103, 9);
+            this.dtOrigination.Location = new System.Drawing.Point(103, 14);
             this.dtOrigination.Name = "dtOrigination";
             this.dtOrigination.Size = new System.Drawing.Size(144, 27);
             this.dtOrigination.TabIndex = 1;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(319, 522);
+            this.btnSave.Location = new System.Drawing.Point(319, 572);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 28);
             this.btnSave.TabIndex = 18;
@@ -152,7 +154,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(400, 522);
+            this.btnExit.Location = new System.Drawing.Point(400, 572);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 28);
             this.btnExit.TabIndex = 19;
@@ -163,7 +165,7 @@
             // dtDeadLine
             // 
             this.dtDeadLine.GetDate = null;
-            this.dtDeadLine.Location = new System.Drawing.Point(103, 172);
+            this.dtDeadLine.Location = new System.Drawing.Point(103, 183);
             this.dtDeadLine.Mask = "0000/00/00";
             this.dtDeadLine.Name = "dtDeadLine";
             this.dtDeadLine.Size = new System.Drawing.Size(100, 27);
@@ -174,7 +176,7 @@
             // 
             this.grpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.grpStatus.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.grpStatus.Location = new System.Drawing.Point(103, 269);
+            this.grpStatus.Location = new System.Drawing.Point(103, 286);
             this.grpStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grpStatus.Name = "grpStatus";
             this.grpStatus.SelectedStatus = 1;
@@ -186,7 +188,7 @@
             this.cmbIssuingMember.DisplayMember = "Value";
             this.cmbIssuingMember.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIssuingMember.FormattingEnabled = true;
-            this.cmbIssuingMember.Location = new System.Drawing.Point(103, 41);
+            this.cmbIssuingMember.Location = new System.Drawing.Point(103, 47);
             this.cmbIssuingMember.Name = "cmbIssuingMember";
             this.cmbIssuingMember.Size = new System.Drawing.Size(186, 28);
             this.cmbIssuingMember.TabIndex = 3;
@@ -197,7 +199,7 @@
             this.cmbProject.DisplayMember = "Value";
             this.cmbProject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProject.FormattingEnabled = true;
-            this.cmbProject.Location = new System.Drawing.Point(103, 74);
+            this.cmbProject.Location = new System.Drawing.Point(103, 81);
             this.cmbProject.Name = "cmbProject";
             this.cmbProject.Size = new System.Drawing.Size(186, 28);
             this.cmbProject.TabIndex = 5;
@@ -208,7 +210,7 @@
             this.cmbProduct.DisplayMember = "Value";
             this.cmbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProduct.FormattingEnabled = true;
-            this.cmbProduct.Location = new System.Drawing.Point(103, 106);
+            this.cmbProduct.Location = new System.Drawing.Point(103, 115);
             this.cmbProduct.Name = "cmbProduct";
             this.cmbProduct.Size = new System.Drawing.Size(186, 28);
             this.cmbProduct.TabIndex = 7;
@@ -219,7 +221,7 @@
             this.cmbCategory.DisplayMember = "Value";
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(103, 137);
+            this.cmbCategory.Location = new System.Drawing.Point(103, 149);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(186, 28);
             this.cmbCategory.TabIndex = 9;
@@ -230,7 +232,7 @@
             this.cmbResponcedMember.DisplayMember = "Value";
             this.cmbResponcedMember.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbResponcedMember.FormattingEnabled = true;
-            this.cmbResponcedMember.Location = new System.Drawing.Point(103, 201);
+            this.cmbResponcedMember.Location = new System.Drawing.Point(103, 216);
             this.cmbResponcedMember.Name = "cmbResponcedMember";
             this.cmbResponcedMember.Size = new System.Drawing.Size(186, 28);
             this.cmbResponcedMember.TabIndex = 13;
@@ -238,7 +240,7 @@
             // 
             // txtComment
             // 
-            this.txtComment.Location = new System.Drawing.Point(103, 305);
+            this.txtComment.Location = new System.Drawing.Point(103, 355);
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
             this.txtComment.Size = new System.Drawing.Size(372, 211);
@@ -249,7 +251,7 @@
             this.cmbCheckedMember.DisplayMember = "Value";
             this.cmbCheckedMember.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCheckedMember.FormattingEnabled = true;
-            this.cmbCheckedMember.Location = new System.Drawing.Point(103, 235);
+            this.cmbCheckedMember.Location = new System.Drawing.Point(103, 250);
             this.cmbCheckedMember.Name = "cmbCheckedMember";
             this.cmbCheckedMember.Size = new System.Drawing.Size(186, 28);
             this.cmbCheckedMember.TabIndex = 20;
@@ -257,18 +259,39 @@
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(12, 236);
+            this.label8.Location = new System.Drawing.Point(12, 250);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 27);
             this.label8.TabIndex = 21;
             this.label8.Text = "確認者";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // dtFinishedDate
+            // 
+            this.dtFinishedDate.GetDate = null;
+            this.dtFinishedDate.Location = new System.Drawing.Point(103, 322);
+            this.dtFinishedDate.Mask = "0000/00/00";
+            this.dtFinishedDate.Name = "dtFinishedDate";
+            this.dtFinishedDate.Size = new System.Drawing.Size(100, 27);
+            this.dtFinishedDate.TabIndex = 23;
+            this.dtFinishedDate.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(12, 322);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 27);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "完了日";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // EntryIssue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 562);
+            this.ClientSize = new System.Drawing.Size(487, 612);
+            this.Controls.Add(this.dtFinishedDate);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbCheckedMember);
             this.Controls.Add(this.dtDeadLine);
@@ -325,5 +348,7 @@
         private Infrastructure.DateMaskedTextBox dtDeadLine;
         private Infrastructure.DropDownListEx cmbCheckedMember;
         private System.Windows.Forms.Label label8;
+        private Infrastructure.DateMaskedTextBox dtFinishedDate;
+        private System.Windows.Forms.Label label9;
     }
 }

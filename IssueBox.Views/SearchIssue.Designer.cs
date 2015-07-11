@@ -37,6 +37,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.grdList = new System.Windows.Forms.DataGridView();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.grpStatus = new IssueBox.Views.Infrastructure.StatusRadioButtons();
+            this.dtDeadLine = new IssueBox.Views.Infrastructure.DateMaskedTextBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,11 +49,9 @@
             this.ResponcedMemberID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResponcedMemberName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeadLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DispStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.grpStatus = new IssueBox.Views.Infrastructure.StatusRadioButtons();
-            this.dtDeadLine = new IssueBox.Views.Infrastructure.DateMaskedTextBox();
+            this.FinishedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,6 +63,7 @@
             this.label1.Size = new System.Drawing.Size(35, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "案件";
+            this.label1.Visible = false;
             // 
             // cmbProjects
             // 
@@ -72,6 +75,7 @@
             this.cmbProjects.Size = new System.Drawing.Size(121, 28);
             this.cmbProjects.TabIndex = 2;
             this.cmbProjects.ValueMember = "ID";
+            this.cmbProjects.Visible = false;
             // 
             // cmbCategories
             // 
@@ -83,6 +87,7 @@
             this.cmbCategories.Size = new System.Drawing.Size(121, 28);
             this.cmbCategories.TabIndex = 4;
             this.cmbCategories.ValueMember = "ID";
+            this.cmbCategories.Visible = false;
             // 
             // label2
             // 
@@ -92,6 +97,7 @@
             this.label2.Size = new System.Drawing.Size(61, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "カテゴリ";
+            this.label2.Visible = false;
             // 
             // cmbProducts
             // 
@@ -103,6 +109,7 @@
             this.cmbProducts.Size = new System.Drawing.Size(121, 28);
             this.cmbProducts.TabIndex = 6;
             this.cmbProducts.ValueMember = "ID";
+            this.cmbProducts.Visible = false;
             // 
             // label3
             // 
@@ -112,6 +119,7 @@
             this.label3.Size = new System.Drawing.Size(35, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "製品";
+            this.label3.Visible = false;
             // 
             // label4
             // 
@@ -121,6 +129,7 @@
             this.label4.Size = new System.Drawing.Size(35, 20);
             this.label4.TabIndex = 8;
             this.label4.Text = "期限";
+            this.label4.Visible = false;
             // 
             // label6
             // 
@@ -146,13 +155,59 @@
             this.ResponcedMemberID,
             this.ResponcedMemberName,
             this.DeadLine,
-            this.Status});
+            this.DispStatus,
+            this.Status,
+            this.FinishedDate});
             this.grdList.Location = new System.Drawing.Point(7, 160);
             this.grdList.Name = "grdList";
             this.grdList.ReadOnly = true;
             this.grdList.RowTemplate.Height = 21;
             this.grdList.Size = new System.Drawing.Size(774, 369);
             this.grdList.TabIndex = 14;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(625, 126);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 28);
+            this.btnSearch.TabIndex = 16;
+            this.btnSearch.Text = "検索";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Visible = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(706, 126);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(75, 28);
+            this.btnNew.TabIndex = 15;
+            this.btnNew.Text = "新規登録";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // grpStatus
+            // 
+            this.grpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.grpStatus.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.grpStatus.Location = new System.Drawing.Point(248, 75);
+            this.grpStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpStatus.Name = "grpStatus";
+            this.grpStatus.SelectedStatus = 1;
+            this.grpStatus.Size = new System.Drawing.Size(260, 28);
+            this.grpStatus.TabIndex = 17;
+            this.grpStatus.Visible = false;
+            // 
+            // dtDeadLine
+            // 
+            this.dtDeadLine.GetDate = null;
+            this.dtDeadLine.Location = new System.Drawing.Point(44, 76);
+            this.dtDeadLine.Mask = "0000/00/00";
+            this.dtDeadLine.Name = "dtDeadLine";
+            this.dtDeadLine.Size = new System.Drawing.Size(100, 27);
+            this.dtDeadLine.TabIndex = 18;
+            this.dtDeadLine.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.dtDeadLine.Visible = false;
             // 
             // ID
             // 
@@ -227,55 +282,30 @@
             this.DeadLine.Name = "DeadLine";
             this.DeadLine.ReadOnly = true;
             // 
+            // DispStatus
+            // 
+            this.DispStatus.DataPropertyName = "DispStatus";
+            this.DispStatus.Frozen = true;
+            this.DispStatus.HeaderText = "ステータス";
+            this.DispStatus.Name = "DispStatus";
+            this.DispStatus.ReadOnly = true;
+            // 
             // Status
             // 
             this.Status.DataPropertyName = "Status";
             this.Status.Frozen = true;
-            this.Status.HeaderText = "ステータス";
+            this.Status.HeaderText = "ステータス(データ)";
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
+            this.Status.Visible = false;
             // 
-            // btnSearch
+            // FinishedDate
             // 
-            this.btnSearch.Location = new System.Drawing.Point(625, 126);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 28);
-            this.btnSearch.TabIndex = 16;
-            this.btnSearch.Text = "検索";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(706, 126);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(75, 28);
-            this.btnNew.TabIndex = 15;
-            this.btnNew.Text = "新規登録";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // grpStatus
-            // 
-            this.grpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.grpStatus.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.grpStatus.Location = new System.Drawing.Point(248, 75);
-            this.grpStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpStatus.Name = "grpStatus";
-            this.grpStatus.SelectedStatus = 1;
-            this.grpStatus.Size = new System.Drawing.Size(260, 28);
-            this.grpStatus.TabIndex = 17;
-            this.grpStatus.Visible = false;
-            // 
-            // dtDeadLine
-            // 
-            this.dtDeadLine.GetDate = null;
-            this.dtDeadLine.Location = new System.Drawing.Point(44, 76);
-            this.dtDeadLine.Mask = "0000/00/00";
-            this.dtDeadLine.Name = "dtDeadLine";
-            this.dtDeadLine.Size = new System.Drawing.Size(100, 27);
-            this.dtDeadLine.TabIndex = 18;
-            this.dtDeadLine.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.FinishedDate.DataPropertyName = "FinishedDate";
+            this.FinishedDate.Frozen = true;
+            this.FinishedDate.HeaderText = "完了日";
+            this.FinishedDate.Name = "FinishedDate";
+            this.FinishedDate.ReadOnly = true;
             // 
             // SearchIssue
             // 
@@ -339,6 +369,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ResponcedMemberID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResponcedMemberName;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeadLine;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DispStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FinishedDate;
     }
 }

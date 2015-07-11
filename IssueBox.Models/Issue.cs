@@ -61,6 +61,7 @@ namespace IssueBox.Models
             this.CheckedMemberID = null;
             this.Deadline = null;
             this.Status = 0;
+            this.FinishedDate = null;
             this.Comment = "";
             this._db = new SQLCommander();
         }
@@ -88,7 +89,7 @@ namespace IssueBox.Models
         /// </summary>
         /// <param name="condition">検索条件</param>
         /// <returns>検索条件に合致した課題一覧</returns>
-        public List<IssueSearch> FindIssuesBy(IssueCondition condition)
+        public static List<IssueSearch> FindIssuesBy(IssueCondition condition)
         {
             #region SQL FixMe SQLファイル化 or else
 
@@ -105,13 +106,16 @@ namespace IssueBox.Models
                             ,m.name                AS ResponcedMemberName
                             ,i.checked_member_id   AS CheckedMemberID
                             ,i.deadline
+                            ,i.[status]            AS [Status]
                             ,CASE i.[status]
                                 WHEN 1 THEN '起票'
                                 WHEN 2 THEN '対応中'
                                 WHEN 3 THEN '確認中'
                                 WHEN 4 THEN '完了'
                                 ELSE ''
-                            END AS [Status]
+                             END AS DispStatus
+                            ,i.finished_date       AS FinishedDate
+                            ,i.comment             AS Comment
                         FROM ISSUES AS i
                         LEFT JOIN PROJECTS AS prj
                           ON i.product_id = prj.project_id
@@ -130,9 +134,11 @@ namespace IssueBox.Models
 
             #endregion
 
+            var model = new Issue();
+
             try
             {
-                return this._db.FindBy<IssueSearch, IssueCondition>(sql, condition);
+                return model._db.FindBy<IssueSearch, IssueCondition>(sql, condition);
             }
             catch
             {

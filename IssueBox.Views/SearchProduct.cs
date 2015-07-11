@@ -97,11 +97,9 @@ namespace IssueBox.Views
         /// </summary>
         private void SetProducts()
         {
-            var model = new Product();
-
             try
             {
-                this._products = model.FindProductsBy(this._cond);
+                this._products = Product.FindProductsBy(this._cond);
             }
             catch
             {

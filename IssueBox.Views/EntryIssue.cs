@@ -21,7 +21,6 @@ namespace IssueBox.Views
             InitializeComponent();
 
             this._issue = selectedModel;
-            this.Initialize();
         }
 
         /// <summary>
@@ -38,6 +37,7 @@ namespace IssueBox.Views
                 this.cmbIssuingMember.DataSource = DropDownModel.FindAllData(TABLE_NAME.MEMBERS);
                 this.cmbResponcedMember.DataSource = DropDownModel.FindAllData(TABLE_NAME.MEMBERS);
                 this.cmbCheckedMember.DataSource = DropDownModel.FindAllData(TABLE_NAME.MEMBERS);
+                this.Initialize();
             }
             catch(Exception ex)
             {
@@ -56,7 +56,9 @@ namespace IssueBox.Views
             this.dtDeadLine.DataBindings.Add("GetDate", this._issue, "Deadline", true, DataSourceUpdateMode.OnValidation);
             this.dtOrigination.DataBindings.Add("Value", this._issue, "OriginationDate", true, DataSourceUpdateMode.OnValidation);
             this.grpStatus.DataBindings.Add("SelectedStatus", this._issue, "Status", true, DataSourceUpdateMode.OnValidation);
+            this.dtFinishedDate.DataBindings.Add("GetDate", this._issue, "FinishedDate", true, DataSourceUpdateMode.OnValidation);
             this.txtComment.DataBindings.Add("Text", this._issue, "Comment", true, DataSourceUpdateMode.OnValidation);
+            this.dtOrigination.Focus();
         }
 
         /// <summary>
