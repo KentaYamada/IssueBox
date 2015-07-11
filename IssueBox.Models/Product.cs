@@ -29,7 +29,7 @@ namespace IssueBox.Models
             this.ID = 0;
             this.Name = "";
             this.Version = "";
-            this.EnableFlag = false;
+            this.EnableFlag = true;
             this._db = new SQLCommander();
         }
 
@@ -40,7 +40,7 @@ namespace IssueBox.Models
         /// </summary>
         /// <param name="condition">検索条件</param>
         /// <returns>検索条件に合致した製品一覧</returns>
-        public List<Product> FindProductsBy(Condition condition)
+        public static List<Product> FindProductsBy(Condition condition)
         {
             string sql = @"SELECT
                                p.id             AS ID
@@ -51,10 +51,11 @@ namespace IssueBox.Models
                             WHERE (p.name LIKE '%' + @Name +'%' OR @Name IS NULL)
                               AND (p.enable_flag = @EnableFlag OR @EnableFlag IS NULL)
                             ORDER BY p.id";
+            var model = new Product();
 
             try
             {
-                return this._db.FindBy<Product, Condition>(sql, condition);
+                return model._db.FindBy<Product, Condition>(sql, condition);
             }
             catch
             {

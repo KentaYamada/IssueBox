@@ -44,7 +44,7 @@ namespace IssueBox.Models
                             ,c.enable_flag AS EnableFlag
                         FROM CATEGORIES AS c
                         WHERE (c.name LIKE '%' + @Name + '%' OR @Name IS NULL)
-                          --AND (c.enable_flag = @EnableFlag OR @EnableFlag IS NULL)
+                          AND (c.enable_flag = @EnableFlag OR @EnableFlag IS NULL)
                         ORDER BY c.id";
             var model = new Category();
 

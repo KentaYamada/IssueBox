@@ -33,18 +33,18 @@ namespace IssueBox.Models
             this.Name = "";
             this.LoginID = "";
             this.LoginPassword = "";
-            this.EnableFlag = false;
+            this.EnableFlag = true;
             this._db = new SQLCommander();
         }
 
         #endregion
 
         /// <summary>
-        /// メンバー一覧取得
+        /// メンバー取得
         /// </summary>
         /// <param name="condition">検索条件</param>
-        /// <returns>検索条件に合致したメンバー一覧</returns>
-        public List<Member> FindMembersBy(Condition condition)
+        /// <returns>検索条件に合致したメンバー</returns>
+        public static List<Member> FindMembersBy(Condition condition)
         {
             string sql = @"SELECT
                                m.id             AS ID
@@ -56,10 +56,11 @@ namespace IssueBox.Models
                             WHERE (m.name LIKE '%' + @Name +'%' OR @Name IS NULL)
                               AND (m.enable_flag = @EnableFlag OR @EnableFlag IS NULL)
                             ORDER BY m.id";
+            var model = new Member();
 
             try
             {
-                return this._db.FindBy<Member, Condition>(sql, condition);
+                return model._db.FindBy<Member, Condition>(sql, condition);
             }
             catch
             {

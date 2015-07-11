@@ -29,7 +29,7 @@ namespace IssueBox.Models
             this.ID = 0;
             this.Name = "";
             this.ProjectID = "";
-            this.EnableFlag = false;
+            this.EnableFlag = true;
             this._db = new SQLCommander();
         }
 
@@ -40,7 +40,7 @@ namespace IssueBox.Models
         /// </summary>
         /// <param name="condition">検索条件</param>
         /// <returns>検索条件に合致した案件一覧</returns>
-        public List<Project> FindProjectsBy(ProjectCondition condition)
+        public static List<Project> FindProjectsBy(ProjectCondition condition)
         {
             string sql = @"SELECT
                                p.id             AS ID
@@ -52,10 +52,11 @@ namespace IssueBox.Models
                               AND (p.name LIKE '%' + @Name +'%' OR @Name IS NULL)
                               AND (p.enable_flag = @EnableFlag OR @EnableFlag IS NULL)
                             ORDER BY p.id";
+            var model = new Project();
 
             try
             {
-                return this._db.FindBy<Project, ProjectCondition>(sql, condition);
+                return model._db.FindBy<Project, ProjectCondition>(sql, condition);
             }
             catch
             {
