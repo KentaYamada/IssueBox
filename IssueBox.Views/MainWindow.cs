@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -22,7 +23,7 @@ namespace IssueBox.Views
         /// </summary>
         private void menu_Click(object sender, EventArgs e)
         {
-            string panelName = (sender as ToolStripMenuItem).Name.Replace("menu", "Search");
+            string panelName = (sender as ToolStripMenuItem).Name.Replace("menu", "");
 
             try
             {
@@ -48,12 +49,9 @@ namespace IssueBox.Views
         /// </summary>
         private void ShowPanel(string panelName)
         {
-            
-
             try
             {
-                var asm = Assembly.LoadFrom("IssueBox.Views.dll");
-                var type = asm.GetType(panelName);
+                var type = Assembly.LoadFrom("IssueBox.Views.dll").GetTypes().Where(n => n.Name == panelName).First();
                 var panel = Activator.CreateInstance(type) as PanelBase;
                 this.Controls.Add(panel);
                 panel.Location = new Point(0, 0);
@@ -64,13 +62,6 @@ namespace IssueBox.Views
             {
                 throw;
             }
-            
-            //var form = new EntryMember();
-            //var form = new EntryProject();
-            //var form = new EntryProduct();
-            //var form = new EntryCategory();
-            //var form = new EntryIssue();
-            //form.ShowDialog();
         }
     }
 }

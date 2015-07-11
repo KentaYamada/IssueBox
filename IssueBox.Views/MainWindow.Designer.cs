@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.メインメニューToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuIssueSearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSearchIssue = new System.Windows.Forms.ToolStripMenuItem();
             this.設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuProject = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuProduct = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuCategory = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuMember = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSearchProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSearchProduct = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSearchCategory = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSearchMember = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuIO = new System.Windows.Forms.ToolStripMenuItem();
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.menuIO = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -62,56 +62,63 @@
             // メインメニューToolStripMenuItem
             // 
             this.メインメニューToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuIssueSearch});
+            this.menuSearchIssue});
             this.メインメニューToolStripMenuItem.Name = "メインメニューToolStripMenuItem";
             this.メインメニューToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.メインメニューToolStripMenuItem.Text = "メインメニュー";
             // 
-            // menuIssueSearch
+            // menuSearchIssue
             // 
-            this.menuIssueSearch.Name = "menuIssueSearch";
-            this.menuIssueSearch.Size = new System.Drawing.Size(136, 22);
-            this.menuIssueSearch.Text = "タスク登録";
-            this.menuIssueSearch.Click += new System.EventHandler(this.menu_Click);
+            this.menuSearchIssue.Name = "menuSearchIssue";
+            this.menuSearchIssue.Size = new System.Drawing.Size(152, 22);
+            this.menuSearchIssue.Text = "タスク登録";
+            this.menuSearchIssue.Click += new System.EventHandler(this.menu_Click);
             // 
             // 設定ToolStripMenuItem
             // 
             this.設定ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuProject,
-            this.menuProduct,
-            this.menuCategory,
-            this.menuMember});
+            this.menuSearchProject,
+            this.menuSearchProduct,
+            this.menuSearchCategory,
+            this.menuSearchMember});
             this.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
             this.設定ToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.設定ToolStripMenuItem.Text = "設定";
             // 
-            // menuProject
+            // menuSearchProject
             // 
-            this.menuProject.Name = "menuProject";
-            this.menuProject.Size = new System.Drawing.Size(160, 22);
-            this.menuProject.Text = "案件マスタ";
-            this.menuProject.Click += new System.EventHandler(this.menu_Click);
+            this.menuSearchProject.Name = "menuSearchProject";
+            this.menuSearchProject.Size = new System.Drawing.Size(160, 22);
+            this.menuSearchProject.Text = "案件マスタ";
+            this.menuSearchProject.Click += new System.EventHandler(this.menu_Click);
             // 
-            // menuProduct
+            // menuSearchProduct
             // 
-            this.menuProduct.Name = "menuProduct";
-            this.menuProduct.Size = new System.Drawing.Size(160, 22);
-            this.menuProduct.Text = "製品マスタ";
-            this.menuProduct.Click += new System.EventHandler(this.menu_Click);
+            this.menuSearchProduct.Name = "menuSearchProduct";
+            this.menuSearchProduct.Size = new System.Drawing.Size(160, 22);
+            this.menuSearchProduct.Text = "製品マスタ";
+            this.menuSearchProduct.Click += new System.EventHandler(this.menu_Click);
             // 
-            // menuCategory
+            // menuSearchCategory
             // 
-            this.menuCategory.Name = "menuCategory";
-            this.menuCategory.Size = new System.Drawing.Size(160, 22);
-            this.menuCategory.Text = "カテゴリマスタ";
-            this.menuCategory.Click += new System.EventHandler(this.menu_Click);
+            this.menuSearchCategory.Name = "menuSearchCategory";
+            this.menuSearchCategory.Size = new System.Drawing.Size(160, 22);
+            this.menuSearchCategory.Text = "カテゴリマスタ";
+            this.menuSearchCategory.Click += new System.EventHandler(this.menu_Click);
             // 
-            // menuMember
+            // menuSearchMember
             // 
-            this.menuMember.Name = "menuMember";
-            this.menuMember.Size = new System.Drawing.Size(160, 22);
-            this.menuMember.Text = "メンバーマスタ";
-            this.menuMember.Click += new System.EventHandler(this.menu_Click);
+            this.menuSearchMember.Name = "menuSearchMember";
+            this.menuSearchMember.Size = new System.Drawing.Size(160, 22);
+            this.menuSearchMember.Text = "メンバーマスタ";
+            this.menuSearchMember.Click += new System.EventHandler(this.menu_Click);
+            // 
+            // menuIO
+            // 
+            this.menuIO.Name = "menuIO";
+            this.menuIO.Size = new System.Drawing.Size(92, 22);
+            this.menuIO.Text = "データ入出力";
+            this.menuIO.Visible = false;
             // 
             // 終了ToolStripMenuItem
             // 
@@ -122,25 +129,20 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(12, 29);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(760, 300);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
-            // 
-            // menuIO
-            // 
-            this.menuIO.Name = "menuIO";
-            this.menuIO.Size = new System.Drawing.Size(92, 22);
-            this.menuIO.Text = "データ入出力";
+            this.chart1.Visible = false;
             // 
             // MainWindow
             // 
@@ -155,7 +157,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainWindow";
+            this.Text = "名前どうしよう";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
@@ -171,11 +173,11 @@
         private System.Windows.Forms.ToolStripMenuItem 設定ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 終了ToolStripMenuItem;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.ToolStripMenuItem menuIssueSearch;
-        private System.Windows.Forms.ToolStripMenuItem menuMember;
-        private System.Windows.Forms.ToolStripMenuItem menuCategory;
-        private System.Windows.Forms.ToolStripMenuItem menuProduct;
-        private System.Windows.Forms.ToolStripMenuItem menuProject;
+        private System.Windows.Forms.ToolStripMenuItem menuSearchIssue;
+        private System.Windows.Forms.ToolStripMenuItem menuSearchMember;
+        private System.Windows.Forms.ToolStripMenuItem menuSearchCategory;
+        private System.Windows.Forms.ToolStripMenuItem menuSearchProduct;
+        private System.Windows.Forms.ToolStripMenuItem menuSearchProject;
         private System.Windows.Forms.ToolStripMenuItem menuIO;
     }
 }
