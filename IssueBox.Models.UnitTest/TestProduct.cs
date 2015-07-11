@@ -96,7 +96,7 @@ namespace IssueBox.Models.UnitTest
         [TestCaseSource("TestCases")]
         public void TestFindProductsBy(int expected, Condition condition)
         {
-            var data = new Product().FindProductsBy(condition);
+            var data = Product.FindProductsBy(condition);
             Assert.AreEqual(expected, data.Count);
         }
     }

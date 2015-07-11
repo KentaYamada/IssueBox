@@ -100,7 +100,7 @@ namespace IssueBox.Models.UnitTest
         [TestCaseSource("TestCases")]
         public void TestFindProjectsBy(int expected, ProjectCondition condition)
         {
-            var data = new Project().FindProjectsBy(condition);
+            var data = Project.FindProjectsBy(condition);
             Assert.AreEqual(expected, data.Count);
         }
     }

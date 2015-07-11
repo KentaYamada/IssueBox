@@ -96,7 +96,7 @@ namespace IssueBox.Models.UnitTest
         [TestCaseSource("TestCases")]
         public void TestFindMembersBy(int expected, Condition condition)
         {
-            var data = new Member().FindMembersBy(condition);
+            var data = Member.FindMembersBy(condition);
             Assert.AreEqual(expected, data.Count);
         }
     }
