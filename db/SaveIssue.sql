@@ -18,6 +18,7 @@ CREATE PROCEDURE SaveIssue (
   ,@ResponcedMemberID int
   ,@CheckedMemberID   int
   ,@Deadline          datetime
+  ,@FinishedDate      datetime
   ,@Status            int
   ,@Comment           nvarchar(10)
 ) AS
@@ -34,6 +35,7 @@ BEGIN TRY
       ,checked_member_id = @CheckedMemberID
       ,deadline = @Deadline
       ,[status] = @Status
+      ,finishedDate = @FinishedDate
       ,[comment] = @Comment
       ,upd_date =GETDATE()
     WHERE id = @ID
@@ -50,6 +52,7 @@ BEGIN TRY
         ,checked_member_id
         ,deadline
         ,[status]
+        ,finishedDate
         ,[comment]
         ,upd_date
       )
@@ -63,6 +66,7 @@ BEGIN TRY
        ,@CheckedMemberID
        ,@Deadline
        ,@Status
+       ,@FinishedDate
        ,@Comment
        ,GETDATE()
       )

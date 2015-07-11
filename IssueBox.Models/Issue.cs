@@ -41,6 +41,9 @@ namespace IssueBox.Models
 		/// <summary>課題ステータス</summary>
 		public int Status { get; set; }
 
+        /// <summary>作業完了日</summary>
+        public DateTime? FinishedDate { get; set; }
+
 		/// <summary>対応内容</summary>
 		public string Comment { get; set; }
 

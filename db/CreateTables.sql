@@ -87,6 +87,7 @@ CREATE TABLE ISSUES (
     ,checked_member_id     int           NULL
     ,deadline              datetime      NULL
     ,[status]              int           NOT NULL
+    ,finishedDate          datetime      NULL
     ,[comment]             nvarchar(max) NULL
     ,upd_date              datetime      NOT NULL
     ,primary key(id)
