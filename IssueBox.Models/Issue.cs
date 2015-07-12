@@ -99,13 +99,17 @@ namespace IssueBox.Models
                         SELECT
                              i.id                  AS ID
                             ,i.project_id          AS ProjectID
+                            ,prj.project_id        AS DispProjectID
                             ,prj.name              AS ProjectName
+                            ,i.category_id         AS CategoryID
+                            ,c.name                AS CategoryName
                             ,i.product_id          AS ProductID
                             ,prd.name              AS ProductName
+                            ,i.issuing_member_id   AS IssuingMemberID
                             ,i.responced_member_id AS ResponcedMemberID
                             ,m.name                AS ResponcedMemberName
                             ,i.checked_member_id   AS CheckedMemberID
-                            ,i.deadline
+                            ,i.deadline            AS Deadline
                             ,i.[status]            AS [Status]
                             ,CASE i.[status]
                                 WHEN 1 THEN '起票'
@@ -126,6 +130,9 @@ namespace IssueBox.Models
                         LEFT JOIN MEMBERS AS m
                           ON i.responced_member_id = m.id
                          AND m.enable_flag = @Enable
+                        LEFT JOIN CATEGORIES AS c
+                          ON i.category_id = c.id
+                         AND c.enable_flag = @Enable
                         --WHERE (i.project_id = @ProjectID OR @ProjectID IS NULL)
                           --AND (i.product_id = @ProductID OR @ProductID IS NULL)
                           --AND (i.deadline = @DeadLine OR @DeadLine IS NULL)

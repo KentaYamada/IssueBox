@@ -42,16 +42,23 @@
             this.grpStatus = new IssueBox.Views.Infrastructure.StatusRadioButtons();
             this.dtDeadLine = new IssueBox.Views.Infrastructure.DateMaskedTextBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SysProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IssuingMemberID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ShohinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Deadline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResponcedMemberID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResponcedMemberName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeadLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DispStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DispStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FinishedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckedMemberID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OriginationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,22 +155,30 @@
             this.grdList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
+            this.SysProjectID,
             this.ProjectID,
             this.ProjectName,
+            this.CategoryID,
+            this.CategoryName,
+            this.IssuingMemberID,
             this.ProductID,
-            this.ShohinName,
+            this.ProductionName,
+            this.Deadline,
             this.ResponcedMemberID,
             this.ResponcedMemberName,
-            this.DeadLine,
-            this.DispStatus,
             this.Status,
-            this.FinishedDate});
+            this.DispStatus,
+            this.FinishedDate,
+            this.Comment,
+            this.CheckedMemberID,
+            this.OriginationDate});
             this.grdList.Location = new System.Drawing.Point(7, 160);
             this.grdList.Name = "grdList";
             this.grdList.ReadOnly = true;
             this.grdList.RowTemplate.Height = 21;
-            this.grdList.Size = new System.Drawing.Size(774, 369);
+            this.grdList.Size = new System.Drawing.Size(774, 348);
             this.grdList.TabIndex = 14;
+            this.grdList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdList_CellDoubleClick);
             // 
             // btnSearch
             // 
@@ -212,101 +227,138 @@
             // ID
             // 
             this.ID.DataPropertyName = "ID";
-            this.ID.Frozen = true;
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             this.ID.Visible = false;
-            this.ID.Width = 10;
+            // 
+            // SysProjectID
+            // 
+            this.SysProjectID.DataPropertyName = "ProjectID";
+            this.SysProjectID.HeaderText = "SysProjectID";
+            this.SysProjectID.Name = "SysProjectID";
+            this.SysProjectID.ReadOnly = true;
+            this.SysProjectID.Visible = false;
             // 
             // ProjectID
             // 
-            this.ProjectID.Frozen = true;
+            this.ProjectID.DataPropertyName = "DispProjectID";
             this.ProjectID.HeaderText = "案件ID";
             this.ProjectID.Name = "ProjectID";
             this.ProjectID.ReadOnly = true;
-            this.ProjectID.Width = 80;
             // 
             // ProjectName
             // 
             this.ProjectName.DataPropertyName = "ProjectName";
-            this.ProjectName.Frozen = true;
-            this.ProjectName.HeaderText = "案件";
+            this.ProjectName.HeaderText = "案件名";
             this.ProjectName.Name = "ProjectName";
             this.ProjectName.ReadOnly = true;
-            this.ProjectName.Width = 150;
+            // 
+            // CategoryID
+            // 
+            this.CategoryID.DataPropertyName = "CategoryID";
+            this.CategoryID.HeaderText = "CategoryID";
+            this.CategoryID.Name = "CategoryID";
+            this.CategoryID.ReadOnly = true;
+            this.CategoryID.Visible = false;
+            // 
+            // CategoryName
+            // 
+            this.CategoryName.DataPropertyName = "CategoryName";
+            this.CategoryName.HeaderText = "カテゴリ";
+            this.CategoryName.Name = "CategoryName";
+            this.CategoryName.ReadOnly = true;
+            // 
+            // IssuingMemberID
+            // 
+            this.IssuingMemberID.DataPropertyName = "IssuingMemberID";
+            this.IssuingMemberID.HeaderText = "IssuingMemberID";
+            this.IssuingMemberID.Name = "IssuingMemberID";
+            this.IssuingMemberID.ReadOnly = true;
+            this.IssuingMemberID.Visible = false;
             // 
             // ProductID
             // 
             this.ProductID.DataPropertyName = "ProductID";
-            this.ProductID.Frozen = true;
-            this.ProductID.HeaderText = "製品ID";
+            this.ProductID.HeaderText = "ProductID";
             this.ProductID.Name = "ProductID";
             this.ProductID.ReadOnly = true;
             this.ProductID.Visible = false;
-            this.ProductID.Width = 10;
             // 
-            // ShohinName
+            // ProductionName
             // 
-            this.ShohinName.DataPropertyName = "ProductName";
-            this.ShohinName.Frozen = true;
-            this.ShohinName.HeaderText = "製品";
-            this.ShohinName.Name = "ShohinName";
-            this.ShohinName.ReadOnly = true;
-            this.ShohinName.Width = 150;
+            this.ProductionName.DataPropertyName = "ProductName";
+            this.ProductionName.HeaderText = "対象製品";
+            this.ProductionName.Name = "ProductionName";
+            this.ProductionName.ReadOnly = true;
+            // 
+            // Deadline
+            // 
+            this.Deadline.DataPropertyName = "Deadline";
+            this.Deadline.HeaderText = "期限";
+            this.Deadline.Name = "Deadline";
+            this.Deadline.ReadOnly = true;
             // 
             // ResponcedMemberID
             // 
             this.ResponcedMemberID.DataPropertyName = "ResponcedMemberID";
-            this.ResponcedMemberID.Frozen = true;
-            this.ResponcedMemberID.HeaderText = "担当者ID";
+            this.ResponcedMemberID.HeaderText = "ResponcedMemberID";
             this.ResponcedMemberID.Name = "ResponcedMemberID";
             this.ResponcedMemberID.ReadOnly = true;
             this.ResponcedMemberID.Visible = false;
-            this.ResponcedMemberID.Width = 10;
             // 
             // ResponcedMemberName
             // 
             this.ResponcedMemberName.DataPropertyName = "ResponcedMemberName";
-            this.ResponcedMemberName.Frozen = true;
-            this.ResponcedMemberName.HeaderText = "担当者";
+            this.ResponcedMemberName.HeaderText = "対応者";
             this.ResponcedMemberName.Name = "ResponcedMemberName";
             this.ResponcedMemberName.ReadOnly = true;
-            this.ResponcedMemberName.Width = 150;
-            // 
-            // DeadLine
-            // 
-            this.DeadLine.DataPropertyName = "DeadLine";
-            this.DeadLine.Frozen = true;
-            this.DeadLine.HeaderText = "期日";
-            this.DeadLine.Name = "DeadLine";
-            this.DeadLine.ReadOnly = true;
-            // 
-            // DispStatus
-            // 
-            this.DispStatus.DataPropertyName = "DispStatus";
-            this.DispStatus.Frozen = true;
-            this.DispStatus.HeaderText = "ステータス";
-            this.DispStatus.Name = "DispStatus";
-            this.DispStatus.ReadOnly = true;
-            this.DispStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Status
             // 
             this.Status.DataPropertyName = "Status";
-            this.Status.Frozen = true;
-            this.Status.HeaderText = "ステータス(データ)";
+            this.Status.HeaderText = "Status";
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
             this.Status.Visible = false;
             // 
+            // DispStatus
+            // 
+            this.DispStatus.DataPropertyName = "DispStatus";
+            this.DispStatus.HeaderText = "ステータス";
+            this.DispStatus.Name = "DispStatus";
+            this.DispStatus.ReadOnly = true;
+            // 
             // FinishedDate
             // 
             this.FinishedDate.DataPropertyName = "FinishedDate";
-            this.FinishedDate.Frozen = true;
             this.FinishedDate.HeaderText = "完了日";
             this.FinishedDate.Name = "FinishedDate";
             this.FinishedDate.ReadOnly = true;
+            // 
+            // Comment
+            // 
+            this.Comment.DataPropertyName = "Comment";
+            this.Comment.HeaderText = "Comment";
+            this.Comment.Name = "Comment";
+            this.Comment.ReadOnly = true;
+            this.Comment.Visible = false;
+            // 
+            // CheckedMemberID
+            // 
+            this.CheckedMemberID.DataPropertyName = "CheckedMemberID";
+            this.CheckedMemberID.HeaderText = "CheckedMemberID";
+            this.CheckedMemberID.Name = "CheckedMemberID";
+            this.CheckedMemberID.ReadOnly = true;
+            this.CheckedMemberID.Visible = false;
+            // 
+            // OriginationDate
+            // 
+            this.OriginationDate.DataPropertyName = "OriginationDate";
+            this.OriginationDate.HeaderText = "OriginationDate";
+            this.OriginationDate.Name = "OriginationDate";
+            this.OriginationDate.ReadOnly = true;
+            this.OriginationDate.Visible = false;
             // 
             // SearchIssue
             // 
@@ -363,15 +415,22 @@
         private Infrastructure.StatusRadioButtons grpStatus;
         private Infrastructure.DateMaskedTextBox dtDeadLine;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SysProjectID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProjectID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProjectName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CategoryID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IssuingMemberID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ShohinName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductionName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Deadline;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResponcedMemberID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResponcedMemberName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DeadLine;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DispStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DispStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn FinishedDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comment;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CheckedMemberID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OriginationDate;
     }
 }

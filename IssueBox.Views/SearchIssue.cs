@@ -4,11 +4,13 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 
 using IssueBox.Models;
-using IssueBox.Models.Infrastructure;
 using IssueBox.Views.Infrastructure;
 
 namespace IssueBox.Views
 {
+    /// <summary>
+    /// 課題検索
+    /// </summary>
     public partial class SearchIssue : PanelBase
     {
         private List<IssueSearch> _issues = null;
@@ -31,10 +33,12 @@ namespace IssueBox.Views
 
             try
             {
+                //Fix Me:検索条件の仕様決める
                 //this.cmbCategories.DataSource = DropDownModel.FindAllData(TABLE_NAME.CATEGORIES);
                 //this.cmbProjects.DataSource = DropDownModel.FindAllData(TABLE_NAME.PROJECTS);
                 //this.cmbProducts.DataSource = DropDownModel.FindAllData(TABLE_NAME.PRODUCTS);
                 this.SetIssues();
+                //this.grdList.AutoGenerateColumns = false;
             }
             catch(SqlException ex)
             {
@@ -111,6 +115,25 @@ namespace IssueBox.Views
             using (var form = new EntryIssue(model))
             {
                 form.ShowDialog();
+            }
+        }
+
+        /// <summary>
+        /// セルダブルクリックイベント
+        /// </summary>
+        private void grdList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) { return; }
+
+            this.ShowEntryIssue(this._issues[e.RowIndex]);
+
+            try
+            {
+                this.SetIssues();
+            }
+            catch (SqlException ex)
+            {
+                Logger.Error(ex);
             }
         }
     }
