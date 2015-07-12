@@ -37,7 +37,6 @@
             this.lblAlert.Name = "lblAlert";
             this.lblAlert.Size = new System.Drawing.Size(784, 20);
             this.lblAlert.TabIndex = 0;
-            this.lblAlert.Text = "label1";
             // 
             // PanelBase
             // 
