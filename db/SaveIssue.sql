@@ -20,7 +20,7 @@ CREATE PROCEDURE SaveIssue (
   ,@Deadline          datetime
   ,@FinishedDate      datetime
   ,@Status            int
-  ,@Comment           nvarchar(10)
+  ,@Comment           nvarchar(max)
 ) AS
 BEGIN TRY
   BEGIN TRAN
