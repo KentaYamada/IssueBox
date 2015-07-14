@@ -49,7 +49,7 @@ namespace IssueBox.Models
                               ,p.enable_flag    AS EnableFlag
                             FROM PRODUCTS AS p
                             WHERE (p.name LIKE '%' + @Name +'%' OR @Name IS NULL)
-                              AND (p.enable_flag = @EnableFlag OR @EnableFlag IS NULL)
+                              AND (p.enable_flag = @EnableFlag OR @EnableFlag = -1)
                             ORDER BY p.id";
             var model = new Product();
 

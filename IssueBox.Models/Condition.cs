@@ -11,16 +11,16 @@ namespace IssueBox.Models
 
         /// <summary>
         /// データ有効区分
-        /// True:有効 / False:無効 / Null:全て
+        /// -1:全て 0:無効 1:有効
         /// </summary>
-        public bool? EnableFlag { get; set; }
+        public int EnableFlag { get; set; }
 
         #region Default constructor
 
         public Condition()
         {
             this.Name = "";
-            this.EnableFlag = null;
+            this.EnableFlag = -1;
         }
 
         #endregion

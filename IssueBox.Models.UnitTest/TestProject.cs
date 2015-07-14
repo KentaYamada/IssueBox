@@ -77,18 +77,18 @@ namespace IssueBox.Models.UnitTest
 
         private static readonly object[] TestCases = 
         {
-            new object[] {3, new ProjectCondition() { ProjectID = "", Name = "", EnableFlag = null } },
-            new object[] {2, new ProjectCondition() { ProjectID = "", Name = "", EnableFlag = true } },
-            new object[] {1, new ProjectCondition() { ProjectID = "", Name = "", EnableFlag = false } },
-            new object[] {1, new ProjectCondition() { ProjectID = "FL999-0001", Name = "", EnableFlag = null } },
-            new object[] {1, new ProjectCondition() { ProjectID = "FL999-0001", Name = "", EnableFlag = true } },
-            new object[] {0, new ProjectCondition() { ProjectID = "FL999-0001", Name = "", EnableFlag = false } },
-            new object[] {1, new ProjectCondition() { ProjectID = "", Name = "A", EnableFlag = null } },
-            new object[] {1, new ProjectCondition() { ProjectID = "", Name = "A", EnableFlag = true } },
-            new object[] {0, new ProjectCondition() { ProjectID = "", Name = "A", EnableFlag = false } },
-            new object[] {1, new ProjectCondition() { ProjectID = "FL999-0001", Name = "A", EnableFlag = null } },
-            new object[] {1, new ProjectCondition() { ProjectID = "FL999-0001", Name = "A", EnableFlag = true } },
-            new object[] {0, new ProjectCondition() { ProjectID = "FL999-0001", Name = "A", EnableFlag = false } }
+            new object[] {3, new ProjectCondition() { ProjectID = "", Name = "", EnableFlag = -1 } },
+            new object[] {2, new ProjectCondition() { ProjectID = "", Name = "", EnableFlag = 1 } },
+            new object[] {1, new ProjectCondition() { ProjectID = "", Name = "", EnableFlag = 0 } },
+            new object[] {1, new ProjectCondition() { ProjectID = "FL999-0001", Name = "", EnableFlag = -1 } },
+            new object[] {1, new ProjectCondition() { ProjectID = "FL999-0001", Name = "", EnableFlag = 1 } },
+            new object[] {0, new ProjectCondition() { ProjectID = "FL999-0001", Name = "", EnableFlag = 0 } },
+            new object[] {1, new ProjectCondition() { ProjectID = "", Name = "A", EnableFlag = -1 } },
+            new object[] {1, new ProjectCondition() { ProjectID = "", Name = "A", EnableFlag = 1 } },
+            new object[] {0, new ProjectCondition() { ProjectID = "", Name = "A", EnableFlag = 0 } },
+            new object[] {1, new ProjectCondition() { ProjectID = "FL999-0001", Name = "A", EnableFlag = -1 } },
+            new object[] {1, new ProjectCondition() { ProjectID = "FL999-0001", Name = "A", EnableFlag = 1 } },
+            new object[] {0, new ProjectCondition() { ProjectID = "FL999-0001", Name = "A", EnableFlag = 0 } }
         };
 
         /// <summary>

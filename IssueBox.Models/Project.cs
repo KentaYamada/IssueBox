@@ -50,7 +50,7 @@ namespace IssueBox.Models
                             FROM PROJECTS AS p
                             WHERE (p.project_id LIKE '%' + @ProjectID +'%' OR @ProjectID IS NULL)
                               AND (p.name LIKE '%' + @Name +'%' OR @Name IS NULL)
-                              AND (p.enable_flag = @EnableFlag OR @EnableFlag IS NULL)
+                              AND (p.enable_flag = @EnableFlag OR @EnableFlag = -1)
                             ORDER BY p.project_id";
             var model = new Project();
 
