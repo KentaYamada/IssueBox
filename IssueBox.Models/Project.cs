@@ -51,7 +51,7 @@ namespace IssueBox.Models
                             WHERE (p.project_id LIKE '%' + @ProjectID +'%' OR @ProjectID IS NULL)
                               AND (p.name LIKE '%' + @Name +'%' OR @Name IS NULL)
                               AND (p.enable_flag = @EnableFlag OR @EnableFlag IS NULL)
-                            ORDER BY p.id";
+                            ORDER BY p.project_id";
             var model = new Project();
 
             try
