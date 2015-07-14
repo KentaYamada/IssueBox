@@ -77,14 +77,14 @@
             // 
             // cmbEnable
             // 
-            this.cmbEnable.DisplayMember = "ID";
+            this.cmbEnable.DisplayMember = "Value";
             this.cmbEnable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEnable.FormattingEnabled = true;
             this.cmbEnable.Location = new System.Drawing.Point(131, 60);
             this.cmbEnable.Name = "cmbEnable";
             this.cmbEnable.Size = new System.Drawing.Size(121, 28);
             this.cmbEnable.TabIndex = 18;
-            this.cmbEnable.ValueMember = "Value";
+            this.cmbEnable.ValueMember = "ID";
             // 
             // label6
             // 

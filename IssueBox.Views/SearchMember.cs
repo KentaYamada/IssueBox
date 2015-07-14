@@ -86,6 +86,8 @@ namespace IssueBox.Views
         /// </summary>
         private void Initialize()
         {
+            this.cmbEnable.DataSource = Constants.EnableList;
+            this.cmbEnable.DataBindings.Add("SelectedValue", this._cond, "EnableFlag");
             this.txtName.DataBindings.Add("Text", this._cond, "Name");
             this.txtName.Focus();
         }

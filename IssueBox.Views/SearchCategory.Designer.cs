@@ -37,6 +37,8 @@
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnableFlag = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cmbEnable = new IssueBox.Views.Infrastructure.DropDownListEx();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,10 +130,32 @@
             this.EnableFlag.Name = "EnableFlag";
             this.EnableFlag.ReadOnly = true;
             // 
+            // cmbEnable
+            // 
+            this.cmbEnable.DisplayMember = "Value";
+            this.cmbEnable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEnable.FormattingEnabled = true;
+            this.cmbEnable.Location = new System.Drawing.Point(233, 63);
+            this.cmbEnable.Name = "cmbEnable";
+            this.cmbEnable.Size = new System.Drawing.Size(121, 28);
+            this.cmbEnable.TabIndex = 23;
+            this.cmbEnable.ValueMember = "ID";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(153, 66);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 20);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "データ有効";
+            // 
             // SearchCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cmbEnable);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.label2);
@@ -147,6 +171,8 @@
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.btnNew, 0);
             this.Controls.SetChildIndex(this.btnSearch, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
+            this.Controls.SetChildIndex(this.cmbEnable, 0);
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -164,5 +190,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
         private System.Windows.Forms.DataGridViewCheckBoxColumn EnableFlag;
+        private Infrastructure.DropDownListEx cmbEnable;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -32,21 +32,21 @@ namespace IssueBox.Models.Infrastructure
     {
         public static readonly List<DataEnable> EnableList = new List<DataEnable>()
         {
-            new DataEnable(null, "全て"),
-            new DataEnable(true, "有効"),
-            new DataEnable(false, "無効")
+            new DataEnable(-1, "全て"),
+            new DataEnable(1, "有効"),
+            new DataEnable(0, "無効")
         };
 
         public class DataEnable
         {
-            public bool? ID { get; set; }
+            public int ID { get; set; }
 
             public string Value { get; set; }
 
-            public DataEnable(bool? value, string displayText)
+            public DataEnable(int id, string value)
             {
-                this.ID = value;
-                this.Value = displayText;
+                this.ID = id;
+                this.Value = value;
             }
         }
     }
