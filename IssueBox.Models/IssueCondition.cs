@@ -12,7 +12,7 @@ namespace IssueBox.Models
         private SQLCommander _db = null;
 
         /// <summary>案件ID</summary>
-        public int ProjectID { get; set; }
+        public int? ProjectID { get; set; }
 
         /// <summary>製品ID</summary>
         public int ProductID { get; set; }
@@ -20,8 +20,11 @@ namespace IssueBox.Models
         /// <summary>カテゴリID</summary>
         public int CategoryID { get; set; }
 
-        /// <summary>期限</summary>
-        public DateTime? Deadline { get; set; }
+        /// <summary>期限(開始)</summary>
+        public DateTime? DeadlineFrom { get; set; }
+
+        /// <summary>期限(終了)</summary>
+        public DateTime? DeadlineTo { get; set; }
 
         /// <summary>課題ステータス</summary>
         public int Status { get; set; }
@@ -30,9 +33,10 @@ namespace IssueBox.Models
 
         public IssueCondition()
         {
-            this.ProjectID = 0;
+            this.ProjectID = null;
             this.ProductID = 0;
-            this.Deadline = null;
+            this.DeadlineFrom = null;
+            this.DeadlineTo = null;
             this.Status = 0;
             this._db = new SQLCommander();
         }

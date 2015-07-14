@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 
 using IssueBox.Models;
+using IssueBox.Models.Infrastructure;
 using IssueBox.Views.Infrastructure;
 
 namespace IssueBox.Views
@@ -29,13 +30,13 @@ namespace IssueBox.Views
         /// </summary>
         private void SearchIssue_Load(object sender, EventArgs e)
         {
-            //this.Initialize();
+            this.Initialize();
 
             try
             {
                 //Fix Me:検索条件の仕様決める
                 //this.cmbCategories.DataSource = DropDownModel.FindAllData(TABLE_NAME.CATEGORIES);
-                //this.cmbProjects.DataSource = DropDownModel.FindAllData(TABLE_NAME.PROJECTS);
+                this.cmbProjects.DataSource = DropDownModel.FindAllData(TABLE_NAME.PROJECTS);
                 //this.cmbProducts.DataSource = DropDownModel.FindAllData(TABLE_NAME.PRODUCTS);
                 this.SetIssues();
                 //this.grdList.AutoGenerateColumns = false;
@@ -54,7 +55,8 @@ namespace IssueBox.Views
             this.cmbCategories.DataBindings.Add("SelectedValue", this._condition, "CategoryID");
             this.cmbProjects.DataBindings.Add("SelectedValue", this._condition, "ProjectID");
             this.cmbProducts.DataBindings.Add("SelectedValue", this._condition, "ProductID");
-            this.dtDeadLine.DataBindings.Add("GetDate", this._condition, "Deadline", true, DataSourceUpdateMode.OnValidation);
+            this.dtDeadlineFrom.DataBindings.Add("GetDate", this._condition, "DeadlineFrom", true, DataSourceUpdateMode.OnValidation);
+            this.dtDeadlineTo.DataBindings.Add("GetDate", this._condition, "DeadlineTo", true, DataSourceUpdateMode.OnValidation);
             this.grpStatus.DataBindings.Add("SelectedStatus", this._condition, "Status");
         }
 

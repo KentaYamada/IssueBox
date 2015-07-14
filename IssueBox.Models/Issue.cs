@@ -133,9 +133,11 @@ namespace IssueBox.Models
                         LEFT JOIN CATEGORIES AS c
                           ON i.category_id = c.id
                          AND c.enable_flag = @Enable
-                        --WHERE (i.project_id = @ProjectID OR @ProjectID IS NULL)
+                        WHERE (i.project_id = @ProjectID OR @ProjectID IS NULL)
                           --AND (i.product_id = @ProductID OR @ProductID IS NULL)
-                          --AND (i.deadline = @DeadLine OR @DeadLine IS NULL)
+                          AND (i.deadline BETWEEN @DeadlineFrom AND @DeadlineTo
+                               OR @DeadLineFrom IS NULL
+                               OR @DeadLineTo IS NULL)
                           --AND (i.[status] = @Status OR @Status = 0)
                         ORDER BY i.id";
 
