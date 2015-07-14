@@ -75,6 +75,7 @@ namespace IssueBox.Models.UnitTest
                 CheckedMemberID = 1,
                 Deadline = DateTime.Now.AddDays(7),
                 Status = 1,
+                FinishedDate = null,
                 Comment = "test"
             };
 
