@@ -32,18 +32,18 @@ namespace IssueBox.Models.Infrastructure
     {
         public static readonly List<DataEnable> EnableList = new List<DataEnable>()
         {
-            new DataEnable(-1, "全て"),
-            new DataEnable(1, "有効"),
-            new DataEnable(0, "無効")
+            new DataEnable("all", "全て"),
+            new DataEnable("true", "有効"),
+            new DataEnable("false", "無効")
         };
 
         public class DataEnable
         {
-            public int ID { get; set; }
+            public string ID { get; set; }
 
             public string Value { get; set; }
 
-            public DataEnable(int id, string value)
+            public DataEnable(string id, string value)
             {
                 this.ID = id;
                 this.Value = value;

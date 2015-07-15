@@ -79,12 +79,12 @@ namespace IssueBox.Models.UnitTest
 
         private static readonly object[] TestCases = 
         {
-            new object[] {3, new Condition() { Name = "", EnableFlag = -1 } },
-            new object[] {2, new Condition() { Name = "", EnableFlag = 1 } },
-            new object[] {1, new Condition() { Name = "", EnableFlag = 0 } },
-            new object[] {1, new Condition() { Name = "Yamada", EnableFlag = -1 } },
-            new object[] {1, new Condition() { Name = "Yamada", EnableFlag = 1 } },
-            new object[] {0, new Condition() { Name = "Yamada", EnableFlag = 0 } }
+            new object[] {3, new Condition() { Name = "", EnableFlag = "all" } },
+            new object[] {2, new Condition() { Name = "", EnableFlag = "true" } },
+            new object[] {1, new Condition() { Name = "", EnableFlag = "false" } },
+            new object[] {1, new Condition() { Name = "Yamada", EnableFlag = "all" } },
+            new object[] {1, new Condition() { Name = "Yamada", EnableFlag = "true" } },
+            new object[] {0, new Condition() { Name = "Yamada", EnableFlag = "false" } }
         };
 
         /// <summary>

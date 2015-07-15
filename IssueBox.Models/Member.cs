@@ -54,7 +54,7 @@ namespace IssueBox.Models
                               ,m.enable_flag    AS EnableFlag
                             FROM MEMBERS AS m
                             WHERE (m.name LIKE '%' + @Name +'%' OR @Name IS NULL)
-                              AND (m.enable_flag = @EnableFlag OR @EnableFlag = -1)
+                              AND (m.enable_flag = dbo.IsBit(@EnableFlag) OR dbo.IsBit(@EnableFlag) IS NULL)
                             ORDER BY m.id";
             var model = new Member();
 
