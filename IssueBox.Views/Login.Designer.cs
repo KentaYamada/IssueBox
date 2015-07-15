@@ -33,12 +33,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtLoginPW = new IssueBox.Views.Infrastructure.TextBoxEx();
+            this.txtLoginID = new IssueBox.Views.Infrastructure.TextBoxEx();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.textBoxEx1 = new IssueBox.Views.Infrastructure.TextBoxEx();
-            this.textBoxEx2 = new IssueBox.Views.Infrastructure.TextBoxEx();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -66,8 +66,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.textBoxEx2);
-            this.panel1.Controls.Add(this.textBoxEx1);
+            this.panel1.Controls.Add(this.txtLoginPW);
+            this.panel1.Controls.Add(this.txtLoginID);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
@@ -75,6 +75,25 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(314, 92);
             this.panel1.TabIndex = 0;
+            // 
+            // txtLoginPW
+            // 
+            this.txtLoginPW.AlertMessage = "パスワードは必須入力です。";
+            this.txtLoginPW.Location = new System.Drawing.Point(100, 48);
+            this.txtLoginPW.Name = "txtLoginPW";
+            this.txtLoginPW.Required = true;
+            this.txtLoginPW.Size = new System.Drawing.Size(100, 27);
+            this.txtLoginPW.TabIndex = 3;
+            // 
+            // txtLoginID
+            // 
+            this.txtLoginID.AlertMessage = "IDは必須入力です。";
+            this.txtLoginID.Location = new System.Drawing.Point(100, 12);
+            this.txtLoginID.Name = "txtLoginID";
+            this.txtLoginID.Required = true;
+            this.txtLoginID.Size = new System.Drawing.Size(100, 27);
+            this.txtLoginID.TabIndex = 1;
+            this.txtLoginID.Text = "XXXX5XXXX0";
             // 
             // pictureBox1
             // 
@@ -96,6 +115,7 @@
             this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "ログイン";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnExit
             // 
@@ -108,30 +128,12 @@
             this.btnExit.TabIndex = 2;
             this.btnExit.Text = "終了";
             this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // errorProvider1
             // 
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
-            // 
-            // textBoxEx1
-            // 
-            this.textBoxEx1.AlertMessage = "";
-            this.textBoxEx1.Location = new System.Drawing.Point(100, 12);
-            this.textBoxEx1.Name = "textBoxEx1";
-            this.textBoxEx1.Required = false;
-            this.textBoxEx1.Size = new System.Drawing.Size(100, 27);
-            this.textBoxEx1.TabIndex = 5;
-            this.textBoxEx1.Text = "XXXX5XXXX0";
-            // 
-            // textBoxEx2
-            // 
-            this.textBoxEx2.AlertMessage = "";
-            this.textBoxEx2.Location = new System.Drawing.Point(100, 48);
-            this.textBoxEx2.Name = "textBoxEx2";
-            this.textBoxEx2.Required = false;
-            this.textBoxEx2.Size = new System.Drawing.Size(100, 27);
-            this.textBoxEx2.TabIndex = 6;
             // 
             // Login
             // 
@@ -169,8 +171,8 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private Infrastructure.TextBoxEx textBoxEx2;
-        private Infrastructure.TextBoxEx textBoxEx1;
+        private Infrastructure.TextBoxEx txtLoginPW;
+        private Infrastructure.TextBoxEx txtLoginID;
     }
 }
 

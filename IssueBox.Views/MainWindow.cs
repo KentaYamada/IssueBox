@@ -13,10 +13,21 @@ namespace IssueBox.Views
     /// </summary>
     public partial class MainWindow : Form
     {
+        public string LoginMemberName { private get; set; }
+
+        #region Constructors
+
         public MainWindow()
+            :this("")
+        {}
+
+        public MainWindow(string loginMemberName)
         {
             InitializeComponent();
+            this.LoginMemberName = loginMemberName;
         }
+
+        #endregion
 
         /// <summary>
         /// メニューボタンクリックイベント

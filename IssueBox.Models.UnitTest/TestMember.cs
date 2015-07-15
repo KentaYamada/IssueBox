@@ -99,5 +99,23 @@ namespace IssueBox.Models.UnitTest
             var data = Member.FindMembersBy(condition);
             Assert.AreEqual(expected, data.Count);
         }
+
+        private static readonly object[] LoginTestCases = 
+        {
+            new object[] {true, new Member() { LoginID="yamada", LoginPassword="test" } },
+            new object[] {false, new Member() { LoginID="yamada", LoginPassword="yamada" } },
+        };
+
+        /// <summary>
+        /// ログイン認証機能テスト
+        /// </summary>
+        /// <param name="expected">期待値</param>
+        /// <param name="condition">検索条件</param>
+        [TestCaseSource("LoginTestCases")]
+        public void TestLoginAuthorication(bool expected, Member condition)
+        {
+            var data = Member.LoginAuthorication(condition) != null ? true : false;
+            Assert.AreEqual(expected, data);
+        }
     }
 }

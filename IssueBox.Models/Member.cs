@@ -67,10 +67,11 @@ namespace IssueBox.Models
                 throw;
             }
         }
+
         /// <summary>
         /// メンバー登録
         /// </summary>
-        /// <returns>True: / False:</returns>
+        /// <returns>True:成功 / False:エラー</returns>
         public bool Save()
         {
             try
@@ -88,19 +89,18 @@ namespace IssueBox.Models
         /// </summary>
         /// <param name="condition">ログイン情報</param>
         /// <returns>成功:メンバー情報 / 失敗:null</returns>
-        public Member LoginAuthorication(LoginCondition condition)
+        public static Member LoginAuthorication(Member condition)
         {
             string sql = @"SELECT
-                              m.id
-                             ,m.name
-                             ,m.login_id
+                             m.name
                            FROM MEMBERS AS m
                            WHERE m.enable_flag = 'TRUE'
                              AND m.login_id = @LoginID
                              AND m.login_password = @LoginPassword";
+            var model = new Member();
             try
             {
-                return this._db.Find<Member, LoginCondition>(sql, condition);
+                return model._db.Find<Member, Member>(sql, condition);
             }
             catch
             {
