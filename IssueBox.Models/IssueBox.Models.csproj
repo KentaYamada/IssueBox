@@ -49,12 +49,14 @@
     <Compile Include="Category.cs" />
     <Compile Include="Condition.cs" />
     <Compile Include="DropDownModel.cs" />
+    <Compile Include="Equipment.cs" />
     <Compile Include="Infrastructure\Constants.cs" />
     <Compile Include="Infrastructure\FileStreamer.cs" />
     <Compile Include="Infrastructure\SQLCommander.cs" />
     <Compile Include="IssueCondition.cs" />
     <Compile Include="IssueSearch.cs" />
     <Compile Include="LoginCondition.cs" />
+    <Compile Include="Maker.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Project.cs" />
