@@ -39,7 +39,6 @@ namespace IssueBox.Views
                 this.cmbProjects.DataSource = DropDownModel.FindAllData(TABLE_NAME.PROJECTS);
                 //this.cmbProducts.DataSource = DropDownModel.FindAllData(TABLE_NAME.PRODUCTS);
                 this.SetIssues();
-                //this.grdList.AutoGenerateColumns = false;
             }
             catch(SqlException ex)
             {
@@ -53,7 +52,7 @@ namespace IssueBox.Views
         private void Initialize()
         {
             this.cmbCategories.DataBindings.Add("SelectedValue", this._condition, "CategoryID");
-            this.cmbProjects.DataBindings.Add("SelectedValue", this._condition, "ProjectID");
+            this.cmbProjects.DataBindings.Add("SelectedValue", this._condition, "ProjectID", true, DataSourceUpdateMode.OnValidation);
             this.cmbProducts.DataBindings.Add("SelectedValue", this._condition, "ProductID");
             this.dtDeadlineFrom.DataBindings.Add("GetDate", this._condition, "DeadlineFrom", true, DataSourceUpdateMode.OnValidation);
             this.dtDeadlineTo.DataBindings.Add("GetDate", this._condition, "DeadlineTo", true, DataSourceUpdateMode.OnValidation);
@@ -125,7 +124,7 @@ namespace IssueBox.Views
         /// </summary>
         private void grdList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == -1) { return; }
+            if (e.RowIndex < 0) { return; }
 
             this.ShowEntryIssue(this._issues[e.RowIndex]);
 
