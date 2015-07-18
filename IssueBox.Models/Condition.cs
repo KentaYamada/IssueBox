@@ -20,7 +20,7 @@ namespace IssueBox.Models
         public Condition()
         {
             this.Name = "";
-            this.EnableFlag = "";
+            this.EnableFlag = "all";
         }
 
         #endregion
