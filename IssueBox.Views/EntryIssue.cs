@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
 
 using IssueBox.Models;
@@ -37,7 +38,16 @@ namespace IssueBox.Views
                 this.cmbIssuingMember.DataSource = DropDownModel.FindAllData(TABLE_NAME.MEMBERS);
                 this.cmbResponcedMember.DataSource = DropDownModel.FindAllData(TABLE_NAME.MEMBERS);
                 this.cmbCheckedMember.DataSource = DropDownModel.FindAllData(TABLE_NAME.MEMBERS);
+                
                 this.Initialize();
+
+                if (TASK_STATUS.DONE == (TASK_STATUS)this._issue.Status)
+                {
+                    this.Controls.OfType<Control>()
+                                 .Where(x => x.Name != "btnExit")
+                                 .ToList()
+                                 .ForEach(x => x.Enabled = false);
+                }
             }
             catch(Exception ex)
             {
@@ -73,7 +83,6 @@ namespace IssueBox.Views
             }
             catch(SqlException ex)
             {
-                //TODO:エラーログ出力機能実装
                 MessageBox.Show(ex.Message);
                 Logger.Error(ex);
             }
