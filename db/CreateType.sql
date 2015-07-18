@@ -23,6 +23,11 @@ BEGIN
     DROP TYPE dbo.PRODUCT_T
 END
 
+IF TYPE_ID('dbo.EQUIPMENTS_T') IS NOT NULL
+BEGIN
+  DROP TYPE dbo.EQUIPMENTS_T
+END
+
 --案件
 CREATE TYPE PROJECT_T AS TABLE (
      id            int
@@ -55,3 +60,13 @@ CREATE TYPE PRODUCT_T AS TABLE(
     ,varsion       nvarchar(10)
     ,enable_flag   bit
 )
+
+--機器
+CREATE TYPE EQUIPMENTS_T AS TABLE (
+   id          int
+  ,name        nvarchar(20)
+  ,maker_id    int
+  ,enable_flag bit
+  ,upd_date    datetime
+)
+

@@ -35,6 +35,16 @@ BEGIN
   DROP TABLE dbo.ISSUES
 END
 
+IF OBJECT_ID('dbo.MAKERS') IS NOT NULL
+BEGIN
+  DROP TABLE dbo.MAKER
+END
+
+IF OBJECT_ID('dbo.EQUIPMENTS') IS NOT NULL
+BEGIN
+  DROP TABLE dbo.EQUIPMENT
+END
+
 --案件マスタ
 CREATE TABLE PROJECTS (
      id            int          NOT NULL identity
@@ -73,6 +83,25 @@ CREATE TABLE PRODUCTS (
     ,enable_flag   bit          NOT NULL
     ,upd_date      datetime     NOT NULL
     ,primary key(id)
+)
+
+--メーカーマスタ
+CREATE TABLE MAKERS (
+   id          int          NOT NULL identity
+  ,name        nvarchar(20) NOT NULL
+  ,enable_flag bit          NOT NULL
+  ,upd_date    datetime     NOT NULL
+  ,primary key(id)
+)
+
+--機器マスタ
+CREATE TABLE EQUIPMENTS (
+   id          int          NOT NULL identity
+  ,name        nvarchar(20) NOT NULL
+  ,maker_id    int          NOT NULL
+  ,enable_flag bit          NOT NULL
+  ,upd_date    datetime     NOT NULL
+  ,primary key(id)
 )
 
 --課題テーブル
