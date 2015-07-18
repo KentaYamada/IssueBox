@@ -1,7 +1,7 @@
 /*
- * BitŒ^”»’è
- * param:@condition String ŒŸõğŒ
- * return bitŒ^‚É•ÏŠ·:True:1 False:0 ‚»‚êˆÈŠO:null
+ * Bitå‹åˆ¤å®š
+ * param:@condition String æ¤œç´¢æ¡ä»¶
+ * return bitå‹ã«å¤‰æ›:True:1 False:0 ãã‚Œä»¥å¤–:null
  */
 
 IF OBJECT_ID('dbo.IsBit') IS NOT NULL
