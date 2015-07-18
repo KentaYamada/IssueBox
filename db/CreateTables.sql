@@ -42,7 +42,7 @@ END
 
 IF OBJECT_ID('dbo.EQUIPMENTS') IS NOT NULL
 BEGIN
-  DROP TABLE dbo.EQUIPMENT
+  DROP TABLE dbo.EQUIPMENTS
 END
 
 --案件マスタ
@@ -98,6 +98,7 @@ CREATE TABLE MAKERS (
 CREATE TABLE EQUIPMENTS (
    id          int          NOT NULL identity
   ,name        nvarchar(20) NOT NULL
+  ,rating      float        NULL
   ,maker_id    int          NOT NULL
   ,enable_flag bit          NOT NULL
   ,upd_date    datetime     NOT NULL

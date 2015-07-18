@@ -65,6 +65,7 @@ CREATE TYPE PRODUCT_T AS TABLE(
 CREATE TYPE EQUIPMENTS_T AS TABLE (
    id          int
   ,name        nvarchar(20)
+  ,rating      real
   ,maker_id    int
   ,enable_flag bit
   ,upd_date    datetime
