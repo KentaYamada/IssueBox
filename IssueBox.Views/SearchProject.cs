@@ -65,6 +65,8 @@ namespace IssueBox.Views
 
         private void grdList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0) { return; }
+
             this.ShowEntryWindow(this._projects[e.RowIndex]);
 
             try
