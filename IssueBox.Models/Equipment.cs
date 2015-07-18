@@ -42,24 +42,12 @@ namespace IssueBox.Models
         /// <returns>検索条件に合致した機器一覧</returns>
         public static List<Equipment> FindEquipmentsBy(int makerID)
         {
-            #region SQL
-            string sql = @"SELECT
-                           e.id          AS ID
-                          ,e.name        AS Name
-                          ,e.rating      AS Rating
-                          ,e.maker_id    AS MakerID
-                          ,e.enable_flag AS EnableFlag
-                        FROM EQUIPMENTS AS e
-                        WHERE e.maker_id = @ID
-                        ORDER BY e.name";
-            #endregion
-
             var condition = new Maker() { ID = makerID };
             var model = new Equipment();
 
             try
             {
-                return model._db.FindBy<Equipment, Maker>(sql, condition);
+                return model._db.FindBy<Equipment, Maker>("Exec FindEquipments @ID", condition);
             }
             catch
             {
