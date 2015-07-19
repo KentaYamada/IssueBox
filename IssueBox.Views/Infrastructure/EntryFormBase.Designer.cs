@@ -69,7 +69,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnReturn;
         protected System.Windows.Forms.ErrorProvider errorProvider1;
+        protected System.Windows.Forms.Button btnReturn;
     }
 }
