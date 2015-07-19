@@ -1,18 +1,12 @@
 ﻿using System.Collections.Generic;
-using IssueBox.Models.Infrastructure;
 
 namespace IssueBox.Models
 {
     /// <summary>
     /// 案件モデル
     /// </summary>
-	public class Project
+	public class Project : ModelBase
 	{
-        private SQLCommander _db = null;
-
-		/// <summary>プロジェクトID(システム用)</summary>
-        public int ID { get; set; }
-
         /// <summary>プロジェクトID</summary>
         public string ProjectID { get; set; }
 
@@ -30,7 +24,6 @@ namespace IssueBox.Models
             this.Name = "";
             this.ProjectID = "";
             this.EnableFlag = true;
-            this._db = new SQLCommander();
         }
 
         #endregion
@@ -42,21 +35,9 @@ namespace IssueBox.Models
         /// <returns>検索条件に合致した案件一覧</returns>
         public static List<Project> FindProjectsBy(ProjectCondition condition)
         {
-            string sql = @"SELECT
-                               p.id             AS ID
-                              ,p.project_id     AS ProjectID
-                              ,p.name           AS Name
-                              ,p.enable_flag    AS EnableFlag
-                            FROM PROJECTS AS p
-                            WHERE (p.project_id LIKE '%' + @ProjectID +'%' OR @ProjectID IS NULL)
-                              AND (p.name LIKE '%' + @Name +'%' OR @Name IS NULL)
-                              AND (p.enable_flag = dbo.IsBit(@EnableFlag) OR dbo.IsBit(@EnableFlag) IS NULL)
-                            ORDER BY p.project_id";
-            var model = new Project();
-
             try
             {
-                return model._db.FindBy<Project, ProjectCondition>(sql, condition);
+                return ModelBase._db.FindBy<Project, ProjectCondition>("Exec FindProjectsBy @ProjectID, @Name, @EnableFlag", condition);
             }
             catch
             {
@@ -72,7 +53,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return this._db.ExecuteStoredProcedure<Project>("SaveProject", this) > 0 ? true : false;
+                return ModelBase._db.ExecuteStoredProcedure<Project>("SaveProject", this) > 0 ? true : false;
             }
             catch
             {

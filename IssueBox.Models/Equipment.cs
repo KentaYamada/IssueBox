@@ -1,15 +1,9 @@
 ﻿using System.Collections.Generic;
-using IssueBox.Models.Infrastructure;
 
 namespace IssueBox.Models
 {
-    public class Equipment
+    public class Equipment : ModelBase
     {
-        private SQLCommander _db = null;
-
-        /// <summary>機器ID</summary>
-        public int ID { get; set; }
-
         /// <summary>型番</summary>
         public string Name { get; set; }
 
@@ -30,7 +24,6 @@ namespace IssueBox.Models
             this.Name = "";
             this.MakerID = 0;
             this.EnableFlag = true;
-            this._db = new SQLCommander();
         }
 
         #endregion
@@ -42,12 +35,9 @@ namespace IssueBox.Models
         /// <returns>検索条件に合致した機器一覧</returns>
         public static List<Equipment> FindEquipmentsBy(int makerID)
         {
-            var condition = new Maker() { ID = makerID };
-            var model = new Equipment();
-
             try
             {
-                return model._db.FindBy<Equipment, Maker>("Exec FindEquipments @ID", condition);
+                return ModelBase._db.FindBy<Equipment, Maker>("Exec FindEquipmentsBy @ID", new Maker() { ID = makerID });
             }
             catch
             {

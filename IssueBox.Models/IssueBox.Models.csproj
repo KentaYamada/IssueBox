@@ -57,7 +57,9 @@
     <Compile Include="IssueSearch.cs" />
     <Compile Include="LoginCondition.cs" />
     <Compile Include="Maker.cs" />
+    <Compile Include="MakerSearch.cs" />
     <Compile Include="Member.cs" />
+    <Compile Include="ModelBase.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="ProjectCondition.cs" />

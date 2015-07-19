@@ -1,18 +1,12 @@
 ﻿using System.Collections.Generic;
-using IssueBox.Models.Infrastructure;
 
 namespace IssueBox.Models
 {
     /// <summary>
     /// カテゴリモデル
     /// </summary>
-    public class Category
+    public class Category : ModelBase
     {
-        private readonly SQLCommander _db;
-
-        /// <summary>カテゴリID</summary>
-        public int ID { get; set; }
-
         /// <summary>カテゴリ名</summary>
         public string Name { get; set; }
 
@@ -26,7 +20,6 @@ namespace IssueBox.Models
             this.ID = 0;
             this.Name = "";
             this.EnableFlag = true;
-            this._db = new SQLCommander();
         }
 
         #endregion
@@ -38,19 +31,9 @@ namespace IssueBox.Models
         /// <returns>条件に合致するカテゴリ一覧</returns>
         public static List<Category> FindByCategories(Condition condition)
         {
-            string sql = @"SELECT
-                             c.id          AS ID
-                            ,c.name        AS Name
-                            ,c.enable_flag AS EnableFlag
-                        FROM CATEGORIES AS c
-                        WHERE (c.name LIKE '%' + @Name + '%' OR @Name IS NULL)
-                          AND (c.enable_flag = dbo.IsBit(@EnableFlag) OR dbo.IsBit(@EnableFlag) IS NULL)
-                        ORDER BY c.id";
-            var model = new Category();
-
             try
             {
-                return model._db.FindBy<Category, Condition>(sql, condition);
+                return ModelBase._db.FindBy<Category, Condition>("Exec FindCategoriesBy @Name, @EnableFlag", condition);
             }
             catch
             {
@@ -66,7 +49,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return this._db.ExecuteStoredProcedure<Category>("SaveCategory", this) > 0 ? true : false;
+                return ModelBase._db.ExecuteStoredProcedure<Category>("SaveCategory", this) > 0 ? true : false;
             }
             catch
             {
