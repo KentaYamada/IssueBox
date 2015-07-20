@@ -68,6 +68,5 @@ CREATE TYPE EQUIPMENTS_T AS TABLE (
   ,rating      real
   ,maker_id    int
   ,enable_flag bit
-  ,upd_date    datetime
 )
 

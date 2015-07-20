@@ -56,7 +56,6 @@
     <Compile Include="IssueCondition.cs" />
     <Compile Include="IssueSearch.cs" />
     <Compile Include="Maker.cs" />
-    <Compile Include="MakerSearch.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="ModelBase.cs" />
     <Compile Include="Product.cs" />

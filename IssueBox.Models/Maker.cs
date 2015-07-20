@@ -1,24 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using IssueBox.Models.Infrastructure;
+﻿using System.Collections.Generic;
 
 namespace IssueBox.Models
 {
     /// <summary>
     /// メーカーモデル
     /// </summary>
-    public class Maker
+    public class Maker : ModelBase
     {
-        private SQLCommander _db = null;
-
-        /// <summary>メーカーID</summary>
-        public int ID { get; set; }
-
-        /// <summary>メーカー名</summary>
+        /// <summary>型番</summary>
         public string Name { get; set; }
 
         /// <summary>データ有効可否</summary>
@@ -31,12 +20,27 @@ namespace IssueBox.Models
             this.ID = 0;
             this.Name = "";
             this.EnableFlag = true;
-            this._db = new SQLCommander();
         }
 
         #endregion
 
-        
+        /// <summary>
+        /// メーカー一覧取得
+        /// </summary>
+        /// <param name="condition">検索条件</param>
+        /// <returns>検索条件に合致したメーカー一覧</returns>
+        public static List<Maker> FindMakersBy(Condition condition)
+        {
+            try
+            {
+                return ModelBase._db.FindBy<Maker, Condition>("Exec FindMakersBy @Name, @EnableFlag", condition);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         /// <summary>
         /// メーカー情報保存
         /// </summary>
@@ -46,7 +50,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return this._db.ExecuteStoredProcedure<Maker, Equipment>("SaveMaker", this, equipments) > 0 ? true : false;
+                return ModelBase._db.ExecuteStoredProcedure<Maker, Equipment>("SaveMaker", this, equipments) > 0 ? true : false;
             }
             catch
             {

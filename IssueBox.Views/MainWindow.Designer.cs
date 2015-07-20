@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.メインメニューToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSearchIssue = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,6 +38,7 @@
             this.menuSearchProject = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSearchProduct = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSearchCategory = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSearchMaker = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSearchMember = new System.Windows.Forms.ToolStripMenuItem();
             this.menuIO = new System.Windows.Forms.ToolStripMenuItem();
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +71,7 @@
             // menuSearchIssue
             // 
             this.menuSearchIssue.Name = "menuSearchIssue";
-            this.menuSearchIssue.Size = new System.Drawing.Size(152, 22);
+            this.menuSearchIssue.Size = new System.Drawing.Size(136, 22);
             this.menuSearchIssue.Text = "タスク登録";
             this.menuSearchIssue.Click += new System.EventHandler(this.menu_Click);
             // 
@@ -80,6 +81,7 @@
             this.menuSearchProject,
             this.menuSearchProduct,
             this.menuSearchCategory,
+            this.menuSearchMaker,
             this.menuSearchMember});
             this.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
             this.設定ToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
@@ -106,6 +108,14 @@
             this.menuSearchCategory.Text = "カテゴリマスタ";
             this.menuSearchCategory.Click += new System.EventHandler(this.menu_Click);
             // 
+            // menuSearchMaker
+            // 
+            this.menuSearchMaker.Name = "menuSearchMaker";
+            this.menuSearchMaker.Size = new System.Drawing.Size(160, 22);
+            this.menuSearchMaker.Text = "メーカーマスタ";
+            this.menuSearchMaker.Visible = false;
+            this.menuSearchMaker.Click += new System.EventHandler(this.menu_Click);
+            // 
             // menuSearchMember
             // 
             this.menuSearchMember.Name = "menuSearchMember";
@@ -129,16 +139,16 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(12, 29);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(760, 300);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
@@ -179,5 +189,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuSearchProduct;
         private System.Windows.Forms.ToolStripMenuItem menuSearchProject;
         private System.Windows.Forms.ToolStripMenuItem menuIO;
+        private System.Windows.Forms.ToolStripMenuItem menuSearchMaker;
     }
 }

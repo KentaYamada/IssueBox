@@ -59,6 +59,12 @@
     <Compile Include="EntryIssue.Designer.cs">
       <DependentUpon>EntryIssue.cs</DependentUpon>
     </Compile>
+    <Compile Include="EntryMaker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntryMaker.Designer.cs">
+      <DependentUpon>EntryMaker.cs</DependentUpon>
+    </Compile>
     <Compile Include="EntryMember.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,12 @@
     </Compile>
     <Compile Include="EntryProject.Designer.cs">
       <DependentUpon>EntryProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExportData.Designer.cs">
+      <DependentUpon>ExportData.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\DateMaskedTextBox.cs">
       <SubType>Component</SubType>
@@ -141,6 +153,12 @@
     <Compile Include="SearchIssue.Designer.cs">
       <DependentUpon>SearchIssue.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchMaker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchMaker.Designer.cs">
+      <DependentUpon>SearchMaker.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchMember.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -165,6 +183,9 @@
     <EmbeddedResource Include="EntryIssue.resx">
       <DependentUpon>EntryIssue.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EntryMaker.resx">
+      <DependentUpon>EntryMaker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EntryMember.resx">
       <DependentUpon>EntryMember.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EntryProject.resx">
       <DependentUpon>EntryProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportData.resx">
+      <DependentUpon>ExportData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Infrastructure\EnableRadioButtons.resx">
       <DependentUpon>EnableRadioButtons.cs</DependentUpon>
@@ -206,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SearchIssue.resx">
       <DependentUpon>SearchIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchMaker.resx">
+      <DependentUpon>SearchMaker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchMember.resx">
       <DependentUpon>SearchMember.cs</DependentUpon>
