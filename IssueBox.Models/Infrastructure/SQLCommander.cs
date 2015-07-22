@@ -123,11 +123,27 @@ namespace IssueBox.Models.Infrastructure
         {
             if (models == null) { throw new NullReferenceException(); }
 
-            var properties = typeof(TModel).GetProperties();
+            var properties = typeof(TModel).GetProperties().ToList();
             var table = new DataTable();
 
             //列生成
-            properties.ToList().ForEach(x => table.Columns.Add(x.Name, x.PropertyType));
+            //properties.ForEach(x => table.Columns.Add(x.Name, x.PropertyType));
+
+            //リフレクションが派生クラス→基底クラスというアクセス手順を踏むため、基底クラスのプロパティから取得する
+            //FixMe:要リファクタリング
+            var baseType = typeof(TModel).BaseType.GetProperties().ToList();
+            baseType.ForEach(x => table.Columns.Add(x.Name, x.PropertyType));
+
+            foreach (var p in properties)
+            {
+                foreach (var q in baseType)
+                {
+                    if (p.Name != q.Name)
+                    {
+                        table.Columns.Add(p.Name, p.PropertyType);
+                    }
+                }
+            }
 
             //行データ挿入
             foreach (var m in models)
@@ -136,7 +152,8 @@ namespace IssueBox.Models.Infrastructure
 
                 for (int i = 0; i < table.Columns.Count; i++)
                 {
-                    row[i] = this.ToDBNull(properties[i].GetValue(m, null));
+                    //row[i] = this.ToDBNull(properties[i].GetValue(m, null));
+                    row[i] = this.ToDBNull(properties.Where(x => x.Name == table.Columns[i].Caption).First().GetValue(m, null));
                 }
 
                 table.Rows.Add(row);
@@ -144,7 +161,7 @@ namespace IssueBox.Models.Infrastructure
 
             var param = new SqlParameter()
             {
-                ParameterName = string.Format("@{0}", typeof(TModel).Name.ToLower()),
+                ParameterName = string.Format("@{0}s", typeof(TModel).Name),
                 Direction = ParameterDirection.Input,
                 SqlDbType = SqlDbType.Structured,
                 Value = table
@@ -287,9 +304,12 @@ namespace IssueBox.Models.Infrastructure
             {
                 var args = this.ToSqlParameters(model);
                 var table = this.ToTableParameter(models);
-                args.ToList().Add(table);
 
-                using (var comm = this.BuildCommand(commandText, table))
+                var p = new List<SqlParameter>();
+                p.Add(table);
+                p.AddRange(args);
+
+                using (var comm = this.BuildCommand(commandText, p.ToArray()))
                 {
                     return this.ExecuteCommand(comm);
                 }

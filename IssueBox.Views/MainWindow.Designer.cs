@@ -113,7 +113,6 @@
             this.menuSearchMaker.Name = "menuSearchMaker";
             this.menuSearchMaker.Size = new System.Drawing.Size(160, 22);
             this.menuSearchMaker.Text = "メーカーマスタ";
-            this.menuSearchMaker.Visible = false;
             this.menuSearchMaker.Click += new System.EventHandler(this.menu_Click);
             // 
             // menuSearchMember

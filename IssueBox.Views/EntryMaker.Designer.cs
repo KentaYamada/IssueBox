@@ -28,16 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.grpEnable = new IssueBox.Views.Infrastructure.EnableRadioButtons();
             this.label6 = new System.Windows.Forms.Label();
             this.grdList = new System.Windows.Forms.DataGridView();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.EquipmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EquipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rating = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MakerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnableFlag = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
             this.SuspendLayout();
@@ -88,35 +90,16 @@
             // 
             this.grdList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EquipmentID,
             this.EquipName,
             this.Rating,
+            this.MakerID,
             this.EnableFlag});
             this.grdList.Location = new System.Drawing.Point(12, 72);
             this.grdList.Name = "grdList";
             this.grdList.RowTemplate.Height = 21;
             this.grdList.Size = new System.Drawing.Size(425, 150);
             this.grdList.TabIndex = 4;
-            // 
-            // EquipName
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.EquipName.DefaultCellStyle = dataGridViewCellStyle2;
-            this.EquipName.HeaderText = "型番";
-            this.EquipName.Name = "EquipName";
-            this.EquipName.Width = 200;
-            // 
-            // Rating
-            // 
-            this.Rating.HeaderText = "定格";
-            this.Rating.Name = "Rating";
-            this.Rating.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Rating.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Rating.Width = 60;
-            // 
-            // EnableFlag
-            // 
-            this.EnableFlag.HeaderText = "データ有効";
-            this.EnableFlag.Name = "EnableFlag";
             // 
             // btnSave
             // 
@@ -127,6 +110,44 @@
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // EquipmentID
+            // 
+            this.EquipmentID.DataPropertyName = "ID";
+            this.EquipmentID.HeaderText = "EquipmentID";
+            this.EquipmentID.Name = "EquipmentID";
+            this.EquipmentID.Visible = false;
+            // 
+            // EquipName
+            // 
+            this.EquipName.DataPropertyName = "Name";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.EquipName.DefaultCellStyle = dataGridViewCellStyle1;
+            this.EquipName.HeaderText = "型番";
+            this.EquipName.Name = "EquipName";
+            this.EquipName.Width = 200;
+            // 
+            // Rating
+            // 
+            this.Rating.DataPropertyName = "Rating";
+            this.Rating.HeaderText = "定格";
+            this.Rating.Name = "Rating";
+            this.Rating.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Rating.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Rating.Width = 60;
+            // 
+            // MakerID
+            // 
+            this.MakerID.DataPropertyName = "MakerID";
+            this.MakerID.HeaderText = "MakerID";
+            this.MakerID.Name = "MakerID";
+            this.MakerID.Visible = false;
+            // 
+            // EnableFlag
+            // 
+            this.EnableFlag.DataPropertyName = "EnableFlag";
+            this.EnableFlag.HeaderText = "データ有効";
+            this.EnableFlag.Name = "EnableFlag";
             // 
             // EntryMaker
             // 
@@ -164,8 +185,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView grdList;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EquipmentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn EquipName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rating;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MakerID;
         private System.Windows.Forms.DataGridViewCheckBoxColumn EnableFlag;
     }
 }
