@@ -13,6 +13,9 @@ namespace IssueBox.Models
         /// <summary>バージョン</summary>
         public string Version { get; set; }
 
+        /// <summary>製品種別</summary>
+        public int ProductType { get; set; }
+
         /// <summary>データ有効可否</summary>
         public bool EnableFlag { get; set; }
 
