@@ -49,7 +49,7 @@ END
 CREATE TABLE PROJECTS (
      id            int          NOT NULL identity
     ,project_id    nvarchar(20) NOT NULL
-    ,name          nvarchar(20) NOT NULL
+    ,name          nvarchar(40) NOT NULL
     ,enable_flag   bit          NOT NULL
     ,upd_date      datetime     NOT NULL
     ,primary key(id)
