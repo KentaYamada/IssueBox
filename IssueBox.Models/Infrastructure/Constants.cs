@@ -3,6 +3,20 @@
 namespace IssueBox.Models.Infrastructure
 {
     /// <summary>
+    /// テーブル名
+    /// </summary>
+    public enum TABLE_NAME
+    {
+        CATEGORIES = 0,  //カテゴリマスタ
+        EQUIPMENTS,      //機器マスタ
+        ISSUE,           //課題テーブル
+        MAKERS,          //メーカーマスタ    
+        MEMBERS,         //メンバーマスタ
+        PRODUCTS,        //製品マスタ
+        PROJECTS         //案件マスタ
+    }
+
+    /// <summary>
     /// 課題ステータス
     /// </summary>
     public enum TASK_STATUS
@@ -14,15 +28,12 @@ namespace IssueBox.Models.Infrastructure
     }
 
     /// <summary>
-    /// テーブル名
+    /// 製品種別
     /// </summary>
-    public enum TABLE_NAME
+    public enum PRODUCT_TYPE
     {
-        CATEGORIES = 0,  //カテゴリマスタ
-        ISSUE,           //課題テーブル
-        MEMBERS,         //メンバーマスタ
-        PRODUCTS,        //製品マスタ
-        PROJECTS         //案件マスタ
+        PRODUCT = 1,  //製品
+        SERVICE       //サービス
     }
 
     /// <summary>
