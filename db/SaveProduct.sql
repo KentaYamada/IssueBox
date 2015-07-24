@@ -9,10 +9,11 @@ END
 
 GO
 CREATE PROCEDURE SaveProduct (
-     @ID int
-    ,@Name nvarchar(20)
-    ,@Version nvarchar(10)
-    ,@EnableFlag bit
+     @ID          int
+    ,@Name        nvarchar(20)
+    ,@Version     nvarchar(10)
+    ,@ProductType int
+    ,@EnableFlag  bit
 ) AS
 BEGIN TRY
   BEGIN TRAN
@@ -23,18 +24,21 @@ BEGIN TRY
       UPDATE SET
         name = @Name
        ,[version] = @Version
+       ,product_type = @ProductType
        ,enable_flag = @EnableFlag
        ,upd_date = GETDATE()
     WHEN NOT MATCHED THEN
       INSERT (
         name
        ,[version]
+       ,product_type
        ,enable_flag
        ,upd_date
       )
       VALUES (
         @Name
        ,@Version
+       ,@ProductType
        ,@EnableFlag
        ,GETDATE()
      );

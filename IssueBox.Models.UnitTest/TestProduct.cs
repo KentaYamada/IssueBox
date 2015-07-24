@@ -29,9 +29,9 @@ namespace IssueBox.Models.UnitTest
         [TestFixtureSetUp]
         public void Setup()
         {
-            string sql = @"INSERT INTO PRODUCTS VALUES ('工房 DBKit', '1.0.0.0', 'TRUE', GETDATE())
-                                                      ,('Apache Nine', '1.0.0.0', 'TRUE', GETDATE())
-                                                      ,('KntLibrary', '1.0.0.0', 'FALSE',  GETDATE())";
+            string sql = @"INSERT INTO PRODUCTS VALUES ('工房 DBKit', '1.0.0.0', 0, 'TRUE', GETDATE())
+                                                      ,('Apache Nine', '1.0.0.0', 1, 'TRUE', GETDATE())
+                                                      ,('KntLibrary', '1.0.0.0', 2, 'FALSE',  GETDATE())";
             try
             {
                 this._db.Execute(sql);
@@ -72,6 +72,7 @@ namespace IssueBox.Models.UnitTest
             {
                 Name = "Hoge",
                 Version = "1.0.0.0",
+                ProductType = 1,
                 EnableFlag = true
             };
 

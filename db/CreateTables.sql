@@ -80,6 +80,7 @@ CREATE TABLE PRODUCTS (
      id            int          NOT NULL identity
     ,name          nvarchar(20) NOT NULL
     ,version       nvarchar(10) NULL
+    ,product_type  int          NOT NULL
     ,enable_flag   bit          NOT NULL
     ,upd_date      datetime     NOT NULL
     ,primary key(id)
