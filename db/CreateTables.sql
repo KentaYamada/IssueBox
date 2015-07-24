@@ -56,6 +56,18 @@ CREATE TABLE PROJECTS (
     ,unique(project_id)
 )
 
+--案件詳細情報マスタ
+CREATE TABLE PROJECT_DETAIL (
+   id          int          NOT NULL identity
+  ,project_id  nvarchar(20) NOT NULL
+  ,name        nvarchar(20) NULL
+  ,rating      float        NULL
+  ,unit_count  int          NULL
+  ,enable_flag bit          NOT NULL
+  ,upd_date    datetime     NOT NULL
+  ,primary key(id, project_id)
+)
+
 --メンバマスタ
 CREATE TABLE MEMBERS (
      id             int          NOT NULL identity
