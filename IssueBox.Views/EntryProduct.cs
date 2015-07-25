@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using IssueBox.Models;
 using IssueBox.Views.Infrastructure;
 
+using System.Linq;
+
 namespace IssueBox.Views
 {
     public partial class EntryProduct : EntryFormBase
@@ -19,9 +21,14 @@ namespace IssueBox.Views
 
             this._product = product;
             this.txtName.DataBindings.Add("Text", this._product, "Name");
+            this.txtVersion.DataBindings.Add("Text", this._product, "Version");
+            this.grpStatus.DataBindings.Add("SelectedStatus", this._product, "ProductType");
             this.grpEnable.DataBindings.Add("Enable", this._product, "EnableFlag");
         }
 
+        /// <summary>
+        /// 「保存」ボタンクリックイベント
+        /// </summary>
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!this.Validation()) { return; }
@@ -37,6 +44,10 @@ namespace IssueBox.Views
             }
         }
 
+        /// <summary>
+        /// 入力チェック
+        /// </summary>
+        /// <returns></returns>
         private bool Validation()
         {
             base.errorProvider1.Clear();
@@ -44,6 +55,7 @@ namespace IssueBox.Views
             if (string.IsNullOrWhiteSpace(this.txtName.Text))
             {
                 base.errorProvider1.SetError(this.txtName, this.txtName.AlertMessage);
+                this.txtName.Focus();
                 return false;
             }
 
