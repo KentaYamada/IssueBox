@@ -35,7 +35,7 @@
             // rdoDisable
             // 
             this.rdoDisable.AutoSize = true;
-            this.rdoDisable.Location = new System.Drawing.Point(62, -1);
+            this.rdoDisable.Location = new System.Drawing.Point(58, 2);
             this.rdoDisable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rdoDisable.Name = "rdoDisable";
             this.rdoDisable.Size = new System.Drawing.Size(53, 24);
@@ -47,7 +47,7 @@
             // rdoEnable
             // 
             this.rdoEnable.AutoSize = true;
-            this.rdoEnable.Location = new System.Drawing.Point(1, -1);
+            this.rdoEnable.Location = new System.Drawing.Point(2, 2);
             this.rdoEnable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rdoEnable.Name = "rdoEnable";
             this.rdoEnable.Size = new System.Drawing.Size(53, 24);
@@ -66,7 +66,7 @@
             this.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "EnableRadioButtons";
-            this.Size = new System.Drawing.Size(117, 23);
+            this.Size = new System.Drawing.Size(117, 28);
             this.ResumeLayout(false);
             this.PerformLayout();
 

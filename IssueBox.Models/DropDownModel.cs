@@ -33,7 +33,12 @@ namespace IssueBox.Models
         public static List<DropDownModel> FindAllData(TABLE_NAME tablename)
         {
             var model = new DropDownModel();
-            string sql = string.Format("SELECT id AS ID, name AS Value FROM {0} AS t WHERE t.enable_flag = 'TRUE' ORDER BY t.id", tablename.ToString());
+            string sql = string.Format(@"SELECT
+                                            t.id   AS ID
+                                           ,t.name AS Value
+                                         FROM {0} AS t
+                                         WHERE t.enable_flag = CONVERT(bit, 'TRUE')
+                                         ORDER BY t.name", tablename.ToString());
 
             try
             {

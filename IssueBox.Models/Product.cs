@@ -26,6 +26,7 @@ namespace IssueBox.Models
             this.ID = 0;
             this.Name = "";
             this.Version = "";
+            this.ProductType = 1;
             this.EnableFlag = true;
         }
 
