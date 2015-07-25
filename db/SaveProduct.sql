@@ -11,7 +11,7 @@ GO
 CREATE PROCEDURE SaveProduct (
      @ID          int
     ,@Name        nvarchar(20)
-    ,@Version     nvarchar(10)
+    ,@Version     nvarchar(15)
     ,@ProductType int
     ,@EnableFlag  bit
 ) AS
