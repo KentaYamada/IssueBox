@@ -1,10 +1,9 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows.Forms;
 
 namespace IssueBox.Views.Infrastructure
 {
-    public partial class RadioButtonPanel : UserControl
+    public class RadioButtonPanel : Panel
     {
         public int SelectedStatus
         {
@@ -26,7 +25,7 @@ namespace IssueBox.Views.Infrastructure
                 var target = this.Controls.OfType<StatusRadioButtonAbstract>()
                                                          .Where(x => x.Status == value)
                                                          .ToList();
-                if (target.Count > 1)
+                if (target.Count > 0)
                 {
                     target[0].Checked = true;
                 }
@@ -35,7 +34,7 @@ namespace IssueBox.Views.Infrastructure
 
         public RadioButtonPanel()
         {
-            InitializeComponent();
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
         }
     }
 }
