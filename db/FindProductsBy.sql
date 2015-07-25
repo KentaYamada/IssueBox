@@ -21,6 +21,7 @@ BEGIN
      p.id             AS ID
     ,p.name           AS Name
     ,p.[version]      AS [Version]
+    ,p.product_type   AS ProductType
     ,p.enable_flag    AS EnableFlag
   FROM PRODUCTS AS p
   WHERE (p.name LIKE '%' + @Name +'%' OR @Name IS NULL)

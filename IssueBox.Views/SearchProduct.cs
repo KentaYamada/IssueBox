@@ -66,8 +66,13 @@ namespace IssueBox.Views
             }
         }
 
+        /// <summary>
+        /// セルダブルクリックイベント
+        /// </summary>
         private void grdList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0) { return; }
+
             this.ShowEntryWindow(this._products[e.RowIndex]);
 
             try
