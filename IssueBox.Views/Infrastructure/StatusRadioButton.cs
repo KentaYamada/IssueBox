@@ -40,11 +40,11 @@ namespace IssueBox.Views.Infrastructure
     /// <summary>
     /// 製品種別(サービス)ラジオボタン
     /// </summary>
-    public class ServiceRadioButton_New : StatusRadioButtonAbstract
+    public class ServiceRadioButton : StatusRadioButtonAbstract
     {
         public override int Status { get { return (int)PRODUCT_TYPE.SERVICE; } }
 
-        public ServiceRadioButton_New()
+        public ServiceRadioButton()
             : base()
         {
             this.Text = "サービス";
