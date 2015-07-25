@@ -3,13 +3,16 @@ using System.Windows.Forms;
 using IssueBox.Models;
 using IssueBox.Views.Infrastructure;
 
-using System.Linq;
-
 namespace IssueBox.Views
 {
+    /// <summary>
+    /// 製品登録画面
+    /// </summary>
     public partial class EntryProduct : EntryFormBase
     {
         private Product _product = null;
+
+        #region Constructors
 
         public EntryProduct()
             :this(new Product())
@@ -25,6 +28,8 @@ namespace IssueBox.Views
             this.grpStatus.DataBindings.Add("SelectedStatus", this._product, "ProductType");
             this.grpEnable.DataBindings.Add("Enable", this._product, "EnableFlag");
         }
+
+        #endregion
 
         /// <summary>
         /// 「保存」ボタンクリックイベント
