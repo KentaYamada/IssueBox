@@ -45,6 +45,11 @@ BEGIN
   DROP TABLE dbo.EQUIPMENTS
 END
 
+IF OBJECT_ID('dbo.UNITS') IS NOT NULL
+BEGIN
+  DROP TABLE dbo.UNITS
+END
+
 --案件マスタ
 CREATE TABLE PROJECTS (
      id            int          NOT NULL identity
@@ -116,6 +121,15 @@ CREATE TABLE EQUIPMENTS (
   ,enable_flag bit          NOT NULL
   ,upd_date    datetime     NOT NULL
   ,primary key(id)
+)
+
+--単位マスタ
+CREATE TABLE UNITS (
+     id            int          NOT NULL identity
+    ,name          nvarchar(20) NOT NULL
+    ,enable_flag   bit          NOT NULL
+    ,upd_date      datetime     NOT NULL
+    ,primary key(id)
 )
 
 --課題テーブル

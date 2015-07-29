@@ -83,6 +83,12 @@
     <Compile Include="EntryProject.Designer.cs">
       <DependentUpon>EntryProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="EntryUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntryUnit.Designer.cs">
+      <DependentUpon>EntryUnit.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExportData.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -108,7 +114,6 @@
       <DependentUpon>EntryFormBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\IRequired.cs" />
-    <Compile Include="Infrastructure\IStatus.cs" />
     <Compile Include="Infrastructure\Logger.cs" />
     <Compile Include="Infrastructure\PanelBase.cs">
       <SubType>UserControl</SubType>
@@ -116,13 +121,10 @@
     <Compile Include="Infrastructure\PanelBase.Designer.cs">
       <DependentUpon>PanelBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\StatusRadioButtons.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Infrastructure\RadioButtonPanel.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Infrastructure\StatusRadioButtons.Designer.cs">
-      <DependentUpon>StatusRadioButtons.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Infrastructure\TaskStatusRadioButton.cs">
+    <Compile Include="Infrastructure\StatusRadioButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Infrastructure\TextBoxEx.cs">
@@ -177,6 +179,12 @@
     <Compile Include="SearchProject.Designer.cs">
       <DependentUpon>SearchProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchUnit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchUnit.Designer.cs">
+      <DependentUpon>SearchUnit.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="EntryCategory.resx">
       <DependentUpon>EntryCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +203,9 @@
     <EmbeddedResource Include="EntryProject.resx">
       <DependentUpon>EntryProject.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EntryUnit.resx">
+      <DependentUpon>EntryUnit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExportData.resx">
       <DependentUpon>ExportData.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,9 +217,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Infrastructure\PanelBase.resx">
       <DependentUpon>PanelBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Infrastructure\StatusRadioButtons.resx">
-      <DependentUpon>StatusRadioButtons.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -242,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SearchProject.resx">
       <DependentUpon>SearchProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchUnit.resx">
+      <DependentUpon>SearchUnit.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

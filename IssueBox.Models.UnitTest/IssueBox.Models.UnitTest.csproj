@@ -52,10 +52,12 @@
     <Compile Include="TestCategory.cs" />
     <Compile Include="TestEquipment.cs" />
     <Compile Include="TestIssue.cs" />
+    <Compile Include="TestMaker.cs" />
     <Compile Include="TestProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestMember.cs" />
     <Compile Include="TestProject.cs" />
+    <Compile Include="TestUnit.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IssueBox.Models\IssueBox.Models.csproj">
