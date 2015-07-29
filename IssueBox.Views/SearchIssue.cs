@@ -56,7 +56,7 @@ namespace IssueBox.Views
             this.cmbProducts.DataBindings.Add("SelectedValue", this._condition, "ProductID");
             this.dtDeadlineFrom.DataBindings.Add("GetDate", this._condition, "DeadlineFrom", true, DataSourceUpdateMode.OnValidation);
             this.dtDeadlineTo.DataBindings.Add("GetDate", this._condition, "DeadlineTo", true, DataSourceUpdateMode.OnValidation);
-            this.grpStatus.DataBindings.Add("SelectedStatus", this._condition, "Status");
+            //this.grpStatus.DataBindings.Add("SelectedStatus", this._condition, "Status");
         }
 
         /// <summary>
