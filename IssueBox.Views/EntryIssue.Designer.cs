@@ -40,18 +40,22 @@
             this.dtOrigination = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dtFinishedDate = new IssueBox.Views.Infrastructure.DateMaskedTextBox();
+            this.cmbCheckedMember = new IssueBox.Views.Infrastructure.DropDownListEx();
             this.dtDeadLine = new IssueBox.Views.Infrastructure.DateMaskedTextBox();
-            this.grpStatus = new IssueBox.Views.Infrastructure.StatusRadioButtons();
             this.cmbIssuingMember = new IssueBox.Views.Infrastructure.DropDownListEx();
             this.cmbProject = new IssueBox.Views.Infrastructure.DropDownListEx();
             this.cmbProduct = new IssueBox.Views.Infrastructure.DropDownListEx();
             this.cmbCategory = new IssueBox.Views.Infrastructure.DropDownListEx();
             this.cmbResponcedMember = new IssueBox.Views.Infrastructure.DropDownListEx();
             this.txtComment = new IssueBox.Views.Infrastructure.TextBoxEx();
-            this.cmbCheckedMember = new IssueBox.Views.Infrastructure.DropDownListEx();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dtFinishedDate = new IssueBox.Views.Infrastructure.DateMaskedTextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.grpStatus = new IssueBox.Views.Infrastructure.RadioButtonPanel();
+            this.originationRadioButton1 = new IssueBox.Views.Infrastructure.OriginationRadioButton();
+            this.responcingRadioButton1 = new IssueBox.Views.Infrastructure.ResponcingRadioButton();
+            this.checkingRadioButton1 = new IssueBox.Views.Infrastructure.CheckingRadioButton();
+            this.doneRadioButton1 = new IssueBox.Views.Infrastructure.DoneRadioButton();
             this.SuspendLayout();
             // 
             // label11
@@ -162,6 +166,45 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(12, 250);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 27);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "確認者";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(12, 322);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 27);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "完了日";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dtFinishedDate
+            // 
+            this.dtFinishedDate.GetDate = null;
+            this.dtFinishedDate.Location = new System.Drawing.Point(103, 322);
+            this.dtFinishedDate.Mask = "0000/00/00";
+            this.dtFinishedDate.Name = "dtFinishedDate";
+            this.dtFinishedDate.Size = new System.Drawing.Size(100, 27);
+            this.dtFinishedDate.TabIndex = 23;
+            this.dtFinishedDate.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // cmbCheckedMember
+            // 
+            this.cmbCheckedMember.DisplayMember = "Value";
+            this.cmbCheckedMember.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCheckedMember.FormattingEnabled = true;
+            this.cmbCheckedMember.Location = new System.Drawing.Point(103, 250);
+            this.cmbCheckedMember.Name = "cmbCheckedMember";
+            this.cmbCheckedMember.Size = new System.Drawing.Size(186, 28);
+            this.cmbCheckedMember.TabIndex = 20;
+            this.cmbCheckedMember.ValueMember = "ID";
+            // 
             // dtDeadLine
             // 
             this.dtDeadLine.GetDate = null;
@@ -171,17 +214,6 @@
             this.dtDeadLine.Size = new System.Drawing.Size(100, 27);
             this.dtDeadLine.TabIndex = 11;
             this.dtDeadLine.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            // 
-            // grpStatus
-            // 
-            this.grpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.grpStatus.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.grpStatus.Location = new System.Drawing.Point(103, 286);
-            this.grpStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpStatus.Name = "grpStatus";
-            this.grpStatus.SelectedStatus = 1;
-            this.grpStatus.Size = new System.Drawing.Size(260, 28);
-            this.grpStatus.TabIndex = 15;
             // 
             // cmbIssuingMember
             // 
@@ -246,56 +278,75 @@
             this.txtComment.Size = new System.Drawing.Size(372, 211);
             this.txtComment.TabIndex = 17;
             // 
-            // cmbCheckedMember
+            // grpStatus
             // 
-            this.cmbCheckedMember.DisplayMember = "Value";
-            this.cmbCheckedMember.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCheckedMember.FormattingEnabled = true;
-            this.cmbCheckedMember.Location = new System.Drawing.Point(103, 250);
-            this.cmbCheckedMember.Name = "cmbCheckedMember";
-            this.cmbCheckedMember.Size = new System.Drawing.Size(186, 28);
-            this.cmbCheckedMember.TabIndex = 20;
-            this.cmbCheckedMember.ValueMember = "ID";
+            this.grpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.grpStatus.Location = new System.Drawing.Point(103, 286);
+            this.grpStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpStatus.Name = "grpStatus";
+            this.grpStatus.SelectedStatus = -1;
+            this.grpStatus.Size = new System.Drawing.Size(270, 28);
+            this.grpStatus.TabIndex = 24;
             // 
-            // label8
+            // originationRadioButton1
             // 
-            this.label8.Location = new System.Drawing.Point(12, 250);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 27);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "確認者";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.originationRadioButton1.AutoSize = true;
+            this.originationRadioButton1.Checked = true;
+            this.originationRadioButton1.Location = new System.Drawing.Point(108, 288);
+            this.originationRadioButton1.Name = "originationRadioButton1";
+            this.originationRadioButton1.Size = new System.Drawing.Size(53, 24);
+            this.originationRadioButton1.TabIndex = 25;
+            this.originationRadioButton1.TabStop = true;
+            this.originationRadioButton1.Text = "起票";
+            this.originationRadioButton1.UseVisualStyleBackColor = true;
             // 
-            // dtFinishedDate
+            // responcingRadioButton1
             // 
-            this.dtFinishedDate.GetDate = null;
-            this.dtFinishedDate.Location = new System.Drawing.Point(103, 322);
-            this.dtFinishedDate.Mask = "0000/00/00";
-            this.dtFinishedDate.Name = "dtFinishedDate";
-            this.dtFinishedDate.Size = new System.Drawing.Size(100, 27);
-            this.dtFinishedDate.TabIndex = 23;
-            this.dtFinishedDate.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.responcingRadioButton1.AutoSize = true;
+            this.responcingRadioButton1.Location = new System.Drawing.Point(167, 288);
+            this.responcingRadioButton1.Name = "responcingRadioButton1";
+            this.responcingRadioButton1.Size = new System.Drawing.Size(66, 24);
+            this.responcingRadioButton1.TabIndex = 26;
+            this.responcingRadioButton1.TabStop = true;
+            this.responcingRadioButton1.Text = "対応中";
+            this.responcingRadioButton1.UseVisualStyleBackColor = true;
             // 
-            // label9
+            // checkingRadioButton1
             // 
-            this.label9.Location = new System.Drawing.Point(12, 322);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 27);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "完了日";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.checkingRadioButton1.AutoSize = true;
+            this.checkingRadioButton1.Location = new System.Drawing.Point(239, 288);
+            this.checkingRadioButton1.Name = "checkingRadioButton1";
+            this.checkingRadioButton1.Size = new System.Drawing.Size(66, 24);
+            this.checkingRadioButton1.TabIndex = 27;
+            this.checkingRadioButton1.TabStop = true;
+            this.checkingRadioButton1.Text = "確認中";
+            this.checkingRadioButton1.UseVisualStyleBackColor = true;
+            // 
+            // doneRadioButton1
+            // 
+            this.doneRadioButton1.AutoSize = true;
+            this.doneRadioButton1.Location = new System.Drawing.Point(311, 288);
+            this.doneRadioButton1.Name = "doneRadioButton1";
+            this.doneRadioButton1.Size = new System.Drawing.Size(53, 24);
+            this.doneRadioButton1.TabIndex = 28;
+            this.doneRadioButton1.Text = "完了";
+            this.doneRadioButton1.UseVisualStyleBackColor = true;
             // 
             // EntryIssue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(487, 612);
+            this.Controls.Add(this.doneRadioButton1);
+            this.Controls.Add(this.checkingRadioButton1);
+            this.Controls.Add(this.responcingRadioButton1);
+            this.Controls.Add(this.originationRadioButton1);
+            this.Controls.Add(this.grpStatus);
             this.Controls.Add(this.dtFinishedDate);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbCheckedMember);
             this.Controls.Add(this.dtDeadLine);
-            this.Controls.Add(this.grpStatus);
             this.Controls.Add(this.cmbIssuingMember);
             this.Controls.Add(this.cmbProject);
             this.Controls.Add(this.cmbProduct);
@@ -345,11 +396,15 @@
         private Infrastructure.DropDownListEx cmbProduct;
         private Infrastructure.DropDownListEx cmbProject;
         private Infrastructure.DropDownListEx cmbIssuingMember;
-        private Infrastructure.StatusRadioButtons grpStatus;
         private Infrastructure.DateMaskedTextBox dtDeadLine;
         private Infrastructure.DropDownListEx cmbCheckedMember;
         private System.Windows.Forms.Label label8;
         private Infrastructure.DateMaskedTextBox dtFinishedDate;
         private System.Windows.Forms.Label label9;
+        private Infrastructure.RadioButtonPanel grpStatus;
+        private Infrastructure.OriginationRadioButton originationRadioButton1;
+        private Infrastructure.ResponcingRadioButton responcingRadioButton1;
+        private Infrastructure.CheckingRadioButton checkingRadioButton1;
+        private Infrastructure.DoneRadioButton doneRadioButton1;
     }
 }
