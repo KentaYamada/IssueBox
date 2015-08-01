@@ -8,7 +8,7 @@ namespace IssueBox.Models
         public string Name { get; set; }
 
         /// <summary>定格</summary>
-        public double Rating { get; set; }
+        public decimal Rating { get; set; }
 
         /// <summary>メーカーID</summary>
         public int MakerID { get; set; }

@@ -13,7 +13,7 @@ END
 CREATE TYPE EQUIPMENTS_T AS TABLE (
    id          int
   ,name        nvarchar(20)
-  ,rating      real
+  ,rating      decimal(5, 2)
   ,maker_id    int
   ,enable_flag bit
 )
