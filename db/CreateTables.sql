@@ -3,6 +3,7 @@
  * v1.0:新規作成
  */
 
+
 IF DB_ID('IssueBox_Dev') IS NULL
 BEGIN
   CREATE DATABASE IssueBox_Dev
@@ -13,6 +14,11 @@ use IssueBox_Dev
 IF OBJECT_ID('dbo.PROJECTS') IS NOT NULL
 BEGIN
     DROP TABLE dbo.PROJECTS
+END
+
+IF OBJECT_ID('dbo.PROJECT_DETAIL') IS NOT NULL
+BEGIN
+    DROP TABLE dbo.PROJECT_DETAIL
 END
 
 IF OBJECT_ID('dbo.MEMBERS') IS NOT NULL
@@ -37,7 +43,7 @@ END
 
 IF OBJECT_ID('dbo.MAKERS') IS NOT NULL
 BEGIN
-  DROP TABLE dbo.MAKER
+  DROP TABLE dbo.MAKERS
 END
 
 IF OBJECT_ID('dbo.EQUIPMENTS') IS NOT NULL
@@ -96,7 +102,7 @@ CREATE TABLE CATEGORIES (
 CREATE TABLE PRODUCTS (
      id            int          NOT NULL identity
     ,name          nvarchar(20) NOT NULL
-    ,version       nvarchar(15) NULL
+    ,[version]     nvarchar(15) NULL
     ,product_type  int          NOT NULL
     ,enable_flag   bit          NOT NULL
     ,upd_date      datetime     NOT NULL
