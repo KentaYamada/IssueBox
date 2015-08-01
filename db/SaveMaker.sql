@@ -41,7 +41,7 @@ BEGIN TRY
      DECLARE @count int
      SET @count = (SELECT COUNT(id) FROM @Equipments)
      
-     IF @@ROWCOUNT > 1 AND @count > 0
+     IF @@ROWCOUNT > 0 AND @count > 0
      BEGIN
        --メーカーID取得
        IF @ID < 1
