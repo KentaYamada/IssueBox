@@ -98,7 +98,7 @@ namespace IssueBox.Views
         /// <param name="maker"></param>
         private void ShowEntryWindow(Maker maker)
         {
-            using (var form = new EntryMaker())
+            using (var form = new EntryMaker(maker))
             {
                 form.ShowDialog();
             }
