@@ -137,7 +137,7 @@
             // 
             this.UnitName.DataPropertyName = "Name";
             this.UnitName.Frozen = true;
-            this.UnitName.HeaderText = "カテゴリ名";
+            this.UnitName.HeaderText = "単位";
             this.UnitName.Name = "UnitName";
             this.UnitName.ReadOnly = true;
             this.UnitName.Width = 300;
