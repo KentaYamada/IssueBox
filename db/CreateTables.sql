@@ -122,7 +122,7 @@ CREATE TABLE MAKERS (
 CREATE TABLE EQUIPMENTS (
    id          int           NOT NULL identity
   ,name        nvarchar(20)  NOT NULL
-  ,rating      decimal(5, 2) NULL
+  ,rating      decimal(5, 1) NULL
   ,maker_id    int           NOT NULL
   ,enable_flag bit           NOT NULL
   ,upd_date    datetime      NOT NULL
