@@ -70,8 +70,8 @@ CREATE TABLE PROJECTS (
 --案件詳細情報マスタ
 CREATE TABLE EQUIPMENT_CONFIGURATIONS (
    id          int          NOT NULL identity
-  ,project_id  nvarchar(20) NOT NULL
-  ,name        nvarchar(20) NULL
+  ,project_id  int          NOT NULL
+  ,equip_name  nvarchar(20) NULL
   ,rating      float        NULL
   ,unit_count  int          NULL
   ,enable_flag bit          NOT NULL
