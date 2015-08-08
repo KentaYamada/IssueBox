@@ -19,7 +19,7 @@ BEGIN TRY
     
     --メーカーマスタ登録/更新
     MERGE INTO MAKERS AS t1
-      USING (SELECT @id AS id) t2 ON t1.id = t2.id
+      USING (SELECT @ID AS id) t2 ON t1.id = t2.id
     WHEN MATCHED THEN
       UPDATE SET
         name = @Name
