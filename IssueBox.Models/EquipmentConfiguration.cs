@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace IssueBox.Models
 {
@@ -26,8 +22,22 @@ namespace IssueBox.Models
         /// <summary>台数</summary>
         public int UnitCount { get; set; }
 
-        /// <summary>データ有効可否</summary>
-        public bool EnableFlag { get; set; }
+        /// <summary>日射/気温可否</summary>
+        public bool IrrTempFlag { get; set; }
+
+        #region Default constructor
+
+        public EquipmentConfiguration()
+        {
+            this.ProjectID = 0;
+            this.MakerName = "";
+            this.EquipName = "";
+            this.Rating = 0;
+            this.UnitCount = 0;
+            this.IrrTempFlag = true;
+        }
+
+        #endregion
 
         /// <summary>
         /// 機器構成情報取得
