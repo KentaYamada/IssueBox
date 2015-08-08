@@ -9,6 +9,11 @@ BEGIN
   DROP TYPE dbo.EQUIPMENTS_T
 END
 
+IF TYPE_ID('dbo.EQUIPMENT_CONFIGURATIONS_T') IS NOT NULL
+BEGIN
+  DROP TYPE dbo.EQUIPMENT_CONFIGURATIONS_T
+END
+
 --機器
 CREATE TYPE EQUIPMENTS_T AS TABLE (
    id          int
@@ -18,3 +23,12 @@ CREATE TYPE EQUIPMENTS_T AS TABLE (
   ,enable_flag bit
 )
 
+--機器構成
+CREATE TYPE EQUIPMENT_CONFIGURATIONS_T AS TABLE (
+   id          int
+  ,project_id  int
+  ,equip_name  nvarchar(20)
+  ,rating      float
+  ,unit_count  int
+  ,enable_flag bit
+)
