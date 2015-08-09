@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 
@@ -61,18 +62,41 @@ namespace IssueBox.Models.UnitTest
 
         #endregion
 
-        [Test]
-        public void TestSave()
+        private static readonly List<EquipmentConfiguration> _newEquipConf = new List<EquipmentConfiguration>() 
         {
-            var model = new Project() 
-            {
-                ProjectID = "FL999-0004",
-                Name = "Hoge",
-                EnableFlag = true
-            };
+            new EquipmentConfiguration() { ProjectID = 0, EquipName = "TypeA", MakerName = "MakerA", Rating = 100.0m,  UnitCount = 1, IrrTempFlag = true},
+            new EquipmentConfiguration() { ProjectID = 0, EquipName = "TypeB", MakerName = "MakerA", Rating = 100.0m,  UnitCount = 3, IrrTempFlag = true},
+            new EquipmentConfiguration() { ProjectID = 0, EquipName = "TypeC", MakerName = "MakerA", Rating = 100.0m,  UnitCount = 4, IrrTempFlag = false}
+        };
 
-            bool result = model.Save();
-            Assert.IsTrue(result);
+        private static readonly List<EquipmentConfiguration> _updEquipConf = new List<EquipmentConfiguration>() 
+        {
+            new EquipmentConfiguration() { ID = 1, ProjectID = 1, EquipName = "TypeA", MakerName = "MakerB", Rating = 120.0m, UnitCount = 1, IrrTempFlag = true}
+        };
+
+        private static readonly object[] SaveTestCases = 
+        {
+            new object[] { true, new Project(){ ProjectID = "TEST999-9999", Name = "Foo", EnableFlag = true}, _newEquipConf },
+            new object[] { true, new Project(){ ID = 4, ProjectID = "TEST999-9999", Name = "Foo", EnableFlag = true}, _updEquipConf },
+            new object[] { false, new Project(){ ProjectID = "", Name = "Foo", EnableFlag = true}, _newEquipConf }
+        };
+
+        [TestCaseSource("SaveTestCases")]
+        public void TestSave(bool expected, Project arg1, List<EquipmentConfiguration> arg2)
+        {
+            bool result = false;
+
+            try
+            {
+                result = arg1.Save(arg2);
+            }
+            catch(Exception ex)
+            {
+                result = false;
+                Debug.Print(ex.Message);
+            }
+
+            Assert.AreEqual(expected, result);
         }
 
         private static readonly object[] TestCases = 

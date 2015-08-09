@@ -25,10 +25,11 @@ CREATE TYPE EQUIPMENTS_T AS TABLE (
 
 --機器構成
 CREATE TYPE EQUIPMENT_CONFIGURATIONS_T AS TABLE (
-   id          int
-  ,project_id  int
-  ,equip_name  nvarchar(20)
-  ,rating      float
-  ,unit_count  int
-  ,enable_flag bit
+   id            int
+  ,project_id    int
+  ,maker_name    nvarchar(20)
+  ,equip_name    nvarchar(20)
+  ,rating        decimal(4, 1)
+  ,unit_count    int
+  ,irr_temp_flag bit
 )

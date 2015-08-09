@@ -67,15 +67,16 @@ CREATE TABLE PROJECTS (
     ,unique(project_id)
 )
 
---案件詳細情報マスタ
+--案件機器構成マスタ
 CREATE TABLE EQUIPMENT_CONFIGURATIONS (
-   id          int          NOT NULL identity
-  ,project_id  int          NOT NULL
-  ,equip_name  nvarchar(20) NULL
-  ,rating      float        NULL
-  ,unit_count  int          NULL
-  ,enable_flag bit          NOT NULL
-  ,upd_date    datetime     NOT NULL
+   id            int           NOT NULL identity
+  ,project_id    int           NOT NULL
+  ,maker_name    nvarchar(20)  NOT NULL
+  ,equip_name    nvarchar(20)  NOT NULL
+  ,rating        decimal(4, 1) NULL
+  ,unit_count    int           NULL
+  ,irr_temp_flag bit           NOT NULL
+  ,upd_date    datetime        NOT NULL
   ,primary key(id, project_id)
 )
 
