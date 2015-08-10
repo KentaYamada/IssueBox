@@ -46,14 +46,15 @@ namespace IssueBox.Models
         }
 
         /// <summary>
-        /// 案件登録
+        /// 案件ID重複チェック
         /// </summary>
-        /// <returns></returns>
-        public bool Save()
+        /// <param name="projectID">案件ID</param>
+        /// <returns>検索結果</returns>
+        public static long ProjectID_DoubleCheck(string projectID)
         {
             try
             {
-                return ModelBase._db.ExecuteStoredProcedure<Project>("SaveProject", this) > 0 ? true : false;
+                return ModelBase._db.ExecuteScalor<int, ProjectCondition>("select count(p.project_id) AS A from PROJECTS AS p WHERE p.project_id = @ProjectID", new ProjectCondition() { ProjectID = projectID });
             }
             catch
             {
@@ -61,6 +62,10 @@ namespace IssueBox.Models
             }
         }
 
+        /// <summary>
+        /// 案件登録
+        /// </summary>
+        /// <returns></returns>
         public bool Save(List<EquipmentConfiguration> models)
         {
             try

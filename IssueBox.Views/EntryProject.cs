@@ -128,6 +128,22 @@ namespace IssueBox.Views
                 return false;
             }
 
+            //案件ID重複チェック
+            try
+            {
+                var count = Project.ProjectID_DoubleCheck(this.txtProjectID.Text);
+                if (count > 0)
+                {
+                    MessageBox.Show("案件IDが重複しています。");
+                    this.txtProjectID.Focus();
+                    return false;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+
             return true;
         }
     }
