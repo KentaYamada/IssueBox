@@ -11,6 +11,9 @@ using IssueBox.Views.Infrastructure;
 
 namespace IssueBox.Views
 {
+    /// <summary>
+    /// 案件登録画面
+    /// </summary>
     public partial class EntryProject : EntryFormBase
     {
         private Project _project = null;
@@ -32,9 +35,11 @@ namespace IssueBox.Views
             this.txtProjectID.DataBindings.Add("Text", this._project, "ProjectID");
             this.txtName.DataBindings.Add("Text", this._project, "Name");
             this.grpEnable.DataBindings.Add("Enable", this._project, "EnableFlag");
-            //this.grdDetail.DataSource = new BindingList<EquipmentConfiguration>(this._eqipConf);
         }
 
+        /// <summary>
+        /// ロードイベント
+        /// </summary>
         private void EntryProject_Load(object sender, EventArgs e)
         {
             try
@@ -49,6 +54,9 @@ namespace IssueBox.Views
             }
         }
 
+        /// <summary>
+        /// 「保存」クリックイベント
+        /// </summary>
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!this.Validation()) { return; }
@@ -58,20 +66,23 @@ namespace IssueBox.Views
                 this._project.Save(this._eqipConf);
                 MessageBox.Show("登録しました。");
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
+                Logger.Error(ex);
             }
         }
 
+        /// <summary>
+        /// 「メーカー」値変更イベント
+        /// </summary>
         private void cmbMaker_SelectedValueChanged(object sender, EventArgs e)
         {
-            //ToDo:メーカーに紐づく機器一覧を表示
             this.lstEquipments.Items.Clear();
 
             try
             {
-                int id = (int)this.cmbMaker.SelectedValue;
+                int id = Convert.ToInt32(this.cmbMaker.SelectedValue);
                 this._equipments = Equipment.FindEquipmentsBy(id);
                 this._equipments.ForEach(x => this.lstEquipments.Items.Add(x.Name));
             }
@@ -81,6 +92,9 @@ namespace IssueBox.Views
             }
         }
 
+        /// <summary>
+        /// 機器ダブルクリックイベント
+        /// </summary>
         private void lstEquipments_DoubleClick(object sender, EventArgs e)
         {
             if (this.lstEquipments.SelectedIndex < 0) { return; }
@@ -89,13 +103,12 @@ namespace IssueBox.Views
             {
                 MakerName = this.cmbMaker.Text,
                 EquipName = this.lstEquipments.SelectedItem.ToString(),
-                Rating = this._equipments[this.lstEquipments.SelectedIndex].Rating,
+                Rating = this._equipments[this.lstEquipments.SelectedIndex].Rating
             };
 
             //↓↓↓Fix Me↓↓↓
             this._eqipConf.Add(model);
             this.grdDetail.DataSource = new BindingList<EquipmentConfiguration>(this._eqipConf);
-            this.grdDetail.Update();
         }
 
         /// <summary>

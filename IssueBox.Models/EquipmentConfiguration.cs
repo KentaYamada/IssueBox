@@ -48,7 +48,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.FindBy<EquipmentConfiguration, Condition>("Exec FindEquipmentConfigurationBy @ProjectID", null);
+                return ModelBase._db.FindBy<EquipmentConfiguration, EquipmentConfiguration>("Exec FindEquipmentConfigurationBy @ProjectID", new EquipmentConfiguration() { ProjectID = projectID });
             }
             catch
             {
