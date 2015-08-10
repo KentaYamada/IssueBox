@@ -238,6 +238,42 @@ namespace IssueBox.Models.Infrastructure
         }
 
         /// <summary>
+        /// スカラー値取得
+        /// </summary>
+        /// <param name="commandText"></param>
+        /// <returns>スカラー値</returns>
+        public TResult ExecuteScalor<TResult>(string commandText)
+        {
+            try
+            {
+                return base.Database.SqlQuery<TResult>(commandText).Single();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// スカラー値取得
+        /// </summary>
+        /// <param name="commandText"></param>
+        /// <returns>スカラー値</returns>
+        public TResult ExecuteScalor<TResult, TModel>(string commandText, TModel model)
+            where TModel :class
+        {
+            try
+            {
+                var param = this.ToSqlParameters(model);
+                return base.Database.SqlQuery<TResult>(commandText, param).Single();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// ストアド・プロシージャ実行
         /// </summary>
         /// <typeparam name="TModel"></typeparam>
