@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,6 +15,10 @@ namespace IssueBox.Views
     {
         private Project _project = null;
 
+        private List<Equipment> _equipments = null;
+
+        private List<EquipmentConfiguration> _eqipConf = null;
+
         public EntryProject()
             :this(new Project())
         { }
@@ -22,9 +28,11 @@ namespace IssueBox.Views
             InitializeComponent();
 
             this._project = project;
+            this._eqipConf = new List<EquipmentConfiguration>();
             this.txtProjectID.DataBindings.Add("Text", this._project, "ProjectID");
             this.txtName.DataBindings.Add("Text", this._project, "Name");
             this.grpEnable.DataBindings.Add("Enable", this._project, "EnableFlag");
+            //this.grdDetail.DataSource = new BindingList<EquipmentConfiguration>(this._eqipConf);
         }
 
         private void EntryProject_Load(object sender, EventArgs e)
@@ -32,33 +40,12 @@ namespace IssueBox.Views
             try
             {
                 this.cmbMaker.DataSource = DropDownModel.FindAllData(TABLE_NAME.MAKERS);
+                this._eqipConf = EquipmentConfiguration.FindEquipmentConfigurationBy(this._project.ID);
+                this.grdDetail.DataSource = new BindingList<EquipmentConfiguration>(this._eqipConf);
             }
             catch(SqlException ex)
             {
                 Logger.Error(ex);
-            }
-        }
-
-        private void cmbMaker_SelectedValueChanged(object sender, EventArgs e)
-        {
-            //ToDo:メーカーに紐づく機器一覧を表示
-            try
-            {
-                int id = (int)this.cmbMaker.SelectedValue;
-                this.lstEquipments.DisplayMember = "Name";
-                this.lstEquipments.DataSource = Equipment.FindEquipmentsBy(id);
-            }
-            catch (SqlException ex)
-            {
-                Logger.Error(ex);
-            }
-        }
-
-        private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            if (e.NewValue == CheckState.Checked)
-            {
-                //ToDo:チェックされた機器情報をDgvに表示
             }
         }
 
@@ -68,13 +55,47 @@ namespace IssueBox.Views
 
             try
             {
-                this._project.Save();
+                this._project.Save(this._eqipConf);
                 MessageBox.Show("登録しました。");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void cmbMaker_SelectedValueChanged(object sender, EventArgs e)
+        {
+            //ToDo:メーカーに紐づく機器一覧を表示
+            this.lstEquipments.Items.Clear();
+
+            try
+            {
+                int id = (int)this.cmbMaker.SelectedValue;
+                this._equipments = Equipment.FindEquipmentsBy(id);
+                this._equipments.ForEach(x => this.lstEquipments.Items.Add(x.Name));
+            }
+            catch (SqlException ex)
+            {
+                Logger.Error(ex);
+            }
+        }
+
+        private void lstEquipments_DoubleClick(object sender, EventArgs e)
+        {
+            if (this.lstEquipments.SelectedIndex < 0) { return; }
+
+            var model = new EquipmentConfiguration()
+            {
+                MakerName = this.cmbMaker.Text,
+                EquipName = this.lstEquipments.SelectedItem.ToString(),
+                Rating = this._equipments[this.lstEquipments.SelectedIndex].Rating,
+            };
+
+            //↓↓↓Fix Me↓↓↓
+            this._eqipConf.Add(model);
+            this.grdDetail.DataSource = new BindingList<EquipmentConfiguration>(this._eqipConf);
+            this.grdDetail.Update();
         }
 
         /// <summary>

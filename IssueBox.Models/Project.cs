@@ -60,5 +60,17 @@ namespace IssueBox.Models
                 throw;
             }
         }
+
+        public bool Save(List<EquipmentConfiguration> models)
+        {
+            try
+            {
+                return ModelBase._db.ExecuteStoredProcedure<Project, EquipmentConfiguration>("SaveProject", this, models) > 0 ? true : false;
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }
