@@ -32,6 +32,18 @@ namespace IssueBox.Models
 
         #endregion
 
+        public static List<Product> FindAllServices()
+        {
+            try
+            {
+                return ModelBase._db.FindAll<Product>("Exec FindAllServices");
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         /// <summary>
         /// 製品一覧取得
         /// </summary>
