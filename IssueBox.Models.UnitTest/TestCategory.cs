@@ -98,7 +98,7 @@ namespace IssueBox.Models.UnitTest
         [TestCaseSource("TestCases")]
         public void TestFindCategoriesBy(int expected, Condition condition)
         {
-            var data = Category.FindByCategories(condition);
+            var data = Category.FindCategoriesBy(condition);
             Assert.AreEqual(expected, data.Count);
         }
     }
