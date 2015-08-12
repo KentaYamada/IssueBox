@@ -115,7 +115,7 @@ namespace IssueBox.Views
         {
             try
             {
-                this._categories = Category.FindByCategories(this._cond);
+                this._categories = Category.FindCategoriesBy(this._cond);
             }
             catch
             {
