@@ -50,7 +50,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.ExecuteStoredProcedure<Maker, Equipment>("SaveMaker", this, equipments) > 0 ? true : false;
+                return ModelBase._db.Execute<Maker, Equipment>("Exec SaveMaker @ID, @Name, @EnableFlag, @Equipments", this, equipments) > 0 ? true : false;
             }
             catch
             {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace IssueBox.Models
 {
@@ -29,7 +30,7 @@ namespace IssueBox.Models
         /// </summary>
         /// <param name="condition">検索条件</param>
         /// <returns>条件に合致するカテゴリ一覧</returns>
-        public static List<Category> FindByCategories(Condition condition)
+        public static List<Category> FindCategoriesBy(Condition condition)
         {
             try
             {
@@ -49,7 +50,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.ExecuteStoredProcedure<Category>("SaveCategory", this) > 0 ? true : false;
+                return ModelBase._db.Execute<Category>("Exec SaveCategory @ID, @Name, @EnableFlag", this) > 0 ? true : false;
             }
             catch
             {

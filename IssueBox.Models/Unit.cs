@@ -28,7 +28,7 @@ namespace IssueBox.Models
         /// 単位一覧取得
         /// </summary>
         /// <param name="condition">検索条件</param>
-        /// <returns></returns>
+        /// <returns>検索条件に合致した単位一覧</returns>
         public static List<Unit> FindUnitsBy(Condition condition)
         {
             try
@@ -49,7 +49,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.ExecuteStoredProcedure<Unit>("SaveUnit", this) > 0 ? true : false;
+                return ModelBase._db.Execute<Unit>("Exec SaveUnit @ID, @Name, @EnableFlag", this) > 0 ? true : false;
             }
             catch
             {

@@ -70,7 +70,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.ExecuteStoredProcedure<Project, EquipmentConfiguration>("SaveProject", this, models) > 0 ? true : false;
+                return ModelBase._db.Execute<Project, EquipmentConfiguration>("Exec SaveProject @ID, @ProjectID, @Name, @EnableFlag, @EquipmentConfigurations", this, models) > 0 ? true : false;
             }
             catch
             {

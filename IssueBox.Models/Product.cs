@@ -32,6 +32,10 @@ namespace IssueBox.Models
 
         #endregion
 
+        /// <summary>
+        /// サービス取得
+        /// </summary>
+        /// <returns></returns>
         public static List<Product> FindAllServices()
         {
             try
@@ -64,12 +68,12 @@ namespace IssueBox.Models
         /// <summary>
         /// 製品登録
         /// </summary>
-        /// <returns></returns>
+        /// <returns>True:成功 / False:失敗</returns>
         public bool Save()
         {
             try
             {
-                return ModelBase._db.ExecuteStoredProcedure<Product>("SaveProduct", this) > 0 ? true : false;
+                return ModelBase._db.Execute<Product>("Exec SaveProduct @ID, @Name, @Version, @ProductType, @EnableFlag", this) > 0 ? true : false;
             }
             catch
             {

@@ -57,7 +57,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.ExecuteStoredProcedure<Member>("SaveMember", this) > 0 ? true : false;
+                return ModelBase._db.Execute<Member>("Exec SaveMember @ID, @Name, @LoginID, @LoginPassword, @EnableFlag", this) > 0 ? true : false;
             }
             catch
             {

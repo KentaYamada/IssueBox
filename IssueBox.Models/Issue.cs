@@ -7,13 +7,8 @@ namespace IssueBox.Models
 	/// <summary>
 	/// 課題モデル
 	/// </summary>
-	public class Issue
+	public class Issue : ModelBase
 	{
-        private SQLCommander _db = null;
-
-        /// <summary>課題ID</summary>
-        public int ID { get; set; }
-
 		/// <summary>案件ID</summary>
 		public int ProjectID { get; set; }
 
@@ -63,7 +58,6 @@ namespace IssueBox.Models
             this.Status = 1;
             this.FinishedDate = null;
             this.Comment = "";
-            this._db = new SQLCommander();
         }
 
         #endregion
@@ -76,7 +70,11 @@ namespace IssueBox.Models
         {
             try
             {
-                return this._db.ExecuteStoredProcedure<Issue>("SaveIssue", this) > 0 ? true : false;
+                return ModelBase._db.Execute<Issue>(@"Exec SaveIssue @ID, @ProjectID, @OriginationDate,
+                                                                     @CategoryID, @ProductID, @IssuingMemberID,
+                                                                     @ResponcedMemberID, @CheckedMemberID, @Deadline,
+                                                                     @FinishedDate, @Status, @Comment",
+                                                   this) > 0 ? true : false;
             }
             catch
             {
@@ -91,7 +89,7 @@ namespace IssueBox.Models
         /// <returns>検索条件に合致した課題一覧</returns>
         public static List<IssueSearch> FindIssuesBy(IssueCondition condition)
         {
-            #region SQL FixMe SQLファイル化 or else
+            #region FixMe ストアド化
 
             string sql = @"
                         DECLARE @Enable bit
@@ -147,7 +145,7 @@ namespace IssueBox.Models
 
             try
             {
-                return model._db.FindBy<IssueSearch, IssueCondition>(sql, condition);
+                return ModelBase._db.FindBy<IssueSearch, IssueCondition>(sql, condition);
             }
             catch
             {
