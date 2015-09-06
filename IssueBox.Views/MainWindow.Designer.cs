@@ -45,6 +45,7 @@
             this.menuIO = new System.Windows.Forms.ToolStripMenuItem();
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.menuSearchCommunicationMethod = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -100,7 +101,8 @@
             this.menuSearchMaker,
             this.menuSearchMember,
             this.menuSearchCategory,
-            this.menuSearchUnit});
+            this.menuSearchUnit,
+            this.menuSearchCommunicationMethod});
             this.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
             this.設定ToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.設定ToolStripMenuItem.Text = "設定";
@@ -171,6 +173,13 @@
             this.chart1.Text = "chart1";
             this.chart1.Visible = false;
             // 
+            // menuSearchCommunicationMethod
+            // 
+            this.menuSearchCommunicationMethod.Name = "menuSearchCommunicationMethod";
+            this.menuSearchCommunicationMethod.Size = new System.Drawing.Size(152, 22);
+            this.menuSearchCommunicationMethod.Text = "通信方式";
+            this.menuSearchCommunicationMethod.Click += new System.EventHandler(this.menu_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -209,5 +218,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuSearchProject;
         private System.Windows.Forms.ToolStripMenuItem menuHome;
         private System.Windows.Forms.ToolStripMenuItem menuSearchUnit;
+        private System.Windows.Forms.ToolStripMenuItem menuSearchCommunicationMethod;
     }
 }

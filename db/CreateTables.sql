@@ -56,6 +56,11 @@ BEGIN
   DROP TABLE dbo.UNITS
 END
 
+IF OBJECT_ID('dbo.COMMUNICATION_METHOD') IS NOT NULL
+BEGIN
+  DROP TABLE dbo.COMMUNICATION_METHOD
+END
+
 --案件マスタ
 CREATE TABLE PROJECTS (
      id            int          NOT NULL identity
@@ -137,6 +142,15 @@ CREATE TABLE UNITS (
     ,enable_flag   bit          NOT NULL
     ,upd_date      datetime     NOT NULL
     ,primary key(id)
+)
+
+--通信方式マスタ
+CREATE TABLE COMMUNICATION_METHOD (
+    id          int          NOT NULL identity
+   ,name        nvarchar(40) NOT NULL
+   ,enable_flag bit          NOT NULL
+   ,upd_date    datetime     NOT NULL
+   ,primary key(id)
 )
 
 --課題テーブル

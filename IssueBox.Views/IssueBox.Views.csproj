@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntryCommunicationMethod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntryCommunicationMethod.Designer.cs">
+      <DependentUpon>EntryCommunicationMethod.cs</DependentUpon>
+    </Compile>
     <Compile Include="EntryCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,12 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchCommunicationMethod.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchCommunicationMethod.Designer.cs">
+      <DependentUpon>SearchCommunicationMethod.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchCategory.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -185,6 +197,9 @@
     <Compile Include="SearchUnit.Designer.cs">
       <DependentUpon>SearchUnit.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EntryCommunicationMethod.resx">
+      <DependentUpon>EntryCommunicationMethod.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EntryCategory.resx">
       <DependentUpon>EntryCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -233,6 +248,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SearchCommunicationMethod.resx">
+      <DependentUpon>SearchCommunicationMethod.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SearchCategory.resx">
       <DependentUpon>SearchCategory.cs</DependentUpon>
     </EmbeddedResource>

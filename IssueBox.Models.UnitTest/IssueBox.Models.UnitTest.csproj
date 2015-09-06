@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestCategory.cs" />
+    <Compile Include="TestCommunicationMethod.cs" />
     <Compile Include="TestEquipment.cs" />
     <Compile Include="TestIssue.cs" />
     <Compile Include="TestMaker.cs" />

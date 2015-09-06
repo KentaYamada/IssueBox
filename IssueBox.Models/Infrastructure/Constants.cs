@@ -7,13 +7,14 @@ namespace IssueBox.Models.Infrastructure
     /// </summary>
     public enum TABLE_NAME
     {
-        CATEGORIES = 0,  //カテゴリマスタ
-        EQUIPMENTS,      //機器マスタ
-        ISSUE,           //課題テーブル
-        MAKERS,          //メーカーマスタ    
-        MEMBERS,         //メンバーマスタ
-        PRODUCTS,        //製品マスタ
-        PROJECTS         //案件マスタ
+        CATEGORIES = 0,       //カテゴリマスタ
+        COMMUNICATION_METHOD, //通信方式マスタ
+        EQUIPMENTS,           //機器マスタ
+        ISSUE,                //課題テーブル
+        MAKERS,               //メーカーマスタ    
+        MEMBERS,              //メンバーマスタ
+        PRODUCTS,             //製品マスタ
+        PROJECTS              //案件マスタ
     }
 
     /// <summary>

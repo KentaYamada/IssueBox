@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Category.cs" />
+    <Compile Include="CommunicationMethod.cs" />
     <Compile Include="Condition.cs" />
     <Compile Include="DropDownModel.cs" />
     <Compile Include="Equipment.cs" />
