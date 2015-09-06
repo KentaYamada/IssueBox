@@ -20,13 +20,19 @@ namespace IssueBox.Models.Infrastructure
 
         private DbContextTransaction _currentTransaction = null;
 
+        private List<SqlParameter> _params = null;
+
+        private SqlParameter[] GetSqlParams { get { return this._params.ToArray(); } }
+
         #endregion
 
         #region Default constructor
 
         public SQLCommander()
             : base(ConnectString)
-        { }
+        {
+            this._params = new List<SqlParameter>();
+        }
 
         #endregion
 
@@ -43,76 +49,66 @@ namespace IssueBox.Models.Infrastructure
         }
 
         /// <summary>
-        /// Model→SQLParameter変換
+        /// SQLParameter変換
         /// </summary>
         /// <param name="model"></param>
-        /// <returns></returns>
-        private SqlParameter[] ToSqlParameters<TModel>(TModel model)
+        private void ToSqlParameters<TModel>(TModel model)
            where TModel : class
         {
             if (model == null) { throw new NullReferenceException(); }
 
-            var parameters = typeof(TModel).GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                                           .Select(x => new SqlParameter(string.Format("@{0}", x.Name), this.ToDBNull(x.GetValue(model, null)))
-                                                                         { Direction = ParameterDirection.Input } )
-                                           .ToArray();
-            return parameters;
+            var target = typeof(TModel).GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                                       .ToList()
+                                       .Select(p => new SqlParameter()
+                                       {
+                                           Direction = ParameterDirection.Input,
+                                           ParameterName = string.Format("@{0}", p.Name),
+                                           Value = this.ToDBNull(p.GetValue(model, null))
+                                       })
+                                       .ToArray();
+
+            this._params.AddRange(target);
         }
 
         /// <summary>
         /// テーブル型パラメータ変換
         /// </summary>
         /// <param name="models"></param>
-        /// <returns></returns>
-        private SqlParameter ToTableParameter<TModel>(List<TModel> models)
+        private void ToTableParameter<TModel>(List<TModel> models)
             where TModel : class
         {
             if (models == null) { throw new NullReferenceException(); }
-
-            var properties = typeof(TModel).GetProperties().ToList();
+            
             var table = new DataTable();
 
-            //↓↓↓FixMe:Need refactoring↓↓↓
             //列生成
-            //リフレクションが派生クラス→基底クラスというアクセス手順を踏むため、基底クラスのプロパティから取得する
-            var baseType = typeof(TModel).BaseType.GetProperties().ToList();
-            baseType.ForEach(x => table.Columns.Add(x.Name, x.PropertyType));
-
-            foreach (var p in properties)
-            {
-                foreach (var q in baseType)
-                {
-                    if (p.Name != q.Name)
-                    {
-                        table.Columns.Add(p.Name, p.PropertyType);
-                    }
-                }
-            }
+            //リフレクションは派生クラス→基底クラスの順番でプロパティを読み込むので、
+            //基底クラス→派生クラスの順番で列を生成するよう実装
+            var list = new List<PropertyInfo>();
+            var props = typeof(TModel).BaseType.GetProperties().ToList();
+            
+            list.AddRange(props);
+            props.ForEach(v => list.AddRange(typeof(TModel).GetProperties().ToList().FindAll(x => x.Name != v.Name)));
+            list.ForEach(x => table.Columns.Add(x.Name, x.PropertyType));
 
             //行データ挿入
             foreach (var m in models)
             {
                 var row = table.NewRow();
-
-                for (int i = 0; i < table.Columns.Count; i++)
-                {
-                    row[i] = this.ToDBNull(properties.Where(x => x.Name == table.Columns[i].Caption).First().GetValue(m, null));
-                }
-
+                list.ForEach(x => row[x.Name] = this.ToDBNull(x.GetValue(m, null)));
                 table.Rows.Add(row);
             }
-
-            //↑↑↑Fix Me↑↑↑
 
             var param = new SqlParameter()
             {
                 ParameterName = string.Format("@{0}s", typeof(TModel).Name),
                 Direction = ParameterDirection.Input,
                 SqlDbType = SqlDbType.Structured,
+                TypeName = string.Format("{0}S_T", typeof(TModel).Name.ToUpper()),
                 Value = table
             };
 
-            return param;
+            this._params.Add(param);
         }
 
         #endregion
@@ -122,60 +118,30 @@ namespace IssueBox.Models.Infrastructure
         /// <summary>
         /// コマンド実行
         /// </summary>
-        /// <param name="sql">SQL文 or ストアドコール</param>
+        /// <param name="sql">SQL文 or ストアド・プロシージャコール</param>
         /// <returns>影響行数</returns>
         public int Execute(string sql)
         {
-            try
-            {
-                return base.Database.ExecuteSqlCommand(sql);
-            }
-            catch
-            {
-                throw;
-            }
+            return base.Database.ExecuteSqlCommand(sql);
         }
 
         /// <summary>
         /// コマンド実行
         /// </summary>
-        /// <param name="sql">SQL文 or ストアドコール</param>
-        /// <param name="model"></param>
+        /// <param name="sql">SQL文 or ストアド・プロシージャコール</param>
         /// <returns>影響行数</returns>
         public int Execute<TModel>(string sql, TModel model)
             where TModel : class
         {
+            this.ToSqlParameters(model);
+
             try
             {
-                var args = this.ToSqlParameters(model);
-
-                return base.Database.ExecuteSqlCommand(sql, args);
+                return base.Database.ExecuteSqlCommand(sql, this.GetSqlParams);
             }
-            catch
+            finally
             {
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// コマンド実行
-        /// </summary>
-        /// <param name="sql"></param>
-        /// <param name="models"></param>
-        /// <returns>影響行数</returns>
-        public int Execute<TModel>(string sql, List<TModel> models)
-            where TModel : class
-        {
-            try
-            {
-                var arg = this.ToTableParameter(models);
-
-                return base.Database.ExecuteSqlCommand(sql, arg);
-
-            }
-            catch
-            {
-                throw;
+                this._params.Clear();
             }
         }
 
@@ -183,63 +149,21 @@ namespace IssueBox.Models.Infrastructure
         /// コマンド実行
         /// </summary>
         /// <param name="sql">SQL文 or ストアド・プロシージャコール</param>
-        /// <param name="model">DBへ渡すモデル</param>
-        /// <param name="models">DBへ渡すリストモデル</param>
-        /// <returns></returns>
+        /// <returns>影響行数</returns>
         public int Execute<TModel, TList>(string sql, TModel model, List<TList> models)
             where TModel : class
             where TList : class
         {
+            this.ToSqlParameters(model);
+            this.ToTableParameter(models);
+
             try
             {
-                var args = this.ToSqlParameters(model);
-                var table = this.ToTableParameter(models);
-
-                var p = new List<SqlParameter>();
-                p.Add(table);
-                p.AddRange(args);
-
-                return base.Database.ExecuteSqlCommand(sql, p);
+                return base.Database.ExecuteSqlCommand(sql, this.GetSqlParams);
             }
-            catch
+            finally
             {
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// スカラー値取得
-        /// </summary>
-        /// <param name="sql"></param>
-        /// <returns>スカラー値</returns>
-        public TResult ExecuteScalor<TResult>(string sql)
-        {
-            try
-            {
-                return base.Database.SqlQuery<TResult>(sql).Single();
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// スカラー値取得
-        /// </summary>
-        /// <param name="sql"></param>
-        /// <returns>スカラー値</returns>
-        public TResult ExecuteScalor<TResult, TModel>(string sql, TModel model)
-            where TModel :class
-        {
-            try
-            {
-                var param = this.ToSqlParameters(model);
-                return base.Database.SqlQuery<TResult>(sql, param).Single();
-            }
-            catch
-            {
-                throw;
+                this._params.Clear();
             }
         }
 
@@ -248,94 +172,98 @@ namespace IssueBox.Models.Infrastructure
         #region Read data
 
         /// <summary>
-        /// １件のデータを取得します
-        /// </summary>
-        /// <typeparam name="TResult">戻り値の型情報(クラス)</typeparam>
-        /// <param name="sql">SQL文</param>
-        /// <returns>取得データ</returns>
-        public TResult Find<TResult>(string sql)
-            where TResult : class
-        {
-            List<TResult> model = null;
-
-            try
-            {
-                model = this.FindAll<TResult>(sql);
-            }
-            catch
-            {
-                throw;
-            }
-
-            return model.Count < 1 ? null : model.First();
-        }
-
-        /// <summary>
-        /// 条件に合致する１件のデータを取得します
-        /// </summary>
-        /// <typeparam name="TResult">戻り値の型情報(クラス)</typeparam>
-        /// <typeparam name="TCondition">検索条件の型情報(クラス)</typeparam>
-        /// <param name="sql">SQL文</param>
-        /// <param name="condition">検索条件モデル</param>
-        /// <returns>取得データ</returns>
-        public TResult Find<TResult, TCondition>(string sql, TCondition condition)
-            where TResult : class
-            where TCondition : class
-        {
-            List<TResult> model = null;
-
-            try
-            {
-                model = this.FindBy<TResult, TCondition>(sql, condition);
-            }
-            catch
-            {
-                throw;
-            }
-
-            return model.Count < 1 ? null : model.First();
-        }
-
-        /// <summary>
         /// 全てのデータを取得します
         /// </summary>
-        /// <typeparam name="TResult">戻り値の型情報(クラス)</typeparam>
-        /// <param name="sql">SQL文</param>
+        /// <param name="sql">SQL文 or ストアド・プロシージャコール</param>
         /// <returns>取得データ</returns>
-        public List<TResult> FindAll<TResult>(string sql)
+        public List<TResult> ReadAll<TResult>(string sql)
             where TResult : class
         {
-            try
-            {
-                return base.Database.SqlQuery<TResult>(sql).ToList();
-            }
-            catch
-            {
-                throw;
-            }
+            return base.Database.SqlQuery<TResult>(sql).ToList();
         }
 
         /// <summary>
         /// 条件に合致するデータを取得します
         /// </summary>
-        /// <typeparam name="TResult">戻り値の型情報(クラス)</typeparam>
-        /// <typeparam name="TCondition">検索条件の型情報(クラス)</typeparam>
-        /// <param name="sql">SQL文</param>
-        /// <param name="condition">検索条件モデル</param>
+        /// <param name="sql">SQL文 or ストアド・プロシージャコール</param>
+        /// <param name="condition">検索条件</param>
         /// <returns>取得データ</returns>
-        public List<TResult> FindBy<TResult, TCondition>(string sql, TCondition condition)
+        public List<TResult> ReadAny<TResult, TCondition>(string sql, TCondition condition)
             where TResult : class
             where TCondition : class
         {
-            var args = this.ToSqlParameters(condition);
+            this.ToSqlParameters(condition);
 
             try
             {
-                return this.Database.SqlQuery<TResult>(sql, args).ToList();
+                return this.Database.SqlQuery<TResult>(sql, this.GetSqlParams).ToList();
             }
-            catch
+            finally
             {
-                throw;
+                this._params.Clear();
+            }
+        }
+
+        /// <summary>
+        /// １件のデータを取得します
+        /// </summary>
+        /// <param name="sql">SQL文 or ストアド・プロシージャコール</param>
+        /// <returns>取得データ</returns>
+        public TResult ReadOne<TResult>(string sql)
+            where TResult : class
+        {
+            return base.Database.SqlQuery<TResult>(sql).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// 条件に合致する１件のデータを取得します
+        /// </summary>
+        /// <param name="sql">SQL文 or ストアド・プロシージャコール</param>
+        /// <param name="condition">検索条件</param>
+        /// <returns>取得データ</returns>
+        public TResult ReadOne<TResult, TCondition>(string sql, TCondition condition)
+            where TResult : class
+            where TCondition : class
+        {
+            this.ToSqlParameters(condition);
+
+            try
+            {
+                return base.Database.SqlQuery<TResult>(sql, this.GetSqlParams).FirstOrDefault();
+            }
+            finally
+            {
+                this._params.Clear();
+            }
+        }
+
+        /// <summary>
+        /// 単一値取得
+        /// </summary>
+        /// <param name="sql">SQL文 or ストアド・プロシージャコール</param>
+        /// <returns>単一値</returns>
+        public TResult ReadScalor<TResult>(string sql)
+        {
+            return base.Database.SqlQuery<TResult>(sql).SingleOrDefault();
+        }
+
+        /// <summary>
+        /// 単一値取得
+        /// </summary>
+        /// <param name="sql">SQL文 or ストアド・プロシージャコール</param>
+        /// <returns>単一値</returns>
+        public TResult ReadScalor<TResult, TCondition>(string sql, TCondition condition)
+            where TCondition : class
+        {
+            this.ToSqlParameters(condition);
+
+            try
+            {
+                return base.Database.SqlQuery<TResult>(sql, this.GetSqlParams).SingleOrDefault();
+            }
+            finally
+            {
+                this._params.Clear();
             }
         }
 
