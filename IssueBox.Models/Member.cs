@@ -41,7 +41,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.FindBy<Member, Condition>("Exec FindMembersBy @Name, @EnableFlag", condition);
+                return ModelBase._db.ReadAny<Member, Condition>("Exec FindMembersBy @Name, @EnableFlag", condition);
             }
             catch
             {
@@ -74,7 +74,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.Find<Member, Member>("Exec LoginAuthorication @LoginID, @LoginPassword", condition);
+                return ModelBase._db.ReadOne<Member, Member>("Exec LoginAuthorication @LoginID, @LoginPassword", condition);
             }
             catch
             {

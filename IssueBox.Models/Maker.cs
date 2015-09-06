@@ -33,7 +33,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.FindBy<Maker, Condition>("Exec FindMakersBy @Name, @EnableFlag", condition);
+                return ModelBase._db.ReadAny<Maker, Condition>("Exec FindMakersBy @Name, @EnableFlag", condition);
             }
             catch
             {

@@ -40,6 +40,22 @@ namespace IssueBox.Models
         #endregion
 
         /// <summary>
+        /// 機器構成情報削除
+        /// </summary>
+        /// <returns></returns>
+        public bool DeleteEquipmentConfiguration()
+        {
+            try
+            {
+                return ModelBase._db.Execute("Exec DeleteEquipmentConfigurationBy @ID", this) > 0 ? true : false;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// 機器構成情報取得
         /// </summary>
         /// <param name="projectID">案件ID</param>
@@ -48,7 +64,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.FindBy<EquipmentConfiguration, EquipmentConfiguration>("Exec FindEquipmentConfigurationBy @ProjectID", new EquipmentConfiguration() { ProjectID = projectID });
+                return ModelBase._db.ReadAny<EquipmentConfiguration, EquipmentConfiguration>("Exec FindEquipmentConfigurationBy @ProjectID", new EquipmentConfiguration() { ProjectID = projectID });
             }
             catch
             {

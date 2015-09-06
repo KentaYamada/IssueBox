@@ -37,7 +37,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.FindBy<Project, ProjectCondition>("Exec FindProjectsBy @ProjectID, @Name, @EnableFlag", condition);
+                return ModelBase._db.ReadAny<Project, ProjectCondition>("Exec FindProjectsBy @ProjectID, @Name, @EnableFlag", condition);
             }
             catch
             {
@@ -54,7 +54,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.ExecuteScalor<int, ProjectCondition>("select count(p.project_id) AS A from PROJECTS AS p WHERE p.project_id = @ProjectID", new ProjectCondition() { ProjectID = projectID });
+                return ModelBase._db.ReadScalor<int, ProjectCondition>("select count(p.project_id) AS A from PROJECTS AS p WHERE p.project_id = @ProjectID", new ProjectCondition() { ProjectID = projectID });
             }
             catch
             {

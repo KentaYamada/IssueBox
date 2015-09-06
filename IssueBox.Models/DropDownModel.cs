@@ -42,7 +42,7 @@ namespace IssueBox.Models
 
             try
             {
-                return model._db.FindAll<DropDownModel>(sql);
+                return model._db.ReadAll<DropDownModel>(sql);
             }
             catch
             {

@@ -34,7 +34,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.FindBy<Category, Condition>("Exec FindCategoriesBy @Name, @EnableFlag", condition);
+                return ModelBase._db.ReadAny<Category, Condition>("Exec FindCategoriesBy @Name, @EnableFlag", condition);
             }
             catch
             {

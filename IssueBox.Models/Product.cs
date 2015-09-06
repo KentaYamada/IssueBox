@@ -40,7 +40,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.FindAll<Product>("Exec FindAllServices");
+                return ModelBase._db.ReadAll<Product>("Exec FindAllServices");
             }
             catch
             {
@@ -57,7 +57,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.FindBy<Product, Condition>("Exec FindProductsBy @Name, @EnableFlag", condition);
+                return ModelBase._db.ReadAny<Product, Condition>("Exec FindProductsBy @Name, @EnableFlag", condition);
             }
             catch
             {

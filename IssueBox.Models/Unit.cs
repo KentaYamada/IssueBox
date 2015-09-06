@@ -33,7 +33,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.FindBy<Unit, Condition>("Exec FindUnitsBy @Name, @EnableFlag", condition);
+                return ModelBase._db.ReadAny<Unit, Condition>("Exec FindUnitsBy @Name, @EnableFlag", condition);
             }
             catch
             {

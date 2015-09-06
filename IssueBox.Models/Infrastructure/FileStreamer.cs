@@ -17,9 +17,18 @@ namespace IssueBox.Models.Infrastructure
             return "";
         }
 
-        public static bool Write(string path)
+        private static void Write(string path, string value)
         {
-            return true;
+            using (var stream = new StreamWriter(path, true, Encoding.GetEncoding("shift_jis")))
+            {
+                stream.Write(value);
+            }
+        }
+
+        public static bool ExportCsv<TModel>(string path, List<TModel> models)
+            where TModel : class
+        {
+            throw new NotImplementedException();
         }
     }
 }

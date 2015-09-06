@@ -145,7 +145,7 @@ namespace IssueBox.Models
 
             try
             {
-                return ModelBase._db.FindBy<IssueSearch, IssueCondition>(sql, condition);
+                return ModelBase._db.ReadAny<IssueSearch, IssueCondition>(sql, condition);
             }
             catch
             {

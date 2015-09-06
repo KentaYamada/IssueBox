@@ -37,7 +37,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.FindBy<Equipment, Maker>("Exec FindEquipmentsBy @ID", new Maker() { ID = makerID });
+                return ModelBase._db.ReadAny<Equipment, Maker>("Exec FindEquipmentsBy @ID", new Maker() { ID = makerID });
             }
             catch
             {
