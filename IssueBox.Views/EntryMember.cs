@@ -7,6 +7,9 @@ using IssueBox.Views.Infrastructure;
 
 namespace IssueBox.Views
 {
+    /// <summary>
+    /// メンバー設定画面
+    /// </summary>
     public partial class EntryMember : EntryFormBase
     {
         private Member _member = null;
@@ -20,12 +23,7 @@ namespace IssueBox.Views
         public EntryMember(Member member)
         {
             InitializeComponent();
-
-            this._member = member;
-            this.txtName.DataBindings.Add("Text", this._member, "Name");
-            this.txtLoginID.DataBindings.Add("Text", this._member, "LoginID");
-            this.txtLoginPW.DataBindings.Add("Text", this._member, "LoginPassword");
-            this.grpEnable.DataBindings.Add("Enable", this._member, "EnableFlag");
+            this.Initialize(member);
         }
 
         #endregion
@@ -44,6 +42,7 @@ namespace IssueBox.Views
             {
                 this._member.Save();
                 MessageBox.Show("登録しました。");
+                this.Initialize(new Member());
             }
             catch (Exception ex)
             {
@@ -52,9 +51,24 @@ namespace IssueBox.Views
         }
 
         /// <summary>
+        /// 初期設定
+        /// </summary>
+        private void Initialize(Member member)
+        {
+            base.ClearBindings(this.Controls);
+
+            this._member = null;
+            this._member = member;
+            this.txtName.DataBindings.Add("Text", this._member, "Name");
+            this.txtLoginID.DataBindings.Add("Text", this._member, "LoginID");
+            this.txtLoginPW.DataBindings.Add("Text", this._member, "LoginPassword");
+            this.grpEnable.DataBindings.Add("Enable", this._member, "EnableFlag");
+            this.txtName.Focus();
+        }
+
+        /// <summary>
         /// 入力チェック
         /// </summary>
-        /// <returns>True:OK / False:Error</returns>
         private bool Validation()
         {
             base.errorProvider1.Clear();

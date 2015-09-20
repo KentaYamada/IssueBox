@@ -6,7 +6,7 @@ using IssueBox.Views.Infrastructure;
 namespace IssueBox.Views
 {
     /// <summary>
-    /// 製品登録画面
+    /// 製品設定画面
     /// </summary>
     public partial class EntryProduct : EntryFormBase
     {
@@ -21,12 +21,7 @@ namespace IssueBox.Views
         public EntryProduct(Product product)
         {
             InitializeComponent();
-
-            this._product = product;
-            this.txtName.DataBindings.Add("Text", this._product, "Name");
-            this.txtVersion.DataBindings.Add("Text", this._product, "Version");
-            this.grpStatus.DataBindings.Add("SelectedStatus", this._product, "ProductType");
-            this.grpEnable.DataBindings.Add("Enable", this._product, "EnableFlag");
+            this.Initialize(product);
         }
 
         #endregion
@@ -42,17 +37,34 @@ namespace IssueBox.Views
             {
                 this._product.Save();
                 MessageBox.Show("登録しました。");
+                this.Initialize(new Product());
             }
             catch (Exception ex)
             {
+                Logger.Error(ex);
                 MessageBox.Show(ex.Message);
             }
         }
 
         /// <summary>
+        /// 初期設定
+        /// </summary>
+        private void Initialize(Product product)
+        {
+            base.ClearBindings(this.Controls);
+
+            this._product = null;
+            this._product = product;
+            this.txtName.DataBindings.Add("Text", this._product, "Name");
+            this.txtVersion.DataBindings.Add("Text", this._product, "Version");
+            this.grpStatus.DataBindings.Add("SelectedStatus", this._product, "ProductType");
+            this.grpEnable.DataBindings.Add("Enable", this._product, "EnableFlag");
+            this.txtName.Focus();
+        }
+
+        /// <summary>
         /// 入力チェック
         /// </summary>
-        /// <returns></returns>
         private bool Validation()
         {
             base.errorProvider1.Clear();

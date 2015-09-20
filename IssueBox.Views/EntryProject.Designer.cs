@@ -48,6 +48,7 @@
             this.ConfID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnableFlag = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDetail)).BeginInit();
@@ -55,7 +56,7 @@
             // 
             // btnReturn
             // 
-            this.btnReturn.Location = new System.Drawing.Point(690, 214);
+            this.btnReturn.Location = new System.Drawing.Point(690, 295);
             // 
             // label1
             // 
@@ -100,7 +101,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(609, 214);
+            this.btnSave.Location = new System.Drawing.Point(609, 295);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 28);
             this.btnSave.TabIndex = 8;
@@ -125,7 +126,7 @@
             this.groupBox1.Controls.Add(this.cmbMaker);
             this.groupBox1.Location = new System.Drawing.Point(543, 9);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(222, 199);
+            this.groupBox1.Size = new System.Drawing.Size(222, 280);
             this.groupBox1.TabIndex = 1002;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "機器選択";
@@ -138,7 +139,7 @@
             "XXXXXXXXX1XXXXXXXXX2"});
             this.lstEquipments.Location = new System.Drawing.Point(11, 57);
             this.lstEquipments.Name = "lstEquipments";
-            this.lstEquipments.Size = new System.Drawing.Size(200, 124);
+            this.lstEquipments.Size = new System.Drawing.Size(200, 204);
             this.lstEquipments.TabIndex = 9;
             this.lstEquipments.DoubleClick += new System.EventHandler(this.lstEquipments_DoubleClick);
             // 
@@ -165,12 +166,14 @@
             this.Column1,
             this.ConfID,
             this.ProjectID,
-            this.EnableFlag});
+            this.EnableFlag,
+            this.DeleteBtn});
             this.grdDetail.Location = new System.Drawing.Point(12, 114);
             this.grdDetail.Name = "grdDetail";
             this.grdDetail.RowTemplate.Height = 21;
-            this.grdDetail.Size = new System.Drawing.Size(525, 94);
+            this.grdDetail.Size = new System.Drawing.Size(525, 175);
             this.grdDetail.TabIndex = 10;
+            this.grdDetail.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDetail_CellContentClick);
             // 
             // MakerName
             // 
@@ -233,11 +236,21 @@
             this.EnableFlag.Name = "EnableFlag";
             this.EnableFlag.Visible = false;
             // 
+            // DeleteBtn
+            // 
+            this.DeleteBtn.HeaderText = "";
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.ReadOnly = true;
+            this.DeleteBtn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeleteBtn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DeleteBtn.Text = "削除";
+            this.DeleteBtn.UseColumnTextForButtonValue = true;
+            // 
             // EntryProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 252);
+            this.ClientSize = new System.Drawing.Size(784, 342);
             this.Controls.Add(this.grdDetail);
             this.Controls.Add(this.grpEnable);
             this.Controls.Add(this.groupBox1);
@@ -248,7 +261,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Name = "EntryProject";
-            this.Text = "案件設定";
+            this.Text = "案件登録";
             this.Load += new System.EventHandler(this.EntryProject_Load);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.btnReturn, 0);
@@ -289,5 +302,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ConfID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProjectID;
         private System.Windows.Forms.DataGridViewTextBoxColumn EnableFlag;
+        private System.Windows.Forms.DataGridViewButtonColumn DeleteBtn;
     }
 }

@@ -40,48 +40,52 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
+            // btnReturn
+            // 
+            this.btnReturn.TabIndex = 9;
+            // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 24);
+            this.label1.Location = new System.Drawing.Point(12, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 20);
+            this.label1.Size = new System.Drawing.Size(35, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "名前";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 57);
+            this.label3.Location = new System.Drawing.Point(12, 53);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 20);
-            this.label3.TabIndex = 4;
+            this.label3.Size = new System.Drawing.Size(76, 28);
+            this.label3.TabIndex = 2;
             this.label3.Text = "ログインID";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 88);
+            this.label4.Location = new System.Drawing.Point(12, 84);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 20);
-            this.label4.TabIndex = 6;
+            this.label4.Size = new System.Drawing.Size(74, 28);
+            this.label4.TabIndex = 4;
             this.label4.Text = "パスワード";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 122);
+            this.label6.Location = new System.Drawing.Point(14, 120);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 20);
-            this.label6.TabIndex = 8;
+            this.label6.Size = new System.Drawing.Size(74, 28);
+            this.label6.TabIndex = 6;
             this.label6.Text = "データ有効";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(166, 172);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 28);
-            this.btnSave.TabIndex = 11;
+            this.btnSave.TabIndex = 8;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -100,9 +104,10 @@
             this.txtLoginPW.AlertMessage = "必須入力です。";
             this.txtLoginPW.Location = new System.Drawing.Point(94, 85);
             this.txtLoginPW.Name = "txtLoginPW";
+            this.txtLoginPW.PasswordChar = '*';
             this.txtLoginPW.Required = true;
             this.txtLoginPW.Size = new System.Drawing.Size(121, 27);
-            this.txtLoginPW.TabIndex = 7;
+            this.txtLoginPW.TabIndex = 5;
             // 
             // txtLoginID
             // 
@@ -111,18 +116,18 @@
             this.txtLoginID.Name = "txtLoginID";
             this.txtLoginID.Required = true;
             this.txtLoginID.Size = new System.Drawing.Size(121, 27);
-            this.txtLoginID.TabIndex = 5;
+            this.txtLoginID.TabIndex = 3;
             // 
             // grpEnable
             // 
             this.grpEnable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.grpEnable.Enable = true;
             this.grpEnable.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.grpEnable.Location = new System.Drawing.Point(94, 120);
+            this.grpEnable.Location = new System.Drawing.Point(93, 120);
             this.grpEnable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grpEnable.Name = "grpEnable";
-            this.grpEnable.Size = new System.Drawing.Size(117, 23);
-            this.grpEnable.TabIndex = 1000;
+            this.grpEnable.Size = new System.Drawing.Size(117, 28);
+            this.grpEnable.TabIndex = 7;
             // 
             // EntryMember
             // 
@@ -140,6 +145,7 @@
             this.Controls.Add(this.label1);
             this.Name = "EntryMember";
             this.Text = "メンバー設定";
+            this.Controls.SetChildIndex(this.btnReturn, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.label4, 0);
