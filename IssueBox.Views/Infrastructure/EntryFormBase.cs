@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace IssueBox.Views.Infrastructure
@@ -17,6 +18,17 @@ namespace IssueBox.Views.Infrastructure
         {
             this.Close();
             this.Dispose();
+        }
+
+        /// <summary>
+        /// Model⇔Controlバインドクリア
+        /// </summary>
+        /// <param name="controls">Formに配置したコントロール</param>
+        protected void ClearBindings(Control.ControlCollection controls)
+        {
+            controls.OfType<Control>()
+                    .ToList()
+                    .ForEach(x => x.DataBindings.Clear());
         }
     }
 }
