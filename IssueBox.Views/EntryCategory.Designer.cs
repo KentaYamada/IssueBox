@@ -36,6 +36,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
+            // btnReturn
+            // 
+            this.btnReturn.TabIndex = 5;
+            // 
             // txtName
             // 
             this.txtName.AlertMessage = "必須入力です。";
@@ -47,21 +51,21 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 58);
+            this.label2.Location = new System.Drawing.Point(12, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 20);
+            this.label2.Size = new System.Drawing.Size(74, 28);
             this.label2.TabIndex = 0;
             this.label2.Text = "カテゴリ名";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(12, 98);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 20);
+            this.label6.Size = new System.Drawing.Size(74, 28);
             this.label6.TabIndex = 2;
             this.label6.Text = "データ有効";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnSave
             // 
@@ -78,11 +82,11 @@
             this.grpEnable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.grpEnable.Enable = true;
             this.grpEnable.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.grpEnable.Location = new System.Drawing.Point(92, 95);
+            this.grpEnable.Location = new System.Drawing.Point(92, 98);
             this.grpEnable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grpEnable.Name = "grpEnable";
-            this.grpEnable.Size = new System.Drawing.Size(117, 23);
-            this.grpEnable.TabIndex = 1000;
+            this.grpEnable.Size = new System.Drawing.Size(117, 28);
+            this.grpEnable.TabIndex = 3;
             // 
             // EntryCategory
             // 
@@ -96,6 +100,7 @@
             this.Controls.Add(this.label2);
             this.Name = "EntryCategory";
             this.Text = "カテゴリ設定";
+            this.Controls.SetChildIndex(this.btnReturn, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.txtName, 0);
             this.Controls.SetChildIndex(this.label6, 0);
