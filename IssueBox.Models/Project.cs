@@ -13,6 +13,12 @@ namespace IssueBox.Models
 		/// <summary>プロジェクト名</summary>
         public string Name { get; set; }
 
+        /// <summary>利用製品ID</summary>
+        public int? ProductID { get; set; }
+
+        /// <summary>利用サービスID</summary>
+        public int? ServiceID { get; set; }
+
         /// <summary>データ有効可否</summary>
         public bool EnableFlag { get; set; }
 
@@ -21,8 +27,10 @@ namespace IssueBox.Models
         public Project()
         {
             this.ID = 0;
-            this.Name = "";
             this.ProjectID = "";
+            this.Name = "";
+            this.ProductID = null;
+            this.ServiceID = null;
             this.EnableFlag = true;
         }
 
@@ -70,7 +78,7 @@ namespace IssueBox.Models
         {
             try
             {
-                return ModelBase._db.Execute<Project, EquipmentConfiguration>("Exec SaveProject @ID, @ProjectID, @Name, @EnableFlag, @EquipmentConfigurations", this, models) > 0 ? true : false;
+                return ModelBase._db.Execute<Project, EquipmentConfiguration>("Exec SaveProject @ID, @ProjectID, @Name, @ProductID, @ServiceID, @EnableFlag, @EquipmentConfigurations", this, models) > 0 ? true : false;
             }
             catch
             {

@@ -26,9 +26,9 @@ namespace IssueBox.Models.UnitTest
         [TestFixtureSetUp]
         public void Setup()
         {
-            string sql = @"INSERT INTO PROJECTS VALUES ('FL999-0001', '案件A', 'TRUE', GETDATE())
-                                                      ,('FL999-0002', '案件B', 'FALSE', GETDATE())
-                                                      ,('FL999-0003', '案件C', 'TRUE', GETDATE())";
+            string sql = @"INSERT INTO PROJECTS VALUES ('FL999-0001', '案件A', 1, 1, 'TRUE', GETDATE())
+                                                      ,('FL999-0002', '案件B', 2, 2, 'FALSE', GETDATE())
+                                                      ,('FL999-0003', '案件C', NULL, NULL'TRUE', GETDATE())";
             try
             {
                 this._db.Execute(sql);
@@ -76,9 +76,9 @@ namespace IssueBox.Models.UnitTest
 
         private static readonly object[] SaveTestCases = 
         {
-            new object[] { true, new Project(){ ProjectID = "TEST999-9999", Name = "Foo", EnableFlag = true}, _newEquipConf },
-            new object[] { true, new Project(){ ID = 4, ProjectID = "TEST999-9999", Name = "Foo", EnableFlag = true}, _updEquipConf },
-            new object[] { false, new Project(){ ProjectID = "", Name = "Foo", EnableFlag = true}, _newEquipConf }
+            new object[] { true, new Project(){ ProjectID = "TEST999-9999", Name = "Foo", ProductID = 1, ServiceID = 1, EnableFlag = true}, _newEquipConf },
+            new object[] { true, new Project(){ ID = 4, ProjectID = "TEST999-9999", Name = "Foo", ProductID = 2, ServiceID = 2,EnableFlag = true}, _updEquipConf },
+            new object[] { false, new Project(){ ProjectID = "", Name = "Foo", ProductID = null, ServiceID = null, EnableFlag = true}, _newEquipConf }
         };
 
         [TestCaseSource("SaveTestCases")]

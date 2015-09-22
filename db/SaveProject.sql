@@ -13,8 +13,10 @@ CREATE PROCEDURE SaveProject (
      @ID         int
     ,@ProjectID  nvarchar(20)
     ,@Name       nvarchar(20)
+    ,@ProductID  int
+    ,@ServiceID  int
     ,@EnableFlag bit
-    ,@EquipmentConfigurations EQUIPMENT_CONFIGURATIONS_T READONLY
+    ,@EquipmentConfigurations EQUIPMENTCONFIGURATIONS_T READONLY
 ) AS
 BEGIN TRY
   BEGIN TRAN
@@ -26,18 +28,24 @@ BEGIN TRY
       UPDATE SET
         project_id = @ProjectID
        ,name = @Name
+       ,product_id = @ProductID
+       ,service_id = @ServiceID
        ,enable_flag = @EnableFlag
        ,upd_date = GETDATE()
     WHEN NOT MATCHED THEN
       INSERT (
         project_id
        ,name
+       ,product_id
+       ,service_id
        ,enable_flag
        ,upd_date
       )
       VALUES (
         @ProjectID
        ,@Name
+       ,@ProductID
+       ,@ServiceID
        ,@EnableFlag
        ,GETDATE()
      );
@@ -72,15 +80,15 @@ BEGIN TRY
           ,irr_temp_flag
           ,upd_date
        )
-       VALUES (
-          @ID
-         ,t2.maker_name
-         ,t2.equip_name
-         ,t2.rating
-         ,t2.unit_count
-         ,t2.irr_temp_flag
-         ,GETDATE()
-      );
+         VALUES (
+           @ID
+          ,t2.maker_name
+          ,t2.equip_name
+          ,t2.rating
+          ,t2.unit_count
+          ,t2.irr_temp_flag
+          ,GETDATE()
+       );
     END
 
   COMMIT TRAN
