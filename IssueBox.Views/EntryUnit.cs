@@ -23,10 +23,7 @@ namespace IssueBox.Views
         public EntryUnit(Unit unit)
         {
             InitializeComponent();
-
-            this._unit = unit;
-            this.txtName.DataBindings.Add("Text", this._unit, "Name");
-            this.grpEnable.DataBindings.Add("Enable", this._unit, "EnableFlag");
+            this.Initialize(unit);
         }
 
         #endregion
@@ -45,18 +42,32 @@ namespace IssueBox.Views
             {
                 this._unit.Save();
                 MessageBox.Show("登録しました。");
+                this.Initialize(new Unit());
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message);
                 Logger.Error(ex);
+                MessageBox.Show(ex.Message);
             }
+        }
+
+        /// <summary>
+        /// 初期設定
+        /// </summary>
+        private void Initialize(Unit unit)
+        {
+            base.ClearBindings(this.Controls);
+
+            this._unit = null;
+            this._unit = unit;
+            this.txtName.DataBindings.Add("Text", this._unit, "Name");
+            this.grpEnable.DataBindings.Add("Enable", this._unit, "EnableFlag");
+            this.txtName.Focus();
         }
 
         /// <summary>
         /// 入力チェック
         /// </summary>
-        /// <returns>True:正常 / Flase:入力エラー</returns>
         private bool Validation()
         {
             this.errorProvider1.Clear();
