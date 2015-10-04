@@ -34,12 +34,12 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.grdList = new System.Windows.Forms.DataGridView();
-            this.btnSave = new System.Windows.Forms.Button();
             this.EquipmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EquipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rating = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MakerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnableFlag = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnSave = new System.Windows.Forms.Button();
             this.grpEnable = new IssueBox.Views.Infrastructure.EnableRadioButtons();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
@@ -91,16 +91,6 @@
             this.grdList.Size = new System.Drawing.Size(425, 150);
             this.grdList.TabIndex = 4;
             // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(281, 236);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 28);
-            this.btnSave.TabIndex = 5;
-            this.btnSave.Text = "保存";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // EquipmentID
             // 
             this.EquipmentID.DataPropertyName = "ID";
@@ -141,6 +131,16 @@
             this.EnableFlag.HeaderText = "データ有効";
             this.EnableFlag.Name = "EnableFlag";
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(281, 236);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 28);
+            this.btnSave.TabIndex = 5;
+            this.btnSave.Text = "保存";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // grpEnable
             // 
             this.grpEnable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -164,7 +164,7 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
             this.Name = "EntryMaker";
-            this.Text = "メーカー登録";
+            this.Text = "メーカー設定";
             this.Load += new System.EventHandler(this.EntryMaker_Load);
             this.Controls.SetChildIndex(this.btnReturn, 0);
             this.Controls.SetChildIndex(this.label1, 0);

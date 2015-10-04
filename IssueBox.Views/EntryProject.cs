@@ -129,22 +129,48 @@ namespace IssueBox.Views
             }
 
             //案件ID重複チェック
-            try
-            {
-                var count = Project.ProjectID_DoubleCheck(this.txtProjectID.Text);
-                if (count > 0)
-                {
-                    MessageBox.Show("案件IDが重複しています。");
-                    this.txtProjectID.Focus();
-                    return false;
-                }
-            }
-            catch
-            {
-                throw;
-            }
+            //try
+            //{
+            //    var count = Project.ProjectID_DoubleCheck(this.txtProjectID.Text);
+            //    if (count > 0)
+            //    {
+            //        MessageBox.Show("案件IDが重複しています。");
+            //        this.txtProjectID.Focus();
+            //        return false;
+            //    }
+            //}
+            //catch
+            //{
+            //    throw;
+            //}
 
             return true;
+        }
+
+        private void grdDetail_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) { return; }
+            if (!(sender is DataGridViewButtonCell)) { return; }
+
+            try
+            {
+                if (this._eqipConf[e.RowIndex].ProjectID == 0)
+                {
+                    //新規データの場合はリストから削除
+                    this._eqipConf.RemoveAt(e.RowIndex);
+                }
+                else
+                {
+                    //DBに登録されているデータはDelete文実行
+                    this._eqipConf[e.RowIndex].DeleteEquipmentConfiguration();
+                }
+                
+                this.grdDetail.DataSource = new BindingList<EquipmentConfiguration>(this._eqipConf);
+            }
+            catch(SqlException ex)
+            {
+                Logger.Error(ex);
+            }
         }
     }
 }
