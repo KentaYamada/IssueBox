@@ -1,38 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Collections.Generic;
 using IssueBox.Models.Infrastructure;
+
 namespace IssueBox.Models
 {
     /// <summary>
     /// ドロップダウンリスト用モデル
     /// </summary>
-    public class DropDownModel
+    public class DropDownModel : ModelBase
     {
-        private SQLCommander _db = null;
-
         public int ID { get; set; }
 
         public string Value { get; set; }
+
+        #region Default constructor
 
         public DropDownModel()
         {
             this.ID = 0;
             this.Value = "";
-            this._db = new SQLCommander();
         }
+
+        #endregion
 
         /// <summary>
         /// マスタデータ取得
         /// </summary>
-        /// <param name="tablename"></param>
-        /// <returns></returns>
-        public static List<DropDownModel> FindAllData(TABLE_NAME tablename)
+        /// <param name="tablename">テーブル名</param>
+        /// <param name="required">必須可否</param>
+        /// <returns>データが有効なマスタデータ</returns>
+        public static List<DropDownModel> FindAllData(TABLE_NAME tablename, bool required = true)
         {
-            var model = new DropDownModel();
+            var data = new List<DropDownModel>();
             string sql = string.Format(@"SELECT
                                             t.id   AS ID
                                            ,t.name AS Value
@@ -42,12 +40,20 @@ namespace IssueBox.Models
 
             try
             {
-                return model._db.ReadAll<DropDownModel>(sql);
+                data = ModelBase._db.ReadAll<DropDownModel>(sql);
             }
             catch
             {
                 throw;
             }
+
+            if (0 < data.Count && !required)
+            {
+                //必須ではない場合、１行目に空データ追加
+                data.Insert(0, new DropDownModel());
+            }
+
+            return data;
         }
     }
 }
