@@ -2,6 +2,9 @@
 
 namespace IssueBox.Models
 {
+    /// <summary>
+    /// 機器(PCS)モデル
+    /// </summary>
     public class Equipment : ModelBase
     {
         /// <summary>型番</summary>
@@ -9,6 +12,12 @@ namespace IssueBox.Models
 
         /// <summary>定格</summary>
         public decimal Rating { get; set; }
+
+        /// <summary>通信方式ID</summary>
+        public int? CommunicationMethodID { get; set; }
+
+        /// <summary>出力制御可否</summary>
+        public bool OutputControlFlag { get; set; }
 
         /// <summary>メーカーID</summary>
         public int MakerID { get; set; }

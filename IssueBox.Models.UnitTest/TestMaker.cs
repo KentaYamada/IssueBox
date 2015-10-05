@@ -81,9 +81,9 @@ namespace IssueBox.Models.UnitTest
 
         private static readonly List<Equipment> _equipments = new List<Equipment>() 
         {
-            new Equipment() { Name = "TestEquipA", Rating = 100.0M, EnableFlag = true },
-            new Equipment() { Name = "TestEquipB", Rating = 120.0M, EnableFlag = true },
-            new Equipment() { Name = "TestEquipC", Rating = 150.5M, EnableFlag = true },
+            new Equipment() { Name = "TestEquipA", Rating = 100.0M, CommunicationMethodID=1, OutputControlFlag= true, EnableFlag = true },
+            new Equipment() { Name = "TestEquipB", Rating = 120.0M, CommunicationMethodID=2, OutputControlFlag= false, EnableFlag = true },
+            new Equipment() { Name = "TestEquipC", Rating = 150.5M, CommunicationMethodID=3, OutputControlFlag= true, EnableFlag = true },
         };
 
         private object[] SaveTestCases = 

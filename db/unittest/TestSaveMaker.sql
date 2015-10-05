@@ -7,8 +7,8 @@ DECLARE @Equipment  EQUIPMENTS_T
 
 SET @Name = 'Test'
 SET @EnableFlag = 'TRUE'
-INSERT INTO @Equipment VALUES (0, 'Test', 100.2, 0, 'TRUE')
-                             ,(0, 'Test2', 100.5, 0, 'TRUE')
+INSERT INTO @Equipment VALUES (0, 'Test', 100.2, 1, 'TRUE', 0, 'TRUE')
+                             ,(0, 'Test2', 100.5, 2,'FALSE',0, 'TRUE')
 
 --テスト実行前確認
 SELECT * FROM MAKERS
