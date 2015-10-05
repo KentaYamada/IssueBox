@@ -9,6 +9,9 @@ using IssueBox.Views.Infrastructure;
 
 namespace IssueBox.Views
 {
+    /// <summary>
+    /// メーカー設定画面
+    /// </summary>
     public partial class EntryMaker : EntryFormBase
     {
         private Maker _maker = null;
@@ -24,8 +27,7 @@ namespace IssueBox.Views
         public EntryMaker(Maker maker)
         {
             InitializeComponent();
-            this._maker = maker;
-            this._equipments = new List<Equipment>();
+            this.Initialize(maker, new List<Equipment>());
         }
 
         #endregion
@@ -37,18 +39,31 @@ namespace IssueBox.Views
         {
             try
             {
-                this.txtName.DataBindings.Add("Text", this._maker, "Name");
-                this.grpEnable.DataBindings.Add("Enable", this._maker, "EnableFlag");
                 this._equipments = Equipment.FindEquipmentsBy(this._maker.ID);
             }
             catch(SqlException ex)
             {
                 Logger.Error(ex);
+                MessageBox.Show(ex.Message);
             }
 
             this.grdList.DataSource = new BindingList<Equipment>(this._equipments);
         }
 
+        /// <summary>
+        /// 初期化設定
+        /// </summary>
+        private void Initialize(Maker maker, List<Equipment> equipments)
+        {
+            base.ClearBindings(this.Controls);
+
+            this._maker = null;
+            this._maker = maker;
+            this.txtName.DataBindings.Add("Text", this._maker, "Name");
+            this.grpEnable.DataBindings.Add("Enable", this._maker, "EnableFlag");
+            this.grdList.DataSource = new BindingList<Equipment>(equipments);
+            this.txtName.Focus();
+        }
 
         /// <summary>
         /// 「保存」ボタンクリックイベント
@@ -59,6 +74,7 @@ namespace IssueBox.Views
             {
                 this._maker.Save(this._equipments);
                 MessageBox.Show("登録しました。");
+                this.Initialize(new Maker(), new List<Equipment>());
             }
             catch(SqlException ex)
             {

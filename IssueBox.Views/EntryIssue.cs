@@ -9,7 +9,7 @@ using IssueBox.Views.Infrastructure;
 
 namespace IssueBox.Views
 {
-    public partial class EntryIssue : Form
+    public partial class EntryIssue : EntryFormBase
     {
         private Issue _issue = null;
 
@@ -17,11 +17,10 @@ namespace IssueBox.Views
             : this(new Issue())
         { }
 
-        public EntryIssue(Issue selectedModel)
+        public EntryIssue(Issue issue)
         {
             InitializeComponent();
-
-            this._issue = selectedModel;
+            this.Initialize(issue);
         }
 
         /// <summary>
@@ -38,11 +37,10 @@ namespace IssueBox.Views
                 this.cmbIssuingMember.DataSource = DropDownModel.FindAllData(TABLE_NAME.MEMBERS);
                 this.cmbResponcedMember.DataSource = DropDownModel.FindAllData(TABLE_NAME.MEMBERS);
                 this.cmbCheckedMember.DataSource = DropDownModel.FindAllData(TABLE_NAME.MEMBERS);
-                
-                this.Initialize();
 
                 if (TASK_STATUS.DONE == (TASK_STATUS)this._issue.Status)
                 {
+                    //ステータスが「完了」の場合、編集不可とする
                     this.Controls.OfType<Control>()
                                  .Where(x => x.Name != "btnExit")
                                  .ToList()
@@ -52,11 +50,36 @@ namespace IssueBox.Views
             catch(Exception ex)
             {
                 Logger.Error(ex);
+                MessageBox.Show(ex.Message);
             }
         }
 
-        private void Initialize()
+        /// <summary>
+        /// 「保存」ボタンクリックイベント
+        /// </summary>
+        private void btnSave_Click(object sender, EventArgs e)
         {
+            try
+            {
+                this._issue.Save();
+                MessageBox.Show("登録しました。");
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                Logger.Error(ex);
+            }
+        }
+
+        /// <summary>
+        /// 初期化設定
+        /// </summary>
+        private void Initialize(Issue issue)
+        {
+            base.ClearBindings(this.Controls);
+
+            this._issue = null;
+            this._issue = issue;
             this.cmbCategory.DataBindings.Add("SelectedValue", this._issue, "CategoryID", true, DataSourceUpdateMode.OnValidation);
             this.cmbIssuingMember.DataBindings.Add("SelectedValue", this._issue, "IssuingMemberID", true, DataSourceUpdateMode.OnValidation);
             this.cmbProject.DataBindings.Add("SelectedValue", this._issue, "ProjectID", true, DataSourceUpdateMode.OnValidation);
@@ -72,29 +95,11 @@ namespace IssueBox.Views
         }
 
         /// <summary>
-        /// 「保存」ボタンクリックイベント
+        /// 入力チェック
         /// </summary>
-        private void btnSave_Click(object sender, EventArgs e)
+        private bool Validation()
         {
-            try
-            {
-                this._issue.Save();
-                MessageBox.Show("登録しました。");
-            }
-            catch(SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                Logger.Error(ex);
-            }
-        }
-
-        /// <summary>
-        /// 「戻る」ボタンクリックイベント
-        /// </summary>
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            this.Dispose();
+            throw new NotImplementedException();
         }
     }
 }

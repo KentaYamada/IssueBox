@@ -39,7 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dtOrigination = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.dtFinishedDate = new IssueBox.Views.Infrastructure.DateMaskedTextBox();
@@ -56,7 +55,12 @@
             this.responcingRadioButton1 = new IssueBox.Views.Infrastructure.ResponcingRadioButton();
             this.checkingRadioButton1 = new IssueBox.Views.Infrastructure.CheckingRadioButton();
             this.doneRadioButton1 = new IssueBox.Views.Infrastructure.DoneRadioButton();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.Location = new System.Drawing.Point(400, 572);
             // 
             // label11
             // 
@@ -155,16 +159,6 @@
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Location = new System.Drawing.Point(400, 572);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 28);
-            this.btnExit.TabIndex = 19;
-            this.btnExit.Text = "戻る";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label8
             // 
@@ -352,7 +346,6 @@
             this.Controls.Add(this.cmbProduct);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.cmbResponcedMember);
-            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -365,12 +358,38 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtOrigination);
-            this.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "EntryIssue";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "タスク登録";
             this.Load += new System.EventHandler(this.EntryIssue_Load);
+            this.Controls.SetChildIndex(this.dtOrigination, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
+            this.Controls.SetChildIndex(this.txtComment, 0);
+            this.Controls.SetChildIndex(this.label7, 0);
+            this.Controls.SetChildIndex(this.label10, 0);
+            this.Controls.SetChildIndex(this.label11, 0);
+            this.Controls.SetChildIndex(this.btnSave, 0);
+            this.Controls.SetChildIndex(this.cmbResponcedMember, 0);
+            this.Controls.SetChildIndex(this.cmbCategory, 0);
+            this.Controls.SetChildIndex(this.cmbProduct, 0);
+            this.Controls.SetChildIndex(this.cmbProject, 0);
+            this.Controls.SetChildIndex(this.cmbIssuingMember, 0);
+            this.Controls.SetChildIndex(this.dtDeadLine, 0);
+            this.Controls.SetChildIndex(this.cmbCheckedMember, 0);
+            this.Controls.SetChildIndex(this.label8, 0);
+            this.Controls.SetChildIndex(this.label9, 0);
+            this.Controls.SetChildIndex(this.dtFinishedDate, 0);
+            this.Controls.SetChildIndex(this.grpStatus, 0);
+            this.Controls.SetChildIndex(this.originationRadioButton1, 0);
+            this.Controls.SetChildIndex(this.responcingRadioButton1, 0);
+            this.Controls.SetChildIndex(this.checkingRadioButton1, 0);
+            this.Controls.SetChildIndex(this.doneRadioButton1, 0);
+            this.Controls.SetChildIndex(this.btnReturn, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,7 +409,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtOrigination;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnExit;
         private Infrastructure.DropDownListEx cmbResponcedMember;
         private Infrastructure.DropDownListEx cmbCategory;
         private Infrastructure.DropDownListEx cmbProduct;
