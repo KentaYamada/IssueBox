@@ -36,13 +36,15 @@
             this.txtProjectID = new IssueBox.Views.Infrastructure.TextBoxEx();
             this.label1 = new System.Windows.Forms.Label();
             this.grdList = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtName = new IssueBox.Views.Infrastructure.TextBoxEx();
+            this.label4 = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnableFlag = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtName = new IssueBox.Views.Infrastructure.TextBoxEx();
-            this.label4 = new System.Windows.Forms.Label();
+            this.SeihinID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,7 +122,9 @@
             this.ID,
             this.ProjectID,
             this.ProjectName,
-            this.EnableFlag});
+            this.EnableFlag,
+            this.SeihinID,
+            this.ServiceID});
             this.grdList.Location = new System.Drawing.Point(87, 139);
             this.grdList.Name = "grdList";
             this.grdList.ReadOnly = true;
@@ -128,6 +132,31 @@
             this.grdList.Size = new System.Drawing.Size(610, 369);
             this.grdList.TabIndex = 10;
             this.grdList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdList_CellDoubleClick);
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(599, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 28);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "(部分一致)";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(422, 32);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(171, 27);
+            this.txtName.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(368, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 28);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "案件名";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ID
             // 
@@ -165,30 +194,23 @@
             this.EnableFlag.ReadOnly = true;
             this.EnableFlag.Width = 85;
             // 
-            // label3
+            // SeihinID
             // 
-            this.label3.Location = new System.Drawing.Point(599, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 28);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "(部分一致)";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SeihinID.DataPropertyName = "ProductID";
+            this.SeihinID.Frozen = true;
+            this.SeihinID.HeaderText = "製品ID";
+            this.SeihinID.Name = "SeihinID";
+            this.SeihinID.ReadOnly = true;
+            this.SeihinID.Visible = false;
             // 
-            // txtName
+            // ServiceID
             // 
-            this.txtName.Location = new System.Drawing.Point(422, 32);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(171, 27);
-            this.txtName.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(368, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 28);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "案件名";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ServiceID.DataPropertyName = "ServiceID";
+            this.ServiceID.Frozen = true;
+            this.ServiceID.HeaderText = "サービスID";
+            this.ServiceID.Name = "ServiceID";
+            this.ServiceID.ReadOnly = true;
+            this.ServiceID.Visible = false;
             // 
             // SearchProject
             // 
@@ -242,5 +264,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProjectID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProjectName;
         private System.Windows.Forms.DataGridViewCheckBoxColumn EnableFlag;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SeihinID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ServiceID;
     }
 }

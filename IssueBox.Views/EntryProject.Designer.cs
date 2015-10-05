@@ -173,7 +173,7 @@
             this.grdDetail.RowTemplate.Height = 21;
             this.grdDetail.Size = new System.Drawing.Size(525, 175);
             this.grdDetail.TabIndex = 10;
-            this.grdDetail.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDetail_CellContentClick);
+            //this.grdDetail.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDetail_CellContentClick);
             // 
             // MakerName
             // 
