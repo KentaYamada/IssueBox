@@ -56,23 +56,29 @@ BEGIN TRY
          UPDATE SET
            name = t2.name
           ,rating = t2.rating
+          ,communication_method_id = t2.communication_method_id
+          ,output_control_flag = t2.output_control_flag
           ,maker_id = @ID
           ,enable_flag = t2.enable_flag
           ,upd_date = GETDATE()
        WHEN NOT MATCHED THEN
          INSERT (
-            name
-           ,rating
-           ,maker_id
-           ,enable_flag
-           ,upd_date
+           name
+          ,rating
+          ,communication_method_id
+          ,output_control_flag
+          ,maker_id
+          ,enable_flag
+          ,upd_date
          )
          VALUES (
-            t2.name
-           ,t2.rating
-           ,@ID
-           ,t2.enable_flag
-           ,GETDATE()
+           t2.name
+          ,t2.rating
+          ,t2.communication_method_id
+          ,t2.output_control_flag
+          ,@ID
+          ,t2.enable_flag
+          ,GETDATE()
          );
      END
 

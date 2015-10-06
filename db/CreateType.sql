@@ -16,11 +16,13 @@ END
 
 --機器
 CREATE TYPE EQUIPMENTS_T AS TABLE (
-   id          int
-  ,name        nvarchar(20)
-  ,rating      decimal(5, 2)
-  ,maker_id    int
-  ,enable_flag bit
+   id                      int
+  ,name                    nvarchar(20)
+  ,rating                  decimal(5, 2)
+  ,communication_method_id int
+  ,output_control_flag     bit
+  ,maker_id                int
+  ,enable_flag             bit
 )
 
 --機器構成

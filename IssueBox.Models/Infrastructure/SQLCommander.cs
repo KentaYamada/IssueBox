@@ -89,7 +89,8 @@ namespace IssueBox.Models.Infrastructure
             
             list.AddRange(props);
             props.ForEach(v => list.AddRange(typeof(TModel).GetProperties().ToList().FindAll(x => x.Name != v.Name)));
-            list.ForEach(x => table.Columns.Add(x.Name, x.PropertyType));
+            //list.ForEach(x => table.Columns.Add(x.Name, x.PropertyType));
+            list.ForEach(x => table.Columns.Add(x.Name));
 
             //行データ挿入
             foreach (var m in models)

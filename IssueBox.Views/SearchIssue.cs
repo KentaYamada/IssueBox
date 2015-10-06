@@ -36,7 +36,7 @@ namespace IssueBox.Views
             {
                 //Fix Me:検索条件の仕様決める
                 //this.cmbCategories.DataSource = DropDownModel.FindAllData(TABLE_NAME.CATEGORIES);
-                this.cmbProjects.DataSource = DropDownModel.FindAllData(TABLE_NAME.PROJECTS);
+                this.cmbProjects.DataSource = DropDownModel.FindAllData(TABLE_NAME.PROJECTS, false);
                 //this.cmbProducts.DataSource = DropDownModel.FindAllData(TABLE_NAME.PRODUCTS);
                 this.SetIssues();
             }
