@@ -24,5 +24,5 @@ BEGIN
   FROM MAKERS AS m
   WHERE (m.name LIKE '%' + @Name + '%' OR @Name IS NULL)
   AND (m.enable_flag = dbo.IsBit(@EnableFlag) OR dbo.IsBit(@EnableFlag) IS NULL)
-  ORDER BY m.id
+  ORDER BY m.name
 END
