@@ -31,6 +31,9 @@ namespace IssueBox.Models
         {
             this.ID = 0;
             this.Name = "";
+            this.Rating = 0;
+            this.CommunicationMethodID = 0;
+            this.OutputControlFlag = false;
             this.MakerID = 0;
             this.EnableFlag = true;
         }

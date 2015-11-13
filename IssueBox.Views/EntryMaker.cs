@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 
 using IssueBox.Models;
+using IssueBox.Models.Infrastructure;
 using IssueBox.Views.Infrastructure;
 
 namespace IssueBox.Views
@@ -17,6 +18,8 @@ namespace IssueBox.Views
         private Maker _maker = null;
 
         private List<Equipment> _equipments = null;
+
+        private List<DropDownModel> _comMethods = null;
 
         #region Constructors
 
@@ -39,6 +42,7 @@ namespace IssueBox.Views
         {
             try
             {
+                this._comMethods = DropDownModel.FindAllData(TABLE_NAME.COMMUNICATION_METHOD);
                 this._equipments = Equipment.FindEquipmentsBy(this._maker.ID);
             }
             catch(SqlException ex)
@@ -47,6 +51,12 @@ namespace IssueBox.Views
                 MessageBox.Show(ex.Message);
             }
 
+            //リスト選択データ設定
+            var col = this.grdList.Columns["CommunicationMehod"] as DataGridViewComboBoxColumn;
+            col.DataPropertyName = "CommunicationMethodID";
+            col.DisplayMember = "Value";
+            col.ValueMember = "ID";
+            col.DataSource = this._comMethods;
             this.grdList.DataSource = new BindingList<Equipment>(this._equipments);
         }
 
