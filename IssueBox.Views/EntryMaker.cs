@@ -21,6 +21,8 @@ namespace IssueBox.Views
 
         private List<DropDownModel> _comMethod;
 
+        private List<DropDownModel> _comMethods = null;
+
         #region Constructors
 
         public EntryMaker()
@@ -43,7 +45,28 @@ namespace IssueBox.Views
         /// </summary>
         private void EntryMaker_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             this.Initialize();
+=======
+            try
+            {
+                this._comMethods = DropDownModel.FindAllData(TABLE_NAME.COMMUNICATION_METHOD);
+                this._equipments = Equipment.FindEquipmentsBy(this._maker.ID);
+            }
+            catch(SqlException ex)
+            {
+                Logger.Error(ex);
+                MessageBox.Show(ex.Message);
+            }
+
+            //リスト選択データ設定
+            var col = this.grdList.Columns["CommunicationMehod"] as DataGridViewComboBoxColumn;
+            col.DataPropertyName = "CommunicationMethodID";
+            col.DisplayMember = "Value";
+            col.ValueMember = "ID";
+            col.DataSource = this._comMethods;
+            this.grdList.DataSource = new BindingList<Equipment>(this._equipments);
+>>>>>>> c0e6b59235e0fa702c819d2ee0f8dcfbb7e7a069
         }
 
         /// <summary>

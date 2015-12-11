@@ -32,7 +32,11 @@ namespace IssueBox.Models
             this.ID = 0;
             this.Name = "";
             this.Rating = 0;
+<<<<<<< HEAD
             this.CommunicationMethodID = 1;
+=======
+            this.CommunicationMethodID = 0;
+>>>>>>> c0e6b59235e0fa702c819d2ee0f8dcfbb7e7a069
             this.OutputControlFlag = false;
             this.MakerID = 0;
             this.EnableFlag = true;
