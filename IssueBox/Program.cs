@@ -18,8 +18,11 @@ namespace IssueBox
             Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+#if DEBUG
             Application.Run(new MainWindow());
-            //Application.Run(new Login());
+#else
+            Application.Run(new Login());
+#endif
         }
 
         /// <summary>
@@ -27,12 +30,15 @@ namespace IssueBox
         /// </summary>
         public static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
+#if DEBUG
+            MessageBox.Show(e.Exception.Message);
+#else
             //ユーザーにシステムエラーが発生したことを通知
             MessageBox.Show("システムエラーが発生しました。\nシステム管理者へお問い合わせ下さい。",
                             "システムエラー",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
-
+#endif
             //エラーログ出力
             Logger.Error(e.Exception);
             Application.Exit();
