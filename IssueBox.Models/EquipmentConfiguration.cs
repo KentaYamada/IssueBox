@@ -45,14 +45,7 @@ namespace IssueBox.Models
         /// <returns></returns>
         public bool DeleteEquipmentConfiguration()
         {
-            try
-            {
-                return ModelBase._db.Execute("Exec DeleteEquipmentConfigurationBy @ID", this) > 0 ? true : false;
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.Execute("Exec DeleteEquipmentConfigurationBy @ID", this) > 0 ? true : false;
         }
 
         /// <summary>
@@ -62,14 +55,7 @@ namespace IssueBox.Models
         /// <returns>案件に紐づく機器構成情報</returns>
         public static List<EquipmentConfiguration> FindEquipmentConfigurationBy(int projectID)
         {
-            try
-            {
-                return ModelBase._db.ReadAny<EquipmentConfiguration, EquipmentConfiguration>("Exec FindEquipmentConfigurationBy @ProjectID", new EquipmentConfiguration() { ProjectID = projectID });
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.ReadAny<EquipmentConfiguration, EquipmentConfiguration>("Exec FindEquipmentConfigurationBy @ProjectID", new EquipmentConfiguration() { ProjectID = projectID });
         }
     }
 }

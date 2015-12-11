@@ -38,14 +38,7 @@ namespace IssueBox.Models
         /// <returns></returns>
         public static List<Product> FindAllServices()
         {
-            try
-            {
-                return ModelBase._db.ReadAll<Product>("Exec FindAllServices");
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.ReadAll<Product>("Exec FindAllServices");
         }
 
         /// <summary>
@@ -55,14 +48,7 @@ namespace IssueBox.Models
         /// <returns>検索条件に合致した製品一覧</returns>
         public static List<Product> FindProductsBy(Condition condition)
         {
-            try
-            {
-                return ModelBase._db.ReadAny<Product, Condition>("Exec FindProductsBy @Name, @EnableFlag", condition);
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.ReadAny<Product, Condition>("Exec FindProductsBy @Name, @EnableFlag", condition);
         }
 
         /// <summary>
@@ -71,14 +57,7 @@ namespace IssueBox.Models
         /// <returns>True:成功 / False:失敗</returns>
         public bool Save()
         {
-            try
-            {
-                return ModelBase._db.Execute<Product>("Exec SaveProduct @ID, @Name, @Version, @ProductType, @EnableFlag", this) > 0 ? true : false;
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.Execute<Product>("Exec SaveProduct @ID, @Name, @Version, @ProductType, @EnableFlag", this) > 0 ? true : false;
         }
     }
 }

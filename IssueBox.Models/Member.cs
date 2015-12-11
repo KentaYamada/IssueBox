@@ -39,14 +39,7 @@ namespace IssueBox.Models
         /// <returns>検索条件に合致したメンバー</returns>
         public static List<Member> FindMembersBy(Condition condition)
         {
-            try
-            {
-                return ModelBase._db.ReadAny<Member, Condition>("Exec FindMembersBy @Name, @EnableFlag", condition);
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.ReadAny<Member, Condition>("Exec FindMembersBy @Name, @EnableFlag", condition);
         }
 
         /// <summary>
@@ -55,14 +48,7 @@ namespace IssueBox.Models
         /// <returns>True:成功 / False:エラー</returns>
         public bool Save()
         {
-            try
-            {
-                return ModelBase._db.Execute<Member>("Exec SaveMember @ID, @Name, @LoginID, @LoginPassword, @EnableFlag", this) > 0 ? true : false;
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.Execute<Member>("Exec SaveMember @ID, @Name, @LoginID, @LoginPassword, @EnableFlag", this) > 0 ? true : false;
         }
 
         /// <summary>
@@ -72,14 +58,7 @@ namespace IssueBox.Models
         /// <returns>成功:メンバー情報 / 失敗:null</returns>
         public static Member LoginAuthorication(Member condition)
         {
-            try
-            {
-                return ModelBase._db.ReadOne<Member, Member>("Exec LoginAuthorication @LoginID, @LoginPassword", condition);
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.ReadOne<Member, Member>("Exec LoginAuthorication @LoginID, @LoginPassword", condition);
         }
     }
 }

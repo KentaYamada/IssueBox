@@ -43,14 +43,7 @@ namespace IssueBox.Models
         /// <returns>検索条件に合致した案件一覧</returns>
         public static List<Project> FindProjectsBy(ProjectCondition condition)
         {
-            try
-            {
-                return ModelBase._db.ReadAny<Project, ProjectCondition>("Exec FindProjectsBy @ProjectID, @Name, @EnableFlag", condition);
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.ReadAny<Project, ProjectCondition>("Exec FindProjectsBy @ProjectID, @Name, @EnableFlag", condition);
         }
 
         /// <summary>
@@ -60,14 +53,7 @@ namespace IssueBox.Models
         /// <returns>検索結果</returns>
         public static long ProjectID_DoubleCheck(string projectID)
         {
-            try
-            {
-                return ModelBase._db.ReadScalor<int, ProjectCondition>("select count(p.project_id) AS A from PROJECTS AS p WHERE p.project_id = @ProjectID", new ProjectCondition() { ProjectID = projectID });
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.ReadScalor<int, ProjectCondition>("select count(p.project_id) AS A from PROJECTS AS p WHERE p.project_id = @ProjectID", new ProjectCondition() { ProjectID = projectID });
         }
 
         /// <summary>
@@ -76,14 +62,7 @@ namespace IssueBox.Models
         /// <returns></returns>
         public bool Save(List<EquipmentConfiguration> models)
         {
-            try
-            {
-                return ModelBase._db.Execute<Project, EquipmentConfiguration>("Exec SaveProject @ID, @ProjectID, @Name, @ProductID, @ServiceID, @EnableFlag, @EquipmentConfigurations", this, models) > 0 ? true : false;
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.Execute<Project, EquipmentConfiguration>("Exec SaveProject @ID, @ProjectID, @Name, @ProductID, @ServiceID, @EnableFlag, @EquipmentConfigurations", this, models) > 0 ? true : false;
         }
     }
 }

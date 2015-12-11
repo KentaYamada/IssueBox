@@ -68,18 +68,11 @@ namespace IssueBox.Models
         /// <returns>True:正常終了 / False:登録エラー</returns>
         public bool Save()
         {
-            try
-            {
-                return ModelBase._db.Execute<Issue>(@"Exec SaveIssue @ID, @ProjectID, @OriginationDate,
+            return ModelBase._db.Execute<Issue>(@"Exec SaveIssue @ID, @ProjectID, @OriginationDate,
                                                                      @CategoryID, @ProductID, @IssuingMemberID,
                                                                      @ResponcedMemberID, @CheckedMemberID, @Deadline,
                                                                      @FinishedDate, @Status, @Comment",
                                                    this) > 0 ? true : false;
-            }
-            catch
-            {
-                throw;
-            }
         }
 
         /// <summary>

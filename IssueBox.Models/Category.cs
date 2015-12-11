@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace IssueBox.Models
 {
@@ -32,14 +31,7 @@ namespace IssueBox.Models
         /// <returns>条件に合致するカテゴリ一覧</returns>
         public static List<Category> FindCategoriesBy(Condition condition)
         {
-            try
-            {
-                return ModelBase._db.ReadAny<Category, Condition>("Exec FindCategoriesBy @Name, @EnableFlag", condition);
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.ReadAny<Category, Condition>("Exec FindCategoriesBy @Name, @EnableFlag", condition);
         }
 
         /// <summary>
@@ -48,14 +40,7 @@ namespace IssueBox.Models
         /// <returns>True:成功 / False:失敗</returns>
         public bool Save()
         {
-            try
-            {
-                return ModelBase._db.Execute<Category>("Exec SaveCategory @ID, @Name, @EnableFlag", this) > 0 ? true : false;
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.Execute<Category>("Exec SaveCategory @ID, @Name, @EnableFlag", this) > 0 ? true : false;
         }
     }
 }

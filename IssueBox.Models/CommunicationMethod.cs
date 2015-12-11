@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace IssueBox.Models
 {
@@ -35,14 +31,7 @@ namespace IssueBox.Models
         /// <returns>検索条件に該当する通信方式一覧</returns>
         public static List<CommunicationMethod> FindCommunicationMethodBy(Condition condition)
         {
-            try
-            {
-                return ModelBase._db.ReadAny<CommunicationMethod, Condition>("Exec FindCommunicationMethodBy @Name, @EnableFlag", condition);
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.ReadAny<CommunicationMethod, Condition>("Exec FindCommunicationMethodBy @Name, @EnableFlag", condition);
         }
 
         /// <summary>
@@ -51,14 +40,7 @@ namespace IssueBox.Models
         /// <returns>True:成功 / False:失敗</returns>
         public bool Save()
         {
-            try
-            {
-                return ModelBase._db.Execute<CommunicationMethod>("Exec SaveCommunicationMethod @ID, @Name, @EnableFlag", this) > 0 ? true : false;
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.Execute<CommunicationMethod>("Exec SaveCommunicationMethod @ID, @Name, @EnableFlag", this) > 0 ? true : false;
         }
     }
 }

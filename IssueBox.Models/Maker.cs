@@ -31,14 +31,7 @@ namespace IssueBox.Models
         /// <returns>検索条件に合致したメーカー一覧</returns>
         public static List<Maker> FindMakersBy(Condition condition)
         {
-            try
-            {
-                return ModelBase._db.ReadAny<Maker, Condition>("Exec FindMakersBy @Name, @EnableFlag", condition);
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.ReadAny<Maker, Condition>("Exec FindMakersBy @Name, @EnableFlag", condition);
         }
 
         /// <summary>
@@ -48,14 +41,7 @@ namespace IssueBox.Models
         /// <returns>True:成功 / False:異常</returns>
         public bool Save(List<Equipment> equipments)
         {
-            try
-            {
-                return ModelBase._db.Execute<Maker, Equipment>("Exec SaveMaker @ID, @Name, @EnableFlag, @Equipments", this, equipments) > 0 ? true : false;
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.Execute<Maker, Equipment>("Exec SaveMaker @ID, @Name, @EnableFlag, @Equipments", this, equipments) > 0 ? true : false;
         }
     }
 }
