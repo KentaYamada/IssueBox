@@ -40,14 +40,9 @@
             this.EquipmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EquipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rating = new System.Windows.Forms.DataGridViewTextBoxColumn();
-<<<<<<< HEAD
             this.CommunicationMethod = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.OutputControlFlag = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MakerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-=======
-            this.CommunicationMehod = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.OutputControl = new System.Windows.Forms.DataGridViewCheckBoxColumn();
->>>>>>> c0e6b59235e0fa702c819d2ee0f8dcfbb7e7a069
             this.EnableFlag = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MakerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -56,11 +51,7 @@
             // 
             // btnReturn
             // 
-<<<<<<< HEAD
-            this.btnReturn.Location = new System.Drawing.Point(547, 322);
-=======
             this.btnReturn.Location = new System.Drawing.Point(547, 237);
->>>>>>> c0e6b59235e0fa702c819d2ee0f8dcfbb7e7a069
             this.btnReturn.TabIndex = 6;
             // 
             // label1
@@ -105,25 +96,14 @@
             this.EquipmentID,
             this.EquipName,
             this.Rating,
-<<<<<<< HEAD
             this.CommunicationMethod,
             this.OutputControlFlag,
-            this.MakerID,
-            this.EnableFlag});
-            this.grdList.Location = new System.Drawing.Point(12, 80);
-            this.grdList.Name = "grdList";
-            this.grdList.RowTemplate.Height = 21;
-            this.grdList.Size = new System.Drawing.Size(610, 236);
-=======
-            this.CommunicationMehod,
-            this.OutputControl,
             this.EnableFlag,
             this.MakerID});
             this.grdList.Location = new System.Drawing.Point(12, 80);
             this.grdList.Name = "grdList";
             this.grdList.RowTemplate.Height = 21;
             this.grdList.Size = new System.Drawing.Size(610, 150);
->>>>>>> c0e6b59235e0fa702c819d2ee0f8dcfbb7e7a069
             this.grdList.TabIndex = 4;
             // 
             // btnSave
@@ -174,7 +154,6 @@
             this.Rating.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Rating.Width = 60;
             // 
-<<<<<<< HEAD
             // CommunicationMethod
             // 
             this.CommunicationMethod.DataPropertyName = "CommunicationMethodID";
@@ -188,21 +167,19 @@
             this.OutputControlFlag.Name = "OutputControlFlag";
             // 
             // MakerID
-=======
             // CommunicationMehod
->>>>>>> c0e6b59235e0fa702c819d2ee0f8dcfbb7e7a069
             // 
-            this.CommunicationMehod.DataPropertyName = "ID";
-            this.CommunicationMehod.DisplayStyleForCurrentCellOnly = true;
-            this.CommunicationMehod.HeaderText = "通信方式";
-            this.CommunicationMehod.MaxDropDownItems = 10;
-            this.CommunicationMehod.Name = "CommunicationMehod";
+            this.CommunicationMethod.DataPropertyName = "ID";
+            this.CommunicationMethod.DisplayStyleForCurrentCellOnly = true;
+            this.CommunicationMethod.HeaderText = "通信方式";
+            this.CommunicationMethod.MaxDropDownItems = 10;
+            this.CommunicationMethod.Name = "CommunicationMehod";
             // 
             // OutputControl
             // 
-            this.OutputControl.DataPropertyName = "OutputControlFlag";
-            this.OutputControl.HeaderText = "出力制御";
-            this.OutputControl.Name = "OutputControl";
+            this.OutputControlFlag.DataPropertyName = "OutputControlFlag";
+            this.OutputControlFlag.HeaderText = "出力制御";
+            this.OutputControlFlag.Name = "OutputControl";
             // 
             // EnableFlag
             // 
@@ -210,7 +187,6 @@
             this.EnableFlag.HeaderText = "データ有効";
             this.EnableFlag.Name = "EnableFlag";
             // 
-<<<<<<< HEAD
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(466, 322);
@@ -222,9 +198,6 @@
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // grpEnable
-=======
-            // MakerID
->>>>>>> c0e6b59235e0fa702c819d2ee0f8dcfbb7e7a069
             // 
             this.MakerID.DataPropertyName = "MakerID";
             this.MakerID.HeaderText = "MakerID";
@@ -235,11 +208,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< HEAD
+
             this.ClientSize = new System.Drawing.Size(634, 362);
-=======
-            this.ClientSize = new System.Drawing.Size(634, 277);
->>>>>>> c0e6b59235e0fa702c819d2ee0f8dcfbb7e7a069
             this.Controls.Add(this.grpEnable);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.grdList);
@@ -274,16 +244,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EquipmentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn EquipName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rating;
-<<<<<<< HEAD
         private System.Windows.Forms.DataGridViewComboBoxColumn CommunicationMethod;
         private System.Windows.Forms.DataGridViewCheckBoxColumn OutputControlFlag;
         private System.Windows.Forms.DataGridViewTextBoxColumn MakerID;
         private System.Windows.Forms.DataGridViewCheckBoxColumn EnableFlag;
-=======
-        private System.Windows.Forms.DataGridViewComboBoxColumn CommunicationMehod;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn OutputControl;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn EnableFlag;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MakerID;
->>>>>>> c0e6b59235e0fa702c819d2ee0f8dcfbb7e7a069
     }
 }
