@@ -55,17 +55,15 @@ namespace IssueBox.Models.Infrastructure
         private void ToSqlParameters<TModel>(TModel model)
            where TModel : class
         {
-            if (model == null) { throw new NullReferenceException(); }
+            if (model == null) { throw new ArgumentNullException("引数 modelをnullにすることはできません。"); }
 
             var target = typeof(TModel).GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                                       .ToList()
                                        .Select(p => new SqlParameter()
                                        {
                                            Direction = ParameterDirection.Input,
                                            ParameterName = string.Format("@{0}", p.Name),
                                            Value = this.ToDBNull(p.GetValue(model, null))
-                                       })
-                                       .ToArray();
+                                       });
 
             this._params.AddRange(target);
         }
@@ -77,7 +75,7 @@ namespace IssueBox.Models.Infrastructure
         private void ToTableParameter<TModel>(List<TModel> models)
             where TModel : class
         {
-            if (models == null) { throw new NullReferenceException(); }
+            if (models == null) { throw new ArgumentNullException("引数 modelsをnullにすることはできません。"); }
             
             var table = new DataTable();
 
@@ -89,7 +87,6 @@ namespace IssueBox.Models.Infrastructure
             
             list.AddRange(props);
             props.ForEach(v => list.AddRange(typeof(TModel).GetProperties().ToList().FindAll(x => x.Name != v.Name)));
-            //list.ForEach(x => table.Columns.Add(x.Name, x.PropertyType));
             list.ForEach(x => table.Columns.Add(x.Name));
 
             //行データ挿入
