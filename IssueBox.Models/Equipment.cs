@@ -31,6 +31,9 @@ namespace IssueBox.Models
         {
             this.ID = 0;
             this.Name = "";
+            this.Rating = 0;
+            this.CommunicationMethodID = 1;
+            this.OutputControlFlag = false;
             this.MakerID = 0;
             this.EnableFlag = true;
         }
@@ -44,14 +47,7 @@ namespace IssueBox.Models
         /// <returns>検索条件に合致した機器一覧</returns>
         public static List<Equipment> FindEquipmentsBy(int makerID)
         {
-            try
-            {
-                return ModelBase._db.ReadAny<Equipment, Maker>("Exec FindEquipmentsBy @ID", new Maker() { ID = makerID });
-            }
-            catch
-            {
-                throw;
-            }
+            return ModelBase._db.ReadAny<Equipment, Maker>("Exec FindEquipmentsBy @ID", new Maker() { ID = makerID });
         }
     }
 }

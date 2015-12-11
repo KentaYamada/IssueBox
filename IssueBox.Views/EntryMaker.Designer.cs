@@ -37,6 +37,8 @@
             this.EquipmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EquipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rating = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CommunicationMethod = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.OutputControlFlag = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MakerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnableFlag = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnSave = new System.Windows.Forms.Button();
@@ -47,7 +49,7 @@
             // 
             // btnReturn
             // 
-            this.btnReturn.Location = new System.Drawing.Point(362, 236);
+            this.btnReturn.Location = new System.Drawing.Point(547, 322);
             this.btnReturn.TabIndex = 6;
             // 
             // label1
@@ -83,12 +85,14 @@
             this.EquipmentID,
             this.EquipName,
             this.Rating,
+            this.CommunicationMethod,
+            this.OutputControlFlag,
             this.MakerID,
             this.EnableFlag});
             this.grdList.Location = new System.Drawing.Point(12, 80);
             this.grdList.Name = "grdList";
             this.grdList.RowTemplate.Height = 21;
-            this.grdList.Size = new System.Drawing.Size(425, 150);
+            this.grdList.Size = new System.Drawing.Size(610, 236);
             this.grdList.TabIndex = 4;
             // 
             // EquipmentID
@@ -118,6 +122,18 @@
             this.Rating.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Rating.Width = 60;
             // 
+            // CommunicationMethod
+            // 
+            this.CommunicationMethod.DataPropertyName = "CommunicationMethodID";
+            this.CommunicationMethod.HeaderText = "通信方式";
+            this.CommunicationMethod.Name = "CommunicationMethod";
+            // 
+            // OutputControlFlag
+            // 
+            this.OutputControlFlag.DataPropertyName = "OutputControlFlag";
+            this.OutputControlFlag.HeaderText = "出力制御";
+            this.OutputControlFlag.Name = "OutputControlFlag";
+            // 
             // MakerID
             // 
             this.MakerID.DataPropertyName = "MakerID";
@@ -133,7 +149,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(281, 236);
+            this.btnSave.Location = new System.Drawing.Point(466, 322);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 28);
             this.btnSave.TabIndex = 5;
@@ -156,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 277);
+            this.ClientSize = new System.Drawing.Size(634, 362);
             this.Controls.Add(this.grpEnable);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.grdList);
@@ -187,11 +203,13 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView grdList;
         private System.Windows.Forms.Button btnSave;
+        private Infrastructure.EnableRadioButtons grpEnable;
         private System.Windows.Forms.DataGridViewTextBoxColumn EquipmentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn EquipName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rating;
+        private System.Windows.Forms.DataGridViewComboBoxColumn CommunicationMethod;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn OutputControlFlag;
         private System.Windows.Forms.DataGridViewTextBoxColumn MakerID;
         private System.Windows.Forms.DataGridViewCheckBoxColumn EnableFlag;
-        private Infrastructure.EnableRadioButtons grpEnable;
     }
 }

@@ -13,23 +13,16 @@ namespace IssueBox.Views.Infrastructure
 
         private static void Write(string message, string name)
         {
+            string fileName = string.Format("{0}\\{1}_{2}.log", _confString, DateTime.Now.ToString("yyyyMMdd"), name);
+
             if (!Directory.Exists(_confString)) 
             {
                 Directory.CreateDirectory(_confString);
             }
 
-            string fileName = string.Format("{0}\\{1}_{2}.log", _confString, DateTime.Now.ToString("yyyyMMdd"), name);
-
-            try
+            using (var stream = new StreamWriter(fileName, true, _enc))
             {
-                using (var stream = new StreamWriter(fileName, true, _enc))
-                {
-                    stream.Write(message);
-                }
-            }
-            catch
-            {
-                throw;
+                stream.Write(message);
             }
         }
         
@@ -40,11 +33,11 @@ namespace IssueBox.Views.Infrastructure
         public static void Error(Exception ex)
         {
             var sb = new StringBuilder();
-            sb.Length = 0;
+            sb.Clear();
             sb.AppendLine(string.Format("エラーメッセージ:{0}", ex.Message));
             sb.AppendLine(string.Format("発生箇所:{0}", ex.TargetSite));
             sb.AppendLine(string.Format("スタックトレース:{0}", ex.StackTrace));
-            
+
             //ログファイル書き込み
             Logger.Write(sb.ToString(), "error");
         }

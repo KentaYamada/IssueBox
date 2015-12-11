@@ -16,11 +16,13 @@ CREATE PROCEDURE FindEquipmentsBy (
 AS
 BEGIN
   SELECT
-     e.id          AS ID
-    ,e.name        AS Name
-    ,e.rating      AS Rating
-    ,e.maker_id    AS MakerID
-    ,e.enable_flag AS EnableFlag
+     e.id                      AS ID
+    ,e.name                    AS Name
+    ,e.rating                  AS Rating
+    ,e.maker_id                AS MakerID
+    ,e.communication_method_id AS CommunicationMethodID
+    ,e.output_control_flag     AS OutputControlFlag
+    ,e.enable_flag             AS EnableFlag
   FROM EQUIPMENTS AS e
   WHERE e.maker_id = @ID
   ORDER BY e.name

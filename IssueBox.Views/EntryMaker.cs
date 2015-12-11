@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 
 using IssueBox.Models;
+using IssueBox.Models.Infrastructure;
 using IssueBox.Views.Infrastructure;
 
 namespace IssueBox.Views
@@ -14,9 +15,11 @@ namespace IssueBox.Views
     /// </summary>
     public partial class EntryMaker : EntryFormBase
     {
-        private Maker _maker = null;
+        private Maker _maker;
 
-        private List<Equipment> _equipments = null;
+        private List<Equipment> _equipments;
+
+        private List<DropDownModel> _comMethod;
 
         #region Constructors
 
@@ -26,8 +29,11 @@ namespace IssueBox.Views
 
         public EntryMaker(Maker maker)
         {
+            this._maker = maker;
+            this._equipments = new List<Equipment>();
+            this._comMethod = new List<DropDownModel>();
+
             InitializeComponent();
-            this.Initialize(maker, new List<Equipment>());
         }
 
         #endregion
@@ -37,31 +43,29 @@ namespace IssueBox.Views
         /// </summary>
         private void EntryMaker_Load(object sender, EventArgs e)
         {
-            try
-            {
-                this._equipments = Equipment.FindEquipmentsBy(this._maker.ID);
-            }
-            catch(SqlException ex)
-            {
-                Logger.Error(ex);
-                MessageBox.Show(ex.Message);
-            }
-
-            this.grdList.DataSource = new BindingList<Equipment>(this._equipments);
+            this.Initialize();
         }
 
         /// <summary>
         /// 初期化設定
         /// </summary>
-        private void Initialize(Maker maker, List<Equipment> equipments)
+        private void Initialize()
         {
             base.ClearBindings(this.Controls);
 
-            this._maker = null;
-            this._maker = maker;
+            this._equipments = Equipment.FindEquipmentsBy(this._maker.ID);
+            this._comMethod = DropDownModel.FindAllData(TABLE_NAME.COMMUNICATION_METHOD);
+
             this.txtName.DataBindings.Add("Text", this._maker, "Name");
             this.grpEnable.DataBindings.Add("Enable", this._maker, "EnableFlag");
-            this.grdList.DataSource = new BindingList<Equipment>(equipments);
+            this.grdList.DataSource = new BindingList<Equipment>(this._equipments);
+
+            var cell = this.grdList.Columns["CommunicationMethod"] as DataGridViewComboBoxColumn;
+            cell.DisplayMember = "Value";
+            cell.ValueMember = "ID";
+            cell.DataPropertyName = "CommunicationMethodID";
+            cell.DataSource = this._comMethod;
+
             this.txtName.Focus();
         }
 
@@ -70,15 +74,14 @@ namespace IssueBox.Views
         /// </summary>
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            bool result = this._maker.Save(this._equipments);
+            string msg = result ? "登録しました。" : "登録失敗しました。";
+
+            MessageBox.Show(msg);
+
+            if (result)
             {
-                this._maker.Save(this._equipments);
-                MessageBox.Show("登録しました。");
-                this.Initialize(new Maker(), new List<Equipment>());
-            }
-            catch(SqlException ex)
-            {
-                Logger.Error(ex);
+                this.Initialize();
             }
         }
     }
