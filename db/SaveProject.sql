@@ -1,8 +1,6 @@
 /*
  * プロジェクト情報保存
  */
-
-
 IF OBJECT_ID('dbo.SaveProject') IS NOT NULL
 BEGIN
   DROP PROCEDURE dbo.SaveProject
@@ -16,7 +14,7 @@ CREATE PROCEDURE SaveProject (
     ,@ProductID  int
     ,@ServiceID  int
     ,@EnableFlag bit
-    ,@EquipmentConfigurations EQUIPMENTCONFIGURATIONS_T READONLY
+    ,@EquipmentConfigurations EQUIPMENT_CONFIGURATIONS_T READONLY
 ) AS
 BEGIN TRY
   BEGIN TRAN

@@ -26,7 +26,7 @@ CREATE TYPE EQUIPMENTS_T AS TABLE (
 )
 
 --機器構成
-CREATE TYPE EQUIPMENT_CONFIGURATIONS_T AS TABLE (
+CREATE TYPE EQUIPMENTCONFIGURATIONS_T AS TABLE (
    id            int
   ,project_id    int
   ,maker_name    nvarchar(20)
