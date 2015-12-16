@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
+using IssueBox.Models;
 
 namespace IssueBox.Views.Infrastructure
 {
@@ -27,30 +28,39 @@ namespace IssueBox.Views.Infrastructure
             } 
         }
 
+        /// <summary>検索条件</summary>
+        protected Condition Condition { get; set; }
+
+        #region Default Construcotr
+
         public PanelBase()
         {
             InitializeComponent();
         }
 
-        protected virtual void SetReadData() { }
+        #endregion
 
-        //protected virtual void ShowEntryWindow() { }
+        /// <summary>
+        /// 初期化処理
+        /// </summary>
+        protected virtual void Initialize() { }
 
-        ///// <summary>
-        ///// 「新規作成」クリックイベント
-        ///// </summary>
-        //protected void btnNew_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        //ToDo:入力画面表示
-        //        this.ShowEntryWindow();
-        //    }
-        //    catch(SqlException ex)
-        //    {
-        //        Logger.Error(ex);
-        //    }
-        //}
+        /// <summary>
+        /// データ読み込み
+        /// </summary>
+        protected virtual void ReadData() { }
+
+        /// <summary>
+        /// 登録フォーム表示
+        /// </summary>
+        /// <param name="form"></param>
+        protected virtual void ShowEntryWindow(EntryFormBase form)
+        {
+            using(var f = form)
+            {
+                f.ShowDialog();
+            }
+        }
 
         /// <summary>
         /// 「検索」クリックイベント
@@ -59,30 +69,12 @@ namespace IssueBox.Views.Infrastructure
         {
             try
             {
-                this.SetReadData();
+                this.ReadData();
             }
             catch (SqlException ex)
             {
                 Logger.Error(ex);
             }
         }
-
-        ///// <summary>
-        ///// 行データ選択イベント
-        ///// </summary>
-        //protected void grdList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    //ToDo:入力画面表示
-        //    this.ShowEntryWindow();
-
-        //    try
-        //    {
-        //        this.SetReadData();
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        Logger.Error(ex);
-        //    }
-        //}
     }
 }
