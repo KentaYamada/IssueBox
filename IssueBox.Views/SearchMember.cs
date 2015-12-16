@@ -64,7 +64,7 @@ namespace IssueBox.Views
         /// </summary>
         protected override void ShowEntryWindow()
         {
-            using (var form = new EntryMember(new Member()))
+            using (var form = new EntryMember())
             {
                 form.ShowDialog();
             }
