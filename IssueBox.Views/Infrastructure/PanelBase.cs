@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -40,6 +39,79 @@ namespace IssueBox.Views.Infrastructure
 
         #endregion
 
+        #region Events
+
+        /// <summary>
+        /// ロードイベント
+        /// </summary>
+        protected void Form_Load(object sender, EventArgs e)
+        {
+            this.Initialize();
+
+            try
+            {
+                this.ReadData();
+            }
+            catch (SqlException ex)
+            {
+                Logger.Error(ex);
+            }
+        }
+
+        /// <summary>
+        /// 「検索」ボタンクリックイベント
+        /// </summary>
+        protected void SearchButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.ReadData();
+            }
+            catch (SqlException ex)
+            {
+                Logger.Error(ex);
+            }
+        }
+
+        /// <summary>
+        /// 「新規登録」ボタンクリックイベント
+        /// </summary>
+        protected void NewEntryButton_Click(object sender, EventArgs e)
+        {
+            this.ShowEntryWindow();
+
+            try
+            {
+                this.ReadData();
+            }
+            catch (SqlException ex)
+            {
+                Logger.Error(ex);
+            }
+        }
+
+        /// <summary>
+        /// セルダブルクリックイベント
+        /// </summary>
+        protected void DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //ヘッダをダブルクリックすると例外が起きるので、例外防止のため必要
+            if (e.RowIndex < 0) { return; }
+
+            this.ShowEntryWindow(e.RowIndex);
+
+            try
+            {
+                this.ReadData();
+            }
+            catch (SqlException ex)
+            {
+                Logger.Error(ex);
+            }
+        }
+
+        #endregion
+
         /// <summary>
         /// 初期化処理
         /// </summary>
@@ -53,28 +125,12 @@ namespace IssueBox.Views.Infrastructure
         /// <summary>
         /// 登録フォーム表示
         /// </summary>
-        /// <param name="form"></param>
-        protected virtual void ShowEntryWindow(EntryFormBase form)
-        {
-            using(var f = form)
-            {
-                f.ShowDialog();
-            }
-        }
+        protected virtual void ShowEntryWindow() { }
 
         /// <summary>
-        /// 「検索」クリックイベント
+        /// 登録フォーム表示
         /// </summary>
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.ReadData();
-            }
-            catch (SqlException ex)
-            {
-                Logger.Error(ex);
-            }
-        }
+        /// <param name="index">選択された行番号</param>
+        protected virtual void ShowEntryWindow(int index) { }
     }
 }

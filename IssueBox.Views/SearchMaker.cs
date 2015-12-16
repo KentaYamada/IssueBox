@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Windows.Forms;
+﻿using System.Collections.Generic;
 
 using IssueBox.Models;
 using IssueBox.Models.Infrastructure;
@@ -14,86 +11,35 @@ namespace IssueBox.Views
     /// </summary>
     public partial class SearchMaker : PanelBase
     {
-        private List<Maker> _makers = null;
+        private List<Maker> _makers;
 
         #region Default Constructor
 
         public SearchMaker()
         {
+            InitializeComponent();
+
             base.Condition = new Condition();
             this._makers = new List<Maker>();
 
-            InitializeComponent();
+            //基底クラスで実装したコールバック関数でイベントフック
+            this.Load += base.Form_Load;
+            this.btnNew.Click += base.NewEntryButton_Click;
+            this.btnSearch.Click += base.SearchButton_Click;
+            this.grdList.CellDoubleClick += base.DataGridView_CellDoubleClick;
         }
 
         #endregion
 
         /// <summary>
-        /// フォームロードイベント
+        /// 初期化処理
         /// </summary>
-        private void SearchMaker_Load(object sender, EventArgs e)
+        protected override void Initialize()
         {
             this.cmbEnable.DataSource = Constants.EnableList;
-
-            try
-            {
-                this.ReadData();
-            }
-            catch(SqlException ex)
-            {
-                Logger.Error(ex);
-            }
-        }
-
-        /// <summary>
-        /// 「検索」ボタンクリックイベント
-        /// </summary>
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.ReadData();
-            }
-            catch (SqlException ex)
-            {
-                Logger.Error(ex);
-            }
-        }
-
-        /// <summary>
-        /// 「新規登録」ボタンクリックイベント
-        /// </summary>
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            base.ShowEntryWindow(new EntryMaker(new Maker()));
-
-            try
-            {
-                this.ReadData();
-            }
-            catch (SqlException ex)
-            {
-                Logger.Error(ex);
-            }
-        }
-
-        /// <summary>
-        /// セルダブルクリックイベント
-        /// </summary>
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0) { return; }
-
-            this.ShowEntryWindow(new EntryMaker(this._makers[e.RowIndex]));
-
-            try
-            {
-                this.ReadData();
-            }
-            catch (SqlException ex)
-            {
-                Logger.Error(ex);
-            }
+            this.cmbEnable.DataBindings.Add("SelectedValue", base.Condition, "EnableFlag");
+            this.txtName.DataBindings.Add("Text", base.Condition, "Name");
+            this.txtName.Focus();
         }
 
         /// <summary>
@@ -111,6 +57,29 @@ namespace IssueBox.Views
             }
 
             this.grdList.DataSource = this._makers;
+        }
+
+        /// <summary>
+        /// 登録フォーム表示
+        /// </summary>
+        protected override void ShowEntryWindow()
+        {
+            using (var form = new EntryMaker())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        /// <summary>
+        /// 登録フォーム表示
+        /// </summary>
+        /// <param name="index">選択された行番号</param>
+        protected override void ShowEntryWindow(int index)
+        {
+            using (var form = new EntryMaker(this._makers[index]))
+            {
+                form.ShowDialog();
+            }
         }
     }
 }

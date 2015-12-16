@@ -59,7 +59,6 @@
             this.btnNew.TabIndex = 20;
             this.btnNew.Text = "新規登録";
             this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // label2
             // 
@@ -101,7 +100,6 @@
             this.grdList.RowTemplate.Height = 21;
             this.grdList.Size = new System.Drawing.Size(470, 369);
             this.grdList.TabIndex = 14;
-            this.grdList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdList_CellDoubleClick);
             // 
             // ID
             // 
@@ -162,7 +160,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grdList);
             this.Name = "SearchCommunicationMethod";
-            this.Load += new System.EventHandler(this.SearchCategory_Load);
             this.Controls.SetChildIndex(this.lblAlert, 0);
             this.Controls.SetChildIndex(this.grdList, 0);
             this.Controls.SetChildIndex(this.label1, 0);

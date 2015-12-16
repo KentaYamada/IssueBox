@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Windows.Forms;
+﻿using System.Collections.Generic;
 
 using IssueBox.Models;
 using IssueBox.Models.Infrastructure;
@@ -11,69 +7,49 @@ using IssueBox.Views.Infrastructure;
 namespace IssueBox.Views
 {
     /// <summary>
-    /// カテゴリ一覧
+    /// 通信方式一覧・検索画面
     /// </summary>
     public partial class SearchCommunicationMethod : PanelBase
     {
-        private Condition _cond = null;
-
         private List<CommunicationMethod> _comMethod = null;
 
-        #region Constructor
+        #region Default Constructor
 
         public SearchCommunicationMethod()
         {
             InitializeComponent();
 
-            this._cond = new Condition();
+            base.Condition = new Condition();
             this._comMethod = new List<CommunicationMethod>();
-            this.btnSearch.Click += base.btnSearch_Click;
+
+            //基底クラスで実装したコールバック関数でイベントフック
+            this.Load += base.Form_Load;
+            this.btnNew.Click += base.NewEntryButton_Click;
+            this.btnSearch.Click += base.SearchButton_Click;
+            this.grdList.CellDoubleClick += base.DataGridView_CellDoubleClick;
         }
 
         #endregion
 
         /// <summary>
-        /// フォームロードイベント
+        /// 初期化処理
         /// </summary>
-        private void SearchCategory_Load(object sender, EventArgs e)
+        protected override void Initialize()
         {
-            this.Initialize();
-            
-            try
-            {
-                this.SetReadData();
-            }
-            catch (SqlException ex)
-            {
-                Logger.Error(ex);
-            }
+            this.cmbEnable.DataSource = Constants.EnableList;
+            this.cmbEnable.DataBindings.Add("SelectedValue", base.Condition, "EnableFlag");
+            this.txtName.DataBindings.Add("Text", base.Condition, "Name");
+            this.txtName.Focus();
         }
 
         /// <summary>
-        /// 「新規登録」ボタンクリックイベント
+        /// データ読み込み
         /// </summary>
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            this.ShowEntryWindow(new CommunicationMethod());
-
-            try
-            {
-                this.SetReadData();
-            }
-            catch (SqlException ex)
-            {
-                Logger.Error(ex);
-            }
-        }
-
-        /// <summary>
-        /// 通信方式一覧取得
-        /// </summary>
-        protected override void SetReadData()
+        protected override void ReadData()
         {
             try
             {
-                this._comMethod = CommunicationMethod.FindCommunicationMethodBy(this._cond);
+                this._comMethod = CommunicationMethod.FindCommunicationMethodBy(base.Condition);
             }
             catch
             {
@@ -82,41 +58,25 @@ namespace IssueBox.Views
 
             this.grdList.DataSource = this._comMethod;
         }
-
+        
         /// <summary>
-        /// セルダブルクリックイベント
+        /// 登録フォーム表示
         /// </summary>
-        private void grdList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        protected override void ShowEntryWindow()
         {
-            this.ShowEntryWindow(this._comMethod[e.RowIndex]);
-
-            try
+            using (var form = new EntryCommunicationMethod(new CommunicationMethod()))
             {
-                this.SetReadData();
-            }
-            catch (SqlException ex)
-            {
-                Logger.Error(ex);
+                form.ShowDialog();
             }
         }
 
         /// <summary>
-        /// 初期化処理
+        /// 登録フォーム表示
         /// </summary>
-        private void Initialize()
+        /// <param name="index">選択された行番号</param>
+        protected override void ShowEntryWindow(int index)
         {
-            this.cmbEnable.DataSource = Constants.EnableList;
-            this.cmbEnable.DataBindings.Add("SelectedValue", this._cond, "EnableFlag");
-            this.txtName.DataBindings.Add("Text", this._cond, "Name");
-            this.txtName.Focus();
-        }
-        /// <summary>
-        /// カテゴリ設定画面表示
-        /// </summary>
-        /// <param name="commMethod"></param>
-        private void ShowEntryWindow(CommunicationMethod commMethod)
-        {
-            using (var form = new EntryCommunicationMethod(commMethod))
+            using (var form = new EntryCommunicationMethod(this._comMethod[index]))
             {
                 form.ShowDialog();
             }

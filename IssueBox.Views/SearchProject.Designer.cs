@@ -36,15 +36,15 @@
             this.txtProjectID = new IssueBox.Views.Infrastructure.TextBoxEx();
             this.label1 = new System.Windows.Forms.Label();
             this.grdList = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtName = new IssueBox.Views.Infrastructure.TextBoxEx();
-            this.label4 = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnableFlag = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SeihinID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ServiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtName = new IssueBox.Views.Infrastructure.TextBoxEx();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +56,6 @@
             this.btnSearch.TabIndex = 8;
             this.btnSearch.Text = "検索";
             this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnNew
             // 
@@ -66,7 +65,6 @@
             this.btnNew.TabIndex = 9;
             this.btnNew.Text = "新規登録";
             this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // label2
             // 
@@ -131,32 +129,6 @@
             this.grdList.RowTemplate.Height = 21;
             this.grdList.Size = new System.Drawing.Size(610, 369);
             this.grdList.TabIndex = 10;
-            this.grdList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdList_CellDoubleClick);
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(599, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 28);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "(部分一致)";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(422, 32);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(171, 27);
-            this.txtName.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(368, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 28);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "案件名";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ID
             // 
@@ -212,6 +184,31 @@
             this.ServiceID.ReadOnly = true;
             this.ServiceID.Visible = false;
             // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(599, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 28);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "(部分一致)";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(422, 32);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(171, 27);
+            this.txtName.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(368, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 28);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "案件名";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // SearchProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -228,7 +225,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grdList);
             this.Name = "SearchProject";
-            this.Load += new System.EventHandler(this.SearchProject_Load);
             this.Controls.SetChildIndex(this.lblAlert, 0);
             this.Controls.SetChildIndex(this.grdList, 0);
             this.Controls.SetChildIndex(this.label1, 0);

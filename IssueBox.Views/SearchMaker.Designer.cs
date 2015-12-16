@@ -34,11 +34,11 @@
             this.cmbEnable = new IssueBox.Views.Infrastructure.DropDownListEx();
             this.label6 = new System.Windows.Forms.Label();
             this.grdList = new System.Windows.Forms.DataGridView();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
             this.MakerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MakerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnableFlag = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,27 +99,6 @@
             this.grdList.RowTemplate.Height = 21;
             this.grdList.Size = new System.Drawing.Size(360, 370);
             this.grdList.TabIndex = 30;
-            this.grdList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(416, 119);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 28);
-            this.btnSearch.TabIndex = 32;
-            this.btnSearch.Text = "検索";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(497, 119);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(75, 28);
-            this.btnNew.TabIndex = 31;
-            this.btnNew.Text = "新規登録";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // MakerID
             // 
@@ -146,6 +125,24 @@
             this.EnableFlag.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.EnableFlag.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(416, 119);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 28);
+            this.btnSearch.TabIndex = 32;
+            this.btnSearch.Text = "検索";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(497, 119);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(75, 28);
+            this.btnNew.TabIndex = 31;
+            this.btnNew.Text = "新規登録";
+            this.btnNew.UseVisualStyleBackColor = true;
+            // 
             // SearchMaker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -159,7 +156,6 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label4);
             this.Name = "SearchMaker";
-            this.Load += new System.EventHandler(this.SearchMaker_Load);
             this.Controls.SetChildIndex(this.lblAlert, 0);
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.txtName, 0);

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Windows.Forms;
 
 using IssueBox.Models;
 using IssueBox.Models.Infrastructure;
@@ -10,101 +8,50 @@ using IssueBox.Views.Infrastructure;
 namespace IssueBox.Views
 {
     /// <summary>
-    /// 製品検索
+    /// 製品一覧・検索画面
     /// </summary>
     public partial class SearchProduct : PanelBase
     {
-        private Condition _cond = null;
-
         private List<Product> _products = null;
+
+        #region Default Constructor
 
         public SearchProduct()
         {
             InitializeComponent();
 
-            this._cond = new Condition();
+            base.Condition = new Condition();
             this._products = new List<Product>();
+
+            //基底クラスで実装したコールバック関数でイベントフック
+            this.Load += base.Form_Load;
+            this.btnNew.Click += base.NewEntryButton_Click;
+            this.btnSearch.Click += base.SearchButton_Click;
+            this.grdList.CellDoubleClick += base.DataGridView_CellDoubleClick;
         }
 
-        private void SearchProduct_Load(object sender, EventArgs e)
-        {
-            this.Initialize();
-
-            try
-            {
-                this.SetProducts();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.SetProducts();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            this.ShowEntryWindow(new Product());
-
-            try
-            {
-                this.SetProducts();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// セルダブルクリックイベント
-        /// </summary>
-        private void grdList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0) { return; }
-
-            this.ShowEntryWindow(this._products[e.RowIndex]);
-
-            try
-            {
-                this.SetProducts();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        #endregion
 
         /// <summary>
         /// 初期化処理
         /// </summary>
-        private void Initialize()
+        protected override void Initialize()
         {
             this.cmbEnable.DataSource = Constants.EnableList;
-            this.cmbEnable.DataBindings.Add("SelectedValue", this._cond, "EnableFlag");
+            this.cmbEnable.DataBindings.Add("SelectedValue", base.Condition, "EnableFlag");
             this.cmbEnable.SelectedIndex = 0;
-            this.txtName.DataBindings.Add("Text", this._cond, "Name");
+            this.txtName.DataBindings.Add("Text", base.Condition, "Name");
             this.txtName.Focus();
         }
 
         /// <summary>
-        /// 製品一覧設定
+        /// データ読み込み
         /// </summary>
-        private void SetProducts()
+        protected override void ReadData()
         {
             try
             {
-                this._products = Product.FindProductsBy(this._cond);
+                this._products = Product.FindProductsBy(base.Condition);
             }
             catch
             {
@@ -115,12 +62,23 @@ namespace IssueBox.Views
         }
 
         /// <summary>
-        /// カテゴリ設定画面表示
+        /// 登録フォーム表示
         /// </summary>
-        /// <param name="product"></param>
-        private void ShowEntryWindow(Product product)
+        protected override void ShowEntryWindow()
         {
-            using (var form = new EntryProduct(product))
+            using (var form = new EntryProduct(new Product()))
+            {
+                form.ShowDialog();
+            }
+        }
+
+        /// <summary>
+        /// 登録フォーム表示
+        /// </summary>
+        /// <param name="index">選択された行番号</param>
+        protected override void ShowEntryWindow(int index)
+        {
+            using (var form = new EntryProduct(this._products[index]))
             {
                 form.ShowDialog();
             }

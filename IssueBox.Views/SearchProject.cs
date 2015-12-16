@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Windows.Forms;
+﻿using System.Collections.Generic;
 
 using IssueBox.Models;
 using IssueBox.Models.Infrastructure;
@@ -9,10 +6,12 @@ using IssueBox.Views.Infrastructure;
 
 namespace IssueBox.Views
 {
+    /// <summary>
+    /// 案件一覧・検索画面
+    /// </summary>
     public partial class SearchProject : PanelBase
     {
-        private ProjectCondition _cond = null;
-        
+        private ProjectCondition _cond;
         private List<Project> _projects = null;
 
         public SearchProject()
@@ -21,81 +20,31 @@ namespace IssueBox.Views
             this._projects = new List<Project>();
 
             InitializeComponent();
-        }
 
-        private void SearchProject_Load(object sender, EventArgs e)
-        {
-            this.Initialize();
-
-            try
-            {
-                this.SetProjects();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.SetProjects();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            this.ShowEntryWindow(new Project());
-
-            try
-            {
-                this.SetProjects();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void grdList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0) { return; }
-
-            this.ShowEntryWindow(this._projects[e.RowIndex]);
-
-            try
-            {
-                this.SetProjects();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //基底クラスで実装したコールバック関数でイベントフック
+            this.Load += base.Form_Load;
+            this.btnNew.Click += base.NewEntryButton_Click;
+            this.btnSearch.Click += base.SearchButton_Click;
+            this.grdList.CellDoubleClick += base.DataGridView_CellDoubleClick;
         }
 
         /// <summary>
         /// 初期化処理
         /// </summary>
-        private void Initialize()
+        protected override void Initialize()
         {
             this.cmbEnable.DataSource = Constants.EnableList;
-            this.cmbEnable.DataBindings.Add("SelectedValue", this._cond, "EnableFlag");
+            this.cmbEnable.DataBindings.Add("SelectedValue", base.Condition, "EnableFlag");
             this.cmbEnable.SelectedValue = 0;
-            this.txtName.DataBindings.Add("Text", this._cond, "Name");
-            this.txtProjectID.DataBindings.Add("Text", this._cond, "ProjectID");
+            this.txtName.DataBindings.Add("Text", base.Condition, "Name");
+            this.txtProjectID.DataBindings.Add("Text", base.Condition, "ProjectID");
             this.txtProjectID.Focus();
         }
 
         /// <summary>
-        /// 製品一覧設定
+        /// データ読み込み
         /// </summary>
-        private void SetProjects()
+        protected override void ReadData()
         {
             try
             {
@@ -110,12 +59,23 @@ namespace IssueBox.Views
         }
 
         /// <summary>
-        /// カテゴリ設定画面表示
+        /// 登録フォーム表示
         /// </summary>
-        /// <param name="project"></param>
-        private void ShowEntryWindow(Project project)
+        protected override void ShowEntryWindow()
         {
-            using (var form = new EntryProject(project))
+            using (var form = new EntryProject(new Project()))
+            {
+                form.ShowDialog();
+            }
+        }
+
+        /// <summary>
+        /// 登録フォーム表示
+        /// </summary>
+        /// <param name="index">選択された行番号</param>
+        protected override void ShowEntryWindow(int index)
+        {
+            using (var form = new EntryProject(this._projects[index]))
             {
                 form.ShowDialog();
             }

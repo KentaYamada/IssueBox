@@ -61,7 +61,6 @@
             this.grdList.RowTemplate.Height = 21;
             this.grdList.Size = new System.Drawing.Size(678, 369);
             this.grdList.TabIndex = 1;
-            this.grdList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdList_CellDoubleClick);
             // 
             // ID
             // 
@@ -140,7 +139,6 @@
             this.btnNew.TabIndex = 12;
             this.btnNew.Text = "新規登録";
             this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnSearch
             // 
@@ -150,7 +148,6 @@
             this.btnSearch.TabIndex = 13;
             this.btnSearch.Text = "検索";
             this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // cmbEnable
             // 
@@ -185,7 +182,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grdList);
             this.Name = "SearchMember";
-            this.Load += new System.EventHandler(this.SearchMember_Load);
             this.Controls.SetChildIndex(this.lblAlert, 0);
             this.Controls.SetChildIndex(this.grdList, 0);
             this.Controls.SetChildIndex(this.label1, 0);
