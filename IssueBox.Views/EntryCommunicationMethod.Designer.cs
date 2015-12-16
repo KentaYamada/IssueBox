@@ -75,16 +75,15 @@
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // enableRadioButtons1
+            // grpEnable
             // 
             this.grpEnable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.grpEnable.Enable = true;
             this.grpEnable.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.grpEnable.Location = new System.Drawing.Point(92, 90);
             this.grpEnable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpEnable.Name = "enableRadioButtons1";
+            this.grpEnable.Name = "grpEnable";
             this.grpEnable.Size = new System.Drawing.Size(117, 28);
             this.grpEnable.TabIndex = 3;
             // 

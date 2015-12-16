@@ -42,7 +42,7 @@
             this.btnReturn.TabIndex = 999;
             this.btnReturn.Text = "戻る";
             this.btnReturn.UseVisualStyleBackColor = true;
-            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            this.btnReturn.Click += new System.EventHandler(this.ReturnButton_Click);
             // 
             // errorProvider1
             // 

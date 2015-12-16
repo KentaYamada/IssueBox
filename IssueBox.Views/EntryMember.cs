@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
+﻿using System.Linq;
 
 using IssueBox.Models;
 using IssueBox.Views.Infrastructure;
@@ -12,7 +10,7 @@ namespace IssueBox.Views
     /// </summary>
     public partial class EntryMember : EntryFormBase
     {
-        private Member _member = null;
+        private Member _member;
 
         #region Constructors
 
@@ -23,42 +21,22 @@ namespace IssueBox.Views
         public EntryMember(Member member)
         {
             InitializeComponent();
-            this.Initialize(member);
+
+            this._member = member;
+
+            //基底クラスで実装したコールバック関数でイベントフック
+            this.Load += base.Form_Load;
+            this.btnSave.Click += base.RegisterButton_Click;
         }
 
         #endregion
 
         /// <summary>
-        /// 「保存」ボタンクリックイベント
-        /// </summary>
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (!this.Validation())
-            {
-                return;
-            }
-
-            try
-            {
-                this._member.Save();
-                MessageBox.Show("登録しました。");
-                this.Initialize(new Member());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        /// <summary>
         /// 初期設定
         /// </summary>
-        private void Initialize(Member member)
+        protected override void Initialize()
         {
             base.ClearBindings(this.Controls);
-
-            this._member = null;
-            this._member = member;
             this.txtName.DataBindings.Add("Text", this._member, "Name");
             this.txtLoginID.DataBindings.Add("Text", this._member, "LoginID");
             this.txtLoginPW.DataBindings.Add("Text", this._member, "LoginPassword");
@@ -69,7 +47,7 @@ namespace IssueBox.Views
         /// <summary>
         /// 入力チェック
         /// </summary>
-        private bool Validation()
+        protected override bool Validation()
         {
             base.errorProvider1.Clear();
             var target = this.Controls.OfType<TextBoxEx>()
@@ -83,6 +61,31 @@ namespace IssueBox.Views
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// 登録処理
+        /// </summary>
+        protected override bool Register()
+        {
+            bool result = false;
+
+            try
+            {
+                result = this._member.Save();
+            }
+            catch
+            {
+                throw;
+            }
+
+            if (result)
+            {
+                this._member = null;
+                this._member = new Member();
+            }
+
+            return result;
         }
     }
 }

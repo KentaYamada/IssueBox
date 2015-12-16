@@ -1,8 +1,4 @@
-﻿using System;
-using System.Data.SqlClient;
-using System.Windows.Forms;
-
-using IssueBox.Models;
+﻿using IssueBox.Models;
 using IssueBox.Views.Infrastructure;
 
 namespace IssueBox.Views
@@ -12,7 +8,7 @@ namespace IssueBox.Views
     /// </summary>
     public partial class EntryUnit : EntryFormBase
     {
-        private Unit _unit = null;
+        private Unit _unit;
 
         #region Constructors
 
@@ -23,43 +19,22 @@ namespace IssueBox.Views
         public EntryUnit(Unit unit)
         {
             InitializeComponent();
-            this.Initialize(unit);
+
+            this._unit = unit;
+
+            //基底クラスで実装したコールバック関数でイベントフック
+            this.Load += base.Form_Load;
+            this.btnSave.Click += base.RegisterButton_Click;
         }
 
         #endregion
 
         /// <summary>
-        /// 「保存」ボタンクリックイベント
-        /// </summary>
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (!this.Validation())
-            {
-                return;
-            }
-
-            try
-            {
-                this._unit.Save();
-                MessageBox.Show("登録しました。");
-                this.Initialize(new Unit());
-            }
-            catch (SqlException ex)
-            {
-                Logger.Error(ex);
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        /// <summary>
         /// 初期設定
         /// </summary>
-        private void Initialize(Unit unit)
+        protected override void Initialize()
         {
             base.ClearBindings(this.Controls);
-
-            this._unit = null;
-            this._unit = unit;
             this.txtName.DataBindings.Add("Text", this._unit, "Name");
             this.grpEnable.DataBindings.Add("Enable", this._unit, "EnableFlag");
             this.txtName.Focus();
@@ -68,7 +43,7 @@ namespace IssueBox.Views
         /// <summary>
         /// 入力チェック
         /// </summary>
-        private bool Validation()
+        protected override bool Validation()
         {
             this.errorProvider1.Clear();
 
@@ -82,6 +57,29 @@ namespace IssueBox.Views
             return true;
         }
 
-        
+        /// <summary>
+        /// 登録処理
+        /// </summary>
+        protected override bool Register()
+        {
+            bool result = false;
+
+            try
+            {
+                result = this._unit.Save();
+            }
+            catch
+            {
+                throw;
+            }
+
+            if (result)
+            {
+                this._unit = null;
+                this._unit = new Unit();
+            }
+
+            return result;
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -28,32 +27,35 @@ namespace IssueBox.Views
 
         public EntryMaker(Maker maker)
         {
+            InitializeComponent();
+
             this._maker = maker;
             this._equipments = new List<Equipment>();
             this._comMethod = new List<DropDownModel>();
 
-            InitializeComponent();
+            //基底クラスで実装したコールバック関数でイベントフック
+            this.Load += base.Form_Load;
+            this.btnSave.Click += base.RegisterButton_Click;
         }
 
         #endregion
 
         /// <summary>
-        /// ロードイベント
-        /// </summary>
-        private void EntryMaker_Load(object sender, EventArgs e)
-        {
-            this.Initialize();
-        }
-
-        /// <summary>
         /// 初期化設定
         /// </summary>
-        private void Initialize()
+        protected override void Initialize()
         {
             base.ClearBindings(this.Controls);
 
-            this._equipments = Equipment.FindEquipmentsBy(this._maker.ID);
-            this._comMethod = DropDownModel.FindAllData(TABLE_NAME.COMMUNICATION_METHOD);
+            try
+            {
+                this._equipments = Equipment.FindEquipmentsBy(this._maker.ID);
+                this._comMethod = DropDownModel.FindAllData(TABLE_NAME.COMMUNICATION_METHOD);
+            }
+            catch
+            {
+                throw;
+            }
 
             this.txtName.DataBindings.Add("Text", this._maker, "Name");
             this.grpEnable.DataBindings.Add("Enable", this._maker, "EnableFlag");
@@ -69,19 +71,48 @@ namespace IssueBox.Views
         }
 
         /// <summary>
-        /// 「保存」ボタンクリックイベント
+        /// 入力チェック
         /// </summary>
-        private void btnSave_Click(object sender, EventArgs e)
+        protected override bool Validation()
         {
-            bool result = this._maker.Save(this._equipments);
-            string msg = result ? "登録しました。" : "登録失敗しました。";
+            base.errorProvider1.Clear();
 
-            MessageBox.Show(msg);
+            if (string.IsNullOrWhiteSpace(this.txtName.Text))
+            {
+                base.errorProvider1.SetError(this.txtName, this.txtName.AlertMessage);
+                return false;
+            }
+
+            //Todo:グリッド周りの入力チェック
+            return true;
+        }
+
+        /// <summary>
+        /// 登録処理
+        /// </summary>
+        protected override bool Register()
+        {
+            bool result = false;
+
+            try
+            {
+                result = this._maker.Save(this._equipments);
+            }
+            catch
+            {
+                throw;
+            }
 
             if (result)
             {
-                this.Initialize();
+                this._maker = null;
+                this._equipments = null;
+                this._maker = new Maker();
+                this._equipments = new List<Equipment>();
+
             }
+
+            return result;
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using IssueBox.Models;
+﻿using IssueBox.Models;
 using IssueBox.Views.Infrastructure;
 
 namespace IssueBox.Views
@@ -10,7 +8,7 @@ namespace IssueBox.Views
     /// </summary>
     public partial class EntryCommunicationMethod : EntryFormBase
     {
-        private CommunicationMethod _comMethod = null;
+        private CommunicationMethod _comMethod;
 
         #region Constructors
 
@@ -21,43 +19,22 @@ namespace IssueBox.Views
         public EntryCommunicationMethod(CommunicationMethod comMethod)
         {
             InitializeComponent();
-            this.Initialize(comMethod);
+
+            this._comMethod = comMethod;
+
+            //基底クラスで実装したコールバック関数でイベントフック
+            this.Load += base.Form_Load;
+            this.btnSave.Click += base.RegisterButton_Click;
         }
 
         #endregion
 
         /// <summary>
-        /// 「保存」ボタンクリックイベント
-        /// </summary>
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (!this.Validation()) 
-            {
-                return;
-            }
-
-            try
-            {
-                this._comMethod.Save();
-                MessageBox.Show("登録しました。");
-                this.Initialize(new CommunicationMethod());
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex);
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        /// <summary>
         /// 初期化設定
         /// </summary>
-        private void Initialize(CommunicationMethod comMethod)
+        protected override void Initialize()
         {
             base.ClearBindings(this.Controls);
-
-            this._comMethod = null;
-            this._comMethod = comMethod;
             this.txtName.DataBindings.Add("Text", this._comMethod, "Name");
             this.grpEnable.DataBindings.Add("Enable", this._comMethod, "EnableFlag");
             this.txtName.Focus();
@@ -66,7 +43,7 @@ namespace IssueBox.Views
         /// <summary>
         /// 入力チェック
         /// </summary>
-        private bool Validation()
+        protected override bool Validation()
         {
             base.errorProvider1.Clear();
 
@@ -77,6 +54,31 @@ namespace IssueBox.Views
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// 登録処理
+        /// </summary>
+        protected override bool Register()
+        {
+            bool result = false;
+
+            try
+            {
+                result = this._comMethod.Save();
+            }
+            catch
+            {
+                throw;
+            }
+
+            if (result)
+            {
+                this._comMethod = null;
+                this._comMethod = new CommunicationMethod();
+            }
+
+            return result;
         }
     }
 }

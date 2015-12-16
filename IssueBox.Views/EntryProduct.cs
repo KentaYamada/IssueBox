@@ -10,7 +10,7 @@ namespace IssueBox.Views
     /// </summary>
     public partial class EntryProduct : EntryFormBase
     {
-        private Product _product = null;
+        private Product _product;
 
         #region Constructors
 
@@ -21,40 +21,22 @@ namespace IssueBox.Views
         public EntryProduct(Product product)
         {
             InitializeComponent();
-            this.Initialize(product);
+
+            this._product = product;
+
+            //基底クラスで実装したコールバック関数でイベントフック
+            this.Load += base.Form_Load;
+            this.btnSave.Click += base.RegisterButton_Click;
         }
 
         #endregion
 
         /// <summary>
-        /// 「保存」ボタンクリックイベント
-        /// </summary>
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (!this.Validation()) { return; }
-
-            try
-            {
-                this._product.Save();
-                MessageBox.Show("登録しました。");
-                this.Initialize(new Product());
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex);
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        /// <summary>
         /// 初期設定
         /// </summary>
-        private void Initialize(Product product)
+        protected override void Initialize()
         {
             base.ClearBindings(this.Controls);
-
-            this._product = null;
-            this._product = product;
             this.txtName.DataBindings.Add("Text", this._product, "Name");
             this.txtVersion.DataBindings.Add("Text", this._product, "Version");
             this.grpStatus.DataBindings.Add("SelectedStatus", this._product, "ProductType");
@@ -65,7 +47,7 @@ namespace IssueBox.Views
         /// <summary>
         /// 入力チェック
         /// </summary>
-        private bool Validation()
+        protected override bool Validation()
         {
             base.errorProvider1.Clear();
 
@@ -77,6 +59,31 @@ namespace IssueBox.Views
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// 登録処理
+        /// </summary>
+        protected override bool Register()
+        {
+            bool result = false;
+
+            try
+            {
+                result = this._product.Save();
+            }
+            catch
+            {
+                throw;
+            }
+
+            if (result)
+            {
+                this._product = null;
+                this._product = new Product();
+            }
+
+            return result;
         }
     }
 }
