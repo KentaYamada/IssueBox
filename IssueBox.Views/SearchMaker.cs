@@ -9,26 +9,35 @@ using IssueBox.Views.Infrastructure;
 
 namespace IssueBox.Views
 {
+    /// <summary>
+    /// メーカー一覧・検索画面
+    /// </summary>
     public partial class SearchMaker : PanelBase
     {
-        private Condition _cond = null;
-
         private List<Maker> _makers = null;
+
+        #region Default Constructor
 
         public SearchMaker()
         {
-            InitializeComponent();
-
-            this._cond = new Condition();
+            base.Condition = new Condition();
             this._makers = new List<Maker>();
+
+            InitializeComponent();
         }
 
+        #endregion
+
+        /// <summary>
+        /// フォームロードイベント
+        /// </summary>
         private void SearchMaker_Load(object sender, EventArgs e)
         {
+            this.cmbEnable.DataSource = Constants.EnableList;
+
             try
             {
-                this.cmbEnable.DataSource = Constants.EnableList;
-                this.SetMakers();
+                this.ReadData();
             }
             catch(SqlException ex)
             {
@@ -36,11 +45,14 @@ namespace IssueBox.Views
             }
         }
 
+        /// <summary>
+        /// 「検索」ボタンクリックイベント
+        /// </summary>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             try
             {
-                this.SetMakers();
+                this.ReadData();
             }
             catch (SqlException ex)
             {
@@ -48,13 +60,16 @@ namespace IssueBox.Views
             }
         }
 
+        /// <summary>
+        /// 「新規登録」ボタンクリックイベント
+        /// </summary>
         private void btnNew_Click(object sender, EventArgs e)
         {
-            this.ShowEntryWindow(new Maker());
+            base.ShowEntryWindow(new EntryMaker(new Maker()));
 
             try
             {
-                this.SetMakers();
+                this.ReadData();
             }
             catch (SqlException ex)
             {
@@ -62,15 +77,18 @@ namespace IssueBox.Views
             }
         }
 
+        /// <summary>
+        /// セルダブルクリックイベント
+        /// </summary>
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) { return; }
 
-            this.ShowEntryWindow(this._makers[e.RowIndex]);
+            this.ShowEntryWindow(new EntryMaker(this._makers[e.RowIndex]));
 
             try
             {
-                this.SetMakers();
+                this.ReadData();
             }
             catch (SqlException ex)
             {
@@ -78,11 +96,14 @@ namespace IssueBox.Views
             }
         }
 
-        private void SetMakers()
+        /// <summary>
+        /// データ読み込み
+        /// </summary>
+        protected override void ReadData()
         {
             try
             {
-                this._makers = Maker.FindMakersBy(this._cond);
+                this._makers = Maker.FindMakersBy(base.Condition);
             }
             catch
             {
@@ -90,18 +111,6 @@ namespace IssueBox.Views
             }
 
             this.grdList.DataSource = this._makers;
-        }
-
-        /// <summary>
-        /// メーカー設定画面表示
-        /// </summary>
-        /// <param name="maker"></param>
-        private void ShowEntryWindow(Maker maker)
-        {
-            using (var form = new EntryMaker(maker))
-            {
-                form.ShowDialog();
-            }
         }
     }
 }
