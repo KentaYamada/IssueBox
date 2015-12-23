@@ -13,6 +13,8 @@ namespace IssueBox.Views
     {
         private List<Maker> _makers;
 
+        public override string MenuName { get { return "メーカー一覧・検索"; } }
+
         #region Default Constructor
 
         public SearchMaker()

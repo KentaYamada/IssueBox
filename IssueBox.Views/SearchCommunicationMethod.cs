@@ -13,6 +13,8 @@ namespace IssueBox.Views
     {
         private List<CommunicationMethod> _comMethod = null;
 
+        public override string MenuName { get { return "通信方式一覧・検索"; } }
+
         #region Default Constructor
 
         public SearchCommunicationMethod()

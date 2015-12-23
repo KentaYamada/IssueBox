@@ -14,6 +14,8 @@ namespace IssueBox.Views
         private ProjectCondition _cond;
         private List<Project> _projects = null;
 
+        public override string MenuName { get { return "案件一覧・検索"; }  }
+
         public SearchProject()
         {
             this._cond = new ProjectCondition();
@@ -34,10 +36,10 @@ namespace IssueBox.Views
         protected override void Initialize()
         {
             this.cmbEnable.DataSource = Constants.EnableList;
-            this.cmbEnable.DataBindings.Add("SelectedValue", base.Condition, "EnableFlag");
+            this.cmbEnable.DataBindings.Add("SelectedValue", this._cond, "EnableFlag");
             this.cmbEnable.SelectedValue = 0;
-            this.txtName.DataBindings.Add("Text", base.Condition, "Name");
-            this.txtProjectID.DataBindings.Add("Text", base.Condition, "ProjectID");
+            this.txtName.DataBindings.Add("Text", this._cond, "Name");
+            this.txtProjectID.DataBindings.Add("Text", this._cond, "ProjectID");
             this.txtProjectID.Focus();
         }
 

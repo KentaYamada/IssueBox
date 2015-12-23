@@ -42,10 +42,10 @@
             this.menuSearchMember = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSearchCategory = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSearchUnit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSearchCommunicationMethod = new System.Windows.Forms.ToolStripMenuItem();
             this.menuIO = new System.Windows.Forms.ToolStripMenuItem();
             this.終了ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.menuSearchCommunicationMethod = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -110,37 +110,44 @@
             // menuSearchProduct
             // 
             this.menuSearchProduct.Name = "menuSearchProduct";
-            this.menuSearchProduct.Size = new System.Drawing.Size(152, 22);
+            this.menuSearchProduct.Size = new System.Drawing.Size(124, 22);
             this.menuSearchProduct.Text = "製品";
             this.menuSearchProduct.Click += new System.EventHandler(this.menu_Click);
             // 
             // menuSearchMaker
             // 
             this.menuSearchMaker.Name = "menuSearchMaker";
-            this.menuSearchMaker.Size = new System.Drawing.Size(152, 22);
+            this.menuSearchMaker.Size = new System.Drawing.Size(124, 22);
             this.menuSearchMaker.Text = "メーカー";
             this.menuSearchMaker.Click += new System.EventHandler(this.menu_Click);
             // 
             // menuSearchMember
             // 
             this.menuSearchMember.Name = "menuSearchMember";
-            this.menuSearchMember.Size = new System.Drawing.Size(152, 22);
+            this.menuSearchMember.Size = new System.Drawing.Size(124, 22);
             this.menuSearchMember.Text = "メンバー";
             this.menuSearchMember.Click += new System.EventHandler(this.menu_Click);
             // 
             // menuSearchCategory
             // 
             this.menuSearchCategory.Name = "menuSearchCategory";
-            this.menuSearchCategory.Size = new System.Drawing.Size(152, 22);
+            this.menuSearchCategory.Size = new System.Drawing.Size(124, 22);
             this.menuSearchCategory.Text = "カテゴリ";
             this.menuSearchCategory.Click += new System.EventHandler(this.menu_Click);
             // 
             // menuSearchUnit
             // 
             this.menuSearchUnit.Name = "menuSearchUnit";
-            this.menuSearchUnit.Size = new System.Drawing.Size(152, 22);
+            this.menuSearchUnit.Size = new System.Drawing.Size(124, 22);
             this.menuSearchUnit.Text = "単位";
             this.menuSearchUnit.Click += new System.EventHandler(this.menu_Click);
+            // 
+            // menuSearchCommunicationMethod
+            // 
+            this.menuSearchCommunicationMethod.Name = "menuSearchCommunicationMethod";
+            this.menuSearchCommunicationMethod.Size = new System.Drawing.Size(124, 22);
+            this.menuSearchCommunicationMethod.Text = "通信方式";
+            this.menuSearchCommunicationMethod.Click += new System.EventHandler(this.menu_Click);
             // 
             // menuIO
             // 
@@ -172,13 +179,6 @@
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.Visible = false;
-            // 
-            // menuSearchCommunicationMethod
-            // 
-            this.menuSearchCommunicationMethod.Name = "menuSearchCommunicationMethod";
-            this.menuSearchCommunicationMethod.Size = new System.Drawing.Size(152, 22);
-            this.menuSearchCommunicationMethod.Text = "通信方式";
-            this.menuSearchCommunicationMethod.Click += new System.EventHandler(this.menu_Click);
             // 
             // MainWindow
             // 

@@ -19,7 +19,7 @@ namespace IssueBox.Views
 
         public MainWindow()
             :this("")
-        {}
+        { }
 
         public MainWindow(string loginMemberName)
         {
@@ -62,8 +62,13 @@ namespace IssueBox.Views
         {
             try
             {
-                var type = Assembly.LoadFrom("IssueBox.Views.dll").GetTypes().Where(n => n.Name == panelName).First();
+                var type = Assembly.LoadFrom("IssueBox.Views.dll")
+                                   .GetTypes()
+                                   .Where(n => n.Name == panelName)
+                                   .First();
                 var panel = Activator.CreateInstance(type) as PanelBase;
+
+                this.Text = string.Format("{0} -{1}", "名前どうしよう", panel.MenuName);
                 this.Controls.Add(panel);
                 panel.Location = new Point(0, 0);
                 panel.Dock = DockStyle.Fill;

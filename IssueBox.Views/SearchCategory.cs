@@ -13,6 +13,8 @@ namespace IssueBox.Views
     {
         private List<Category> _categories = null;
 
+        public override string MenuName { get { return "カテゴリ一覧・検索"; } }
+
         #region Constructor
 
         public SearchCategory()

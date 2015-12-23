@@ -30,6 +30,9 @@ namespace IssueBox.Views.Infrastructure
         /// <summary>検索条件</summary>
         protected Condition Condition { get; set; }
 
+        /// <summary>メニュー名</summary>
+        public virtual string MenuName { get { throw new NotImplementedException("派生クラスで実装してください。"); } }
+
         #region Default Construcotr
 
         public PanelBase()

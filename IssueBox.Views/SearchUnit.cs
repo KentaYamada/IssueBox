@@ -13,6 +13,8 @@ namespace IssueBox.Views
     {
         private List<Unit> _units;
 
+        public override string MenuName { get { return "単位一覧・検索"; } }
+
         #region Default constructor
 
         public SearchUnit()

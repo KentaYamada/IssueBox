@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
 using IssueBox.Models;
@@ -14,8 +12,10 @@ namespace IssueBox.Views
     /// </summary>
     public partial class SearchIssue : PanelBase
     {
-        private List<IssueSearch> _issues = null;
-        private IssueCondition _condition = null;
+        private List<IssueSearch> _issues;
+        private IssueCondition _condition;
+
+        public override string MenuName { get { return "タスク一覧・検索"; } }
 
         public SearchIssue()
         {
@@ -23,34 +23,31 @@ namespace IssueBox.Views
 
             this._condition = new IssueCondition();
             this._issues = new List<IssueSearch>();
-        }
 
-        /// <summary>
-        /// フォームロードイベント
-        /// </summary>
-        private void SearchIssue_Load(object sender, EventArgs e)
-        {
-            this.Initialize();
-
-            try
-            {
-                //Fix Me:検索条件の仕様決める
-                //this.cmbCategories.DataSource = DropDownModel.FindAllData(TABLE_NAME.CATEGORIES);
-                this.cmbProjects.DataSource = DropDownModel.FindAllData(TABLE_NAME.PROJECTS, false);
-                //this.cmbProducts.DataSource = DropDownModel.FindAllData(TABLE_NAME.PRODUCTS);
-                this.SetIssues();
-            }
-            catch(SqlException ex)
-            {
-                Logger.Error(ex);
-            }
+            //基底クラスで実装したコールバック関数でイベントフック
+            this.Load += base.Form_Load;
+            this.btnNew.Click += base.NewEntryButton_Click;
+            this.btnSearch.Click += base.SearchButton_Click;
+            this.grdList.CellDoubleClick += base.DataGridView_CellDoubleClick;
         }
 
         /// <summary>
         /// 初期設定
         /// </summary>
-        private void Initialize()
+        protected override void Initialize()
         {
+            try
+            {
+                //ToDo:検索条件の機能まとめる
+                this.cmbCategories.DataSource = DropDownModel.FindAllData(TABLE_NAME.CATEGORIES);
+                this.cmbProjects.DataSource = DropDownModel.FindAllData(TABLE_NAME.PROJECTS, false);
+                this.cmbProducts.DataSource = DropDownModel.FindAllData(TABLE_NAME.PRODUCTS);
+            }
+            catch
+            {
+                throw;
+            }
+
             this.cmbCategories.DataBindings.Add("SelectedValue", this._condition, "CategoryID");
             this.cmbProjects.DataBindings.Add("SelectedValue", this._condition, "ProjectID", true, DataSourceUpdateMode.OnValidation);
             this.cmbProducts.DataBindings.Add("SelectedValue", this._condition, "ProductID");
@@ -60,41 +57,9 @@ namespace IssueBox.Views
         }
 
         /// <summary>
-        /// 「新規作成」ボタンクリックイベント
+        /// データ読み込み
         /// </summary>
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            this.ShowEntryIssue(new IssueSearch());
-
-            try
-            {
-                this.SetIssues();
-            }
-            catch (SqlException ex)
-            {
-                Logger.Error(ex);
-            }
-        }
-
-        /// <summary>
-        /// 「検索」ボタンクリックイベント
-        /// </summary>
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.SetIssues();
-            }
-            catch(SqlException ex)
-            {
-                Logger.Error(ex); 
-            }
-        }
-
-        /// <summary>
-        /// 課題一覧セット
-        /// </summary>
-        private void SetIssues()
+        protected override void ReadData()
         {
             try
             {
@@ -109,32 +74,25 @@ namespace IssueBox.Views
         }
 
         /// <summary>
-        /// 課題登録画面表示
+        /// 登録フォーム表示
         /// </summary>
-        private void ShowEntryIssue(IssueSearch model)
+        protected override void ShowEntryWindow()
         {
-            using (var form = new EntryIssue(model))
+            using (var form = new EntryIssue())
             {
                 form.ShowDialog();
             }
         }
 
         /// <summary>
-        /// セルダブルクリックイベント
+        /// 登録フォーム表示
         /// </summary>
-        private void grdList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        /// <param name="index">選択された行番号</param>
+        protected override void ShowEntryWindow(int index)
         {
-            if (e.RowIndex < 0) { return; }
-
-            this.ShowEntryIssue(this._issues[e.RowIndex]);
-
-            try
+            using (var form = new EntryIssue(this._issues[index]))
             {
-                this.SetIssues();
-            }
-            catch (SqlException ex)
-            {
-                Logger.Error(ex);
+                form.ShowDialog();
             }
         }
     }

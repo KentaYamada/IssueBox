@@ -14,6 +14,8 @@ namespace IssueBox.Views
     {
         private List<Product> _products = null;
 
+        public override string MenuName { get { return "製品一覧・検索"; } }
+
         #region Default Constructor
 
         public SearchProduct()

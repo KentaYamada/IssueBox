@@ -13,6 +13,8 @@ namespace IssueBox.Views
     {
         private List<Member> _members;
 
+        public override string MenuName { get { return "メンバー一覧・検索"; } }
+
         #region Default Constructor
 
         public SearchMember()
