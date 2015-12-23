@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grpEnable = new IssueBox.Views.Infrastructure.EnableRadioButtons();
             this.label1 = new System.Windows.Forms.Label();
             this.txtProjectID = new IssueBox.Views.Infrastructure.TextBoxEx();
@@ -188,8 +188,8 @@
             // UnitCount
             // 
             this.UnitCount.DataPropertyName = "UnitCount";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.UnitCount.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.UnitCount.DefaultCellStyle = dataGridViewCellStyle1;
             this.UnitCount.HeaderText = "台数";
             this.UnitCount.MaxInputLength = 2;
             this.UnitCount.Name = "UnitCount";
@@ -241,7 +241,6 @@
             this.btnSave.TabIndex = 1010;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // EntryProject
             // 
@@ -261,7 +260,6 @@
             this.Controls.Add(this.label2);
             this.Name = "EntryProject";
             this.Text = "案件登録";
-            this.Load += new System.EventHandler(this.EntryProject_Load);
             this.Controls.SetChildIndex(this.btnReturn, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label6, 0);

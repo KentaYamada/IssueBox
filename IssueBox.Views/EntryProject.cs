@@ -16,11 +16,13 @@ namespace IssueBox.Views
     /// </summary>
     public partial class EntryProject : EntryFormBase
     {
-        private Project _project = null;
+        private Project _project;
 
-        private List<Equipment> _equipments = null;
+        private List<Equipment> _equipments;
 
-        private List<EquipmentConfiguration> _eqipConf = null;
+        private List<EquipmentConfiguration> _eqipConf;
+
+        #region Constructors
 
         public EntryProject()
             :this(new Project())
@@ -32,46 +34,13 @@ namespace IssueBox.Views
 
             this._project = project;
             this._eqipConf = new List<EquipmentConfiguration>();
-            this.txtProjectID.DataBindings.Add("Text", this._project, "ProjectID");
-            this.txtName.DataBindings.Add("Text", this._project, "Name");
-            this.grpEnable.DataBindings.Add("Enable", this._project, "EnableFlag");
+
+            //基底クラスで実装したコールバック関数でイベントフック
+            this.Load += base.Form_Load;
+            this.btnSave.Click += base.RegisterButton_Click;
         }
 
-        /// <summary>
-        /// ロードイベント
-        /// </summary>
-        private void EntryProject_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                this.cmbMaker.DataSource = DropDownModel.FindAllData(TABLE_NAME.MAKERS);
-                this._eqipConf = EquipmentConfiguration.FindEquipmentConfigurationBy(this._project.ID);
-                this.grdDetail.DataSource = new BindingList<EquipmentConfiguration>(this._eqipConf);
-            }
-            catch(SqlException ex)
-            {
-                Logger.Error(ex);
-            }
-        }
-
-        /// <summary>
-        /// 「保存」クリックイベント
-        /// </summary>
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (!this.Validation()) { return; }
-
-            try
-            {
-                this._project.Save(this._eqipConf);
-                MessageBox.Show("登録しました。");
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                Logger.Error(ex);
-            }
-        }
+        #endregion
 
         /// <summary>
         /// 「メーカー」値変更イベント
@@ -82,13 +51,16 @@ namespace IssueBox.Views
 
             try
             {
-                int id = Convert.ToInt32(this.cmbMaker.SelectedValue);
-                this._equipments = Equipment.FindEquipmentsBy(id);
-                this._equipments.ForEach(x => this.lstEquipments.Items.Add(x.Name));
+                this._equipments = Equipment.FindEquipmentsBy(Convert.ToInt32(this.cmbMaker.SelectedValue));
             }
             catch (SqlException ex)
             {
                 Logger.Error(ex);
+            }
+
+            if (this._equipments.Count > 0)
+            {
+                this._equipments.ForEach(x => this.lstEquipments.Items.Add(x.Name));
             }
         }
 
@@ -106,8 +78,59 @@ namespace IssueBox.Views
                 Rating = this._equipments[this.lstEquipments.SelectedIndex].Rating
             };
 
-            //↓↓↓Fix Me↓↓↓
             this._eqipConf.Add(model);
+            this.grdDetail.DataSource = new BindingList<EquipmentConfiguration>(this._eqipConf);
+        }
+
+        /// <summary>
+        /// 「削除」ボタンクリックイベント
+        /// </summary>
+        private void grdDetail_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) { return; }
+            if (!(sender is DataGridViewButtonCell)) { return; }
+
+            try
+            {
+                if (this._eqipConf[e.RowIndex].ProjectID == 0)
+                {
+                    //新規データの場合はリストから削除
+                    this._eqipConf.RemoveAt(e.RowIndex);
+                }
+                else
+                {
+                    //DBに登録されているデータはDelete文実行
+                    this._eqipConf[e.RowIndex].DeleteEquipmentConfiguration();
+                }
+            }
+            catch (SqlException ex)
+            {
+                Logger.Error(ex);
+            }
+
+            this.grdDetail.DataSource = new BindingList<EquipmentConfiguration>(this._eqipConf);
+        }
+
+        /// <summary>
+        /// 初期化処理
+        /// </summary>
+        protected override void Initialize()
+        {
+            base.ClearBindings(this.Controls);
+
+            try
+            {
+                this.cmbMaker.DataSource = DropDownModel.FindAllData(TABLE_NAME.MAKERS);
+                this._eqipConf = EquipmentConfiguration.FindEquipmentConfigurationBy(this._project.ID);
+            }
+            catch
+            {
+                throw;
+            }
+            
+            this.txtProjectID.DataBindings.Add("Text", this._project, "ProjectID");
+            this.txtName.DataBindings.Add("Text", this._project, "Name");
+            this.grpEnable.DataBindings.Add("Enable", this._project, "EnableFlag");
             this.grdDetail.DataSource = new BindingList<EquipmentConfiguration>(this._eqipConf);
         }
 
@@ -115,7 +138,7 @@ namespace IssueBox.Views
         /// 入力チェック
         /// </summary>
         /// <returns></returns>
-        private bool Validation()
+        protected override bool Validation()
         {
             base.errorProvider1.Clear();
             var target = this.Controls.OfType<TextBoxEx>()
@@ -129,6 +152,7 @@ namespace IssueBox.Views
             }
 
             //案件ID重複チェック
+            //登録モード(新規 or 更新)で重複チェックすべきか判定が必要
             //try
             //{
             //    var count = Project.ProjectID_DoubleCheck(this.txtProjectID.Text);
@@ -147,30 +171,30 @@ namespace IssueBox.Views
             return true;
         }
 
-        private void grdDetail_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        /// <summary>
+        /// 登録処理
+        /// </summary>
+        /// <returns></returns>
+        protected override bool Register()
         {
-            if (e.RowIndex < 0) { return; }
-            if (!(sender is DataGridViewButtonCell)) { return; }
+            bool result = false;
 
             try
             {
-                if (this._eqipConf[e.RowIndex].ProjectID == 0)
-                {
-                    //新規データの場合はリストから削除
-                    this._eqipConf.RemoveAt(e.RowIndex);
-                }
-                else
-                {
-                    //DBに登録されているデータはDelete文実行
-                    this._eqipConf[e.RowIndex].DeleteEquipmentConfiguration();
-                }
-                
-                this.grdDetail.DataSource = new BindingList<EquipmentConfiguration>(this._eqipConf);
+                result = this._project.Save(this._eqipConf);
             }
-            catch(SqlException ex)
+            catch
             {
-                Logger.Error(ex);
+                throw;
             }
+
+            if (result)
+            {
+                this._project = null;
+                this._project = new Project();
+            }
+
+            return result;
         }
     }
 }
