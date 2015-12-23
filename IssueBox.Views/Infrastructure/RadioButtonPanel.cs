@@ -23,8 +23,8 @@ namespace IssueBox.Views.Infrastructure
             set
             {
                 var target = this.Controls.OfType<StatusRadioButtonAbstract>()
-                                                         .Where(x => x.Status == value)
-                                                         .ToList();
+                                           .Where(x => x.Status == value)
+                                           .ToList();
                 if (target.Count > 0)
                 {
                     target[0].Checked = true;

@@ -51,29 +51,30 @@
             this.cmbResponcedMember = new IssueBox.Views.Infrastructure.DropDownListEx();
             this.txtComment = new IssueBox.Views.Infrastructure.TextBoxEx();
             this.grpStatus = new IssueBox.Views.Infrastructure.RadioButtonPanel();
-            this.originationRadioButton1 = new IssueBox.Views.Infrastructure.OriginationRadioButton();
             this.responcingRadioButton1 = new IssueBox.Views.Infrastructure.ResponcingRadioButton();
-            this.checkingRadioButton1 = new IssueBox.Views.Infrastructure.CheckingRadioButton();
             this.doneRadioButton1 = new IssueBox.Views.Infrastructure.DoneRadioButton();
+            this.originationRadioButton1 = new IssueBox.Views.Infrastructure.OriginationRadioButton();
+            this.checkingRadioButton1 = new IssueBox.Views.Infrastructure.CheckingRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.grpStatus.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnReturn
             // 
-            this.btnReturn.Location = new System.Drawing.Point(400, 572);
+            this.btnReturn.Location = new System.Drawing.Point(400, 567);
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(12, 82);
+            this.label11.Location = new System.Drawing.Point(12, 76);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(36, 27);
+            this.label11.Size = new System.Drawing.Size(36, 28);
             this.label11.TabIndex = 4;
             this.label11.Text = "案件";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(12, 183);
+            this.label10.Location = new System.Drawing.Point(12, 178);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 27);
             this.label10.TabIndex = 10;
@@ -82,7 +83,7 @@
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(12, 355);
+            this.label7.Location = new System.Drawing.Point(12, 350);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 27);
             this.label7.TabIndex = 16;
@@ -91,7 +92,7 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(12, 287);
+            this.label6.Location = new System.Drawing.Point(12, 282);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 27);
             this.label6.TabIndex = 14;
@@ -109,25 +110,25 @@
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(12, 115);
+            this.label4.Location = new System.Drawing.Point(12, 110);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 27);
+            this.label4.Size = new System.Drawing.Size(50, 28);
             this.label4.TabIndex = 6;
             this.label4.Text = "製品";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(12, 149);
+            this.label3.Location = new System.Drawing.Point(12, 144);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 27);
+            this.label3.Size = new System.Drawing.Size(66, 28);
             this.label3.TabIndex = 8;
             this.label3.Text = "カテゴリ";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(12, 47);
+            this.label2.Location = new System.Drawing.Point(12, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 27);
             this.label2.TabIndex = 2;
@@ -136,7 +137,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 16);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 27);
             this.label1.TabIndex = 0;
@@ -145,20 +146,19 @@
             // 
             // dtOrigination
             // 
-            this.dtOrigination.Location = new System.Drawing.Point(103, 14);
+            this.dtOrigination.Location = new System.Drawing.Point(103, 9);
             this.dtOrigination.Name = "dtOrigination";
             this.dtOrigination.Size = new System.Drawing.Size(144, 27);
             this.dtOrigination.TabIndex = 1;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(319, 572);
+            this.btnSave.Location = new System.Drawing.Point(319, 567);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 28);
             this.btnSave.TabIndex = 18;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label8
             // 
@@ -171,7 +171,7 @@
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(12, 322);
+            this.label9.Location = new System.Drawing.Point(12, 315);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 27);
             this.label9.TabIndex = 22;
@@ -181,7 +181,7 @@
             // dtFinishedDate
             // 
             this.dtFinishedDate.GetDate = null;
-            this.dtFinishedDate.Location = new System.Drawing.Point(103, 322);
+            this.dtFinishedDate.Location = new System.Drawing.Point(103, 315);
             this.dtFinishedDate.Mask = "0000/00/00";
             this.dtFinishedDate.Name = "dtFinishedDate";
             this.dtFinishedDate.Size = new System.Drawing.Size(100, 27);
@@ -193,7 +193,7 @@
             this.cmbCheckedMember.DisplayMember = "Value";
             this.cmbCheckedMember.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCheckedMember.FormattingEnabled = true;
-            this.cmbCheckedMember.Location = new System.Drawing.Point(103, 250);
+            this.cmbCheckedMember.Location = new System.Drawing.Point(103, 245);
             this.cmbCheckedMember.Name = "cmbCheckedMember";
             this.cmbCheckedMember.Size = new System.Drawing.Size(186, 28);
             this.cmbCheckedMember.TabIndex = 20;
@@ -202,7 +202,7 @@
             // dtDeadLine
             // 
             this.dtDeadLine.GetDate = null;
-            this.dtDeadLine.Location = new System.Drawing.Point(103, 183);
+            this.dtDeadLine.Location = new System.Drawing.Point(103, 178);
             this.dtDeadLine.Mask = "0000/00/00";
             this.dtDeadLine.Name = "dtDeadLine";
             this.dtDeadLine.Size = new System.Drawing.Size(100, 27);
@@ -214,7 +214,7 @@
             this.cmbIssuingMember.DisplayMember = "Value";
             this.cmbIssuingMember.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIssuingMember.FormattingEnabled = true;
-            this.cmbIssuingMember.Location = new System.Drawing.Point(103, 47);
+            this.cmbIssuingMember.Location = new System.Drawing.Point(103, 42);
             this.cmbIssuingMember.Name = "cmbIssuingMember";
             this.cmbIssuingMember.Size = new System.Drawing.Size(186, 28);
             this.cmbIssuingMember.TabIndex = 3;
@@ -225,7 +225,7 @@
             this.cmbProject.DisplayMember = "Value";
             this.cmbProject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProject.FormattingEnabled = true;
-            this.cmbProject.Location = new System.Drawing.Point(103, 81);
+            this.cmbProject.Location = new System.Drawing.Point(103, 76);
             this.cmbProject.Name = "cmbProject";
             this.cmbProject.Size = new System.Drawing.Size(186, 28);
             this.cmbProject.TabIndex = 5;
@@ -236,7 +236,7 @@
             this.cmbProduct.DisplayMember = "Value";
             this.cmbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProduct.FormattingEnabled = true;
-            this.cmbProduct.Location = new System.Drawing.Point(103, 115);
+            this.cmbProduct.Location = new System.Drawing.Point(103, 110);
             this.cmbProduct.Name = "cmbProduct";
             this.cmbProduct.Size = new System.Drawing.Size(186, 28);
             this.cmbProduct.TabIndex = 7;
@@ -247,7 +247,7 @@
             this.cmbCategory.DisplayMember = "Value";
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(103, 149);
+            this.cmbCategory.Location = new System.Drawing.Point(103, 144);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(186, 28);
             this.cmbCategory.TabIndex = 9;
@@ -258,7 +258,7 @@
             this.cmbResponcedMember.DisplayMember = "Value";
             this.cmbResponcedMember.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbResponcedMember.FormattingEnabled = true;
-            this.cmbResponcedMember.Location = new System.Drawing.Point(103, 216);
+            this.cmbResponcedMember.Location = new System.Drawing.Point(103, 211);
             this.cmbResponcedMember.Name = "cmbResponcedMember";
             this.cmbResponcedMember.Size = new System.Drawing.Size(186, 28);
             this.cmbResponcedMember.TabIndex = 13;
@@ -266,7 +266,7 @@
             // 
             // txtComment
             // 
-            this.txtComment.Location = new System.Drawing.Point(103, 355);
+            this.txtComment.Location = new System.Drawing.Point(103, 350);
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
             this.txtComment.Size = new System.Drawing.Size(372, 211);
@@ -275,29 +275,21 @@
             // grpStatus
             // 
             this.grpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.grpStatus.Location = new System.Drawing.Point(103, 286);
+            this.grpStatus.Controls.Add(this.responcingRadioButton1);
+            this.grpStatus.Controls.Add(this.doneRadioButton1);
+            this.grpStatus.Controls.Add(this.originationRadioButton1);
+            this.grpStatus.Controls.Add(this.checkingRadioButton1);
+            this.grpStatus.Location = new System.Drawing.Point(103, 281);
             this.grpStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grpStatus.Name = "grpStatus";
-            this.grpStatus.SelectedStatus = -1;
-            this.grpStatus.Size = new System.Drawing.Size(270, 28);
+            this.grpStatus.SelectedStatus = 1;
+            this.grpStatus.Size = new System.Drawing.Size(264, 28);
             this.grpStatus.TabIndex = 24;
-            // 
-            // originationRadioButton1
-            // 
-            this.originationRadioButton1.AutoSize = true;
-            this.originationRadioButton1.Checked = true;
-            this.originationRadioButton1.Location = new System.Drawing.Point(108, 288);
-            this.originationRadioButton1.Name = "originationRadioButton1";
-            this.originationRadioButton1.Size = new System.Drawing.Size(53, 24);
-            this.originationRadioButton1.TabIndex = 25;
-            this.originationRadioButton1.TabStop = true;
-            this.originationRadioButton1.Text = "起票";
-            this.originationRadioButton1.UseVisualStyleBackColor = true;
             // 
             // responcingRadioButton1
             // 
             this.responcingRadioButton1.AutoSize = true;
-            this.responcingRadioButton1.Location = new System.Drawing.Point(167, 288);
+            this.responcingRadioButton1.Location = new System.Drawing.Point(62, 3);
             this.responcingRadioButton1.Name = "responcingRadioButton1";
             this.responcingRadioButton1.Size = new System.Drawing.Size(66, 24);
             this.responcingRadioButton1.TabIndex = 26;
@@ -305,10 +297,32 @@
             this.responcingRadioButton1.Text = "対応中";
             this.responcingRadioButton1.UseVisualStyleBackColor = true;
             // 
+            // doneRadioButton1
+            // 
+            this.doneRadioButton1.AutoSize = true;
+            this.doneRadioButton1.Location = new System.Drawing.Point(206, 3);
+            this.doneRadioButton1.Name = "doneRadioButton1";
+            this.doneRadioButton1.Size = new System.Drawing.Size(53, 24);
+            this.doneRadioButton1.TabIndex = 28;
+            this.doneRadioButton1.Text = "完了";
+            this.doneRadioButton1.UseVisualStyleBackColor = true;
+            // 
+            // originationRadioButton1
+            // 
+            this.originationRadioButton1.AutoSize = true;
+            this.originationRadioButton1.Checked = true;
+            this.originationRadioButton1.Location = new System.Drawing.Point(3, 3);
+            this.originationRadioButton1.Name = "originationRadioButton1";
+            this.originationRadioButton1.Size = new System.Drawing.Size(53, 24);
+            this.originationRadioButton1.TabIndex = 25;
+            this.originationRadioButton1.TabStop = true;
+            this.originationRadioButton1.Text = "起票";
+            this.originationRadioButton1.UseVisualStyleBackColor = true;
+            // 
             // checkingRadioButton1
             // 
             this.checkingRadioButton1.AutoSize = true;
-            this.checkingRadioButton1.Location = new System.Drawing.Point(239, 288);
+            this.checkingRadioButton1.Location = new System.Drawing.Point(134, 3);
             this.checkingRadioButton1.Name = "checkingRadioButton1";
             this.checkingRadioButton1.Size = new System.Drawing.Size(66, 24);
             this.checkingRadioButton1.TabIndex = 27;
@@ -316,25 +330,11 @@
             this.checkingRadioButton1.Text = "確認中";
             this.checkingRadioButton1.UseVisualStyleBackColor = true;
             // 
-            // doneRadioButton1
-            // 
-            this.doneRadioButton1.AutoSize = true;
-            this.doneRadioButton1.Location = new System.Drawing.Point(311, 288);
-            this.doneRadioButton1.Name = "doneRadioButton1";
-            this.doneRadioButton1.Size = new System.Drawing.Size(53, 24);
-            this.doneRadioButton1.TabIndex = 28;
-            this.doneRadioButton1.Text = "完了";
-            this.doneRadioButton1.UseVisualStyleBackColor = true;
-            // 
             // EntryIssue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 612);
-            this.Controls.Add(this.doneRadioButton1);
-            this.Controls.Add(this.checkingRadioButton1);
-            this.Controls.Add(this.responcingRadioButton1);
-            this.Controls.Add(this.originationRadioButton1);
+            this.ClientSize = new System.Drawing.Size(487, 602);
             this.Controls.Add(this.grpStatus);
             this.Controls.Add(this.dtFinishedDate);
             this.Controls.Add(this.label9);
@@ -360,7 +360,6 @@
             this.Controls.Add(this.dtOrigination);
             this.Name = "EntryIssue";
             this.Text = "タスク登録";
-            this.Load += new System.EventHandler(this.EntryIssue_Load);
             this.Controls.SetChildIndex(this.dtOrigination, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
@@ -384,12 +383,10 @@
             this.Controls.SetChildIndex(this.label9, 0);
             this.Controls.SetChildIndex(this.dtFinishedDate, 0);
             this.Controls.SetChildIndex(this.grpStatus, 0);
-            this.Controls.SetChildIndex(this.originationRadioButton1, 0);
-            this.Controls.SetChildIndex(this.responcingRadioButton1, 0);
-            this.Controls.SetChildIndex(this.checkingRadioButton1, 0);
-            this.Controls.SetChildIndex(this.doneRadioButton1, 0);
             this.Controls.SetChildIndex(this.btnReturn, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.grpStatus.ResumeLayout(false);
+            this.grpStatus.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

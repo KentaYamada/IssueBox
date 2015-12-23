@@ -93,6 +93,7 @@
             this.cmbCategories.Size = new System.Drawing.Size(121, 28);
             this.cmbCategories.TabIndex = 4;
             this.cmbCategories.ValueMember = "ID";
+            this.cmbCategories.Visible = false;
             // 
             // label2
             // 
@@ -102,6 +103,7 @@
             this.label2.Size = new System.Drawing.Size(61, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "カテゴリ";
+            this.label2.Visible = false;
             // 
             // cmbProducts
             // 
@@ -113,6 +115,7 @@
             this.cmbProducts.Size = new System.Drawing.Size(121, 28);
             this.cmbProducts.TabIndex = 6;
             this.cmbProducts.ValueMember = "ID";
+            this.cmbProducts.Visible = false;
             // 
             // label3
             // 
@@ -122,6 +125,7 @@
             this.label3.Size = new System.Drawing.Size(35, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "製品";
+            this.label3.Visible = false;
             // 
             // label4
             // 
