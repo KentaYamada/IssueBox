@@ -8,8 +8,6 @@ namespace IssueBox.Models
     /// </summary>
     public class DropDownModel : ModelBase
     {
-        public int ID { get; set; }
-
         public string Value { get; set; }
 
         #region Default constructor
@@ -31,16 +29,10 @@ namespace IssueBox.Models
         public static List<DropDownModel> FindAllData(TABLE_NAME tablename, bool required = true)
         {
             var data = new List<DropDownModel>();
-            string sql = string.Format(@"SELECT
-                                            t.id   AS ID
-                                           ,t.name AS Value
-                                         FROM {0} AS t
-                                         WHERE t.enable_flag = CONVERT(bit, 'TRUE')
-                                         ORDER BY t.name", tablename.ToString());
 
             try
             {
-                data = ModelBase._db.ReadAll<DropDownModel>(sql);
+                data = ModelBase._db.ReadAny<DropDownModel, Condition>("exec FindAllDropDownList @Name", new Condition() { Name = tablename.ToString() });
             }
             catch
             {
