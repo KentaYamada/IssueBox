@@ -55,8 +55,6 @@ namespace IssueBox.Views
                 var model = Member.LoginAuthorication(this._condition);
                 if (null != model)
                 {
-                    //ToDo:MainWindow遷移
-                    MessageBox.Show("ログイン認証成功");
                     this.Visible = false;
                     using (var mw = new MainWindow(model.Name))
                     {
