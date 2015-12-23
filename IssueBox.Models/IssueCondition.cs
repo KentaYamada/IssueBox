@@ -9,8 +9,6 @@ namespace IssueBox.Models
     /// </summary>
     public class IssueCondition
     {
-        private SQLCommander _db = null;
-
         /// <summary>案件ID</summary>
         public int? ProjectID { get; set; }
 
@@ -38,7 +36,6 @@ namespace IssueBox.Models
             this.DeadlineFrom = null;
             this.DeadlineTo = null;
             this.Status = 0;
-            this._db = new SQLCommander();
         }
 
         #endregion

@@ -93,7 +93,6 @@
             this.cmbCategories.Size = new System.Drawing.Size(121, 28);
             this.cmbCategories.TabIndex = 4;
             this.cmbCategories.ValueMember = "ID";
-            this.cmbCategories.Visible = false;
             // 
             // label2
             // 
@@ -103,7 +102,6 @@
             this.label2.Size = new System.Drawing.Size(61, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "カテゴリ";
-            this.label2.Visible = false;
             // 
             // cmbProducts
             // 
@@ -115,7 +113,6 @@
             this.cmbProducts.Size = new System.Drawing.Size(121, 28);
             this.cmbProducts.TabIndex = 6;
             this.cmbProducts.ValueMember = "ID";
-            this.cmbProducts.Visible = false;
             // 
             // label3
             // 
@@ -125,7 +122,6 @@
             this.label3.Size = new System.Drawing.Size(35, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "製品";
-            this.label3.Visible = false;
             // 
             // label4
             // 
@@ -166,7 +162,6 @@
             this.grdList.RowTemplate.Height = 21;
             this.grdList.Size = new System.Drawing.Size(774, 348);
             this.grdList.TabIndex = 14;
-            this.grdList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdList_CellDoubleClick);
             // 
             // ID
             // 
@@ -312,7 +307,6 @@
             this.btnSearch.TabIndex = 16;
             this.btnSearch.Text = "検索";
             this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnNew
             // 
@@ -322,7 +316,6 @@
             this.btnNew.TabIndex = 15;
             this.btnNew.Text = "新規登録";
             this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // dtDeadlineFrom
             // 
@@ -382,7 +375,6 @@
             this.Controls.Add(this.cmbProjects);
             this.Controls.Add(this.label1);
             this.Name = "SearchIssue";
-            this.Load += new System.EventHandler(this.SearchIssue_Load);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.cmbProjects, 0);
             this.Controls.SetChildIndex(this.label2, 0);
