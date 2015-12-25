@@ -52,7 +52,6 @@
     <Compile Include="DropDownModel.cs" />
     <Compile Include="Equipment.cs" />
     <Compile Include="Infrastructure\Constants.cs" />
-    <Compile Include="Infrastructure\FileStreamer.cs" />
     <Compile Include="Infrastructure\SQLCommander.cs" />
     <Compile Include="IssueCondition.cs" />
     <Compile Include="IssueSearch.cs" />
