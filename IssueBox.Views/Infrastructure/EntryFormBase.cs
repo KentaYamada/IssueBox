@@ -33,6 +33,7 @@ namespace IssueBox.Views.Infrastructure
             catch (Exception ex)
             {
                 Logger.Error(ex);
+                this.Alert();
             }
         }
 
@@ -52,12 +53,20 @@ namespace IssueBox.Views.Infrastructure
             catch (SqlException ex)
             {
                 Logger.Error(ex);
+                this.Alert();
             }
 
-            MessageBox.Show(msg, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(msg, "データ保存", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Initialize();
         }
 
+
+        private void Alert()
+        {
+            MessageBox.Show("システムエラーが発生しました。\nシステム管理者へ連絡して下さい。", "",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Application.Exit();
+        }
 
         /// <summary>
         /// コントロールバインドクリア

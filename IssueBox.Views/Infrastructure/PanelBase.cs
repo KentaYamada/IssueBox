@@ -12,6 +12,9 @@ namespace IssueBox.Views.Infrastructure
     {
         private ErrorProvider _error = null;
 
+        #region Properties
+
+        /// <summary>エラーアイコン</summary>
         [Description("エラー表示するアイコン")]
         protected ErrorProvider ErrorIcon 
         {
@@ -32,6 +35,8 @@ namespace IssueBox.Views.Infrastructure
 
         /// <summary>メニュー名</summary>
         public virtual string MenuName { get { throw new NotImplementedException("派生クラスで実装してください。"); } }
+
+        #endregion
 
         #region Default Construcotr
 
@@ -58,6 +63,7 @@ namespace IssueBox.Views.Infrastructure
             catch (SqlException ex)
             {
                 Logger.Error(ex);
+                this.Alert();
             }
         }
 
@@ -73,6 +79,7 @@ namespace IssueBox.Views.Infrastructure
             catch (SqlException ex)
             {
                 Logger.Error(ex);
+                this.Alert();
             }
         }
 
@@ -90,6 +97,7 @@ namespace IssueBox.Views.Infrastructure
             catch (SqlException ex)
             {
                 Logger.Error(ex);
+                this.Alert();
             }
         }
 
@@ -110,10 +118,18 @@ namespace IssueBox.Views.Infrastructure
             catch (SqlException ex)
             {
                 Logger.Error(ex);
+                this.Alert();
             }
         }
 
         #endregion
+
+        private void Alert()
+        {
+            MessageBox.Show("システムエラーが発生しました。\nシステム管理者へ連絡して下さい。", "", 
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Application.Exit();
+        }
 
         /// <summary>
         /// 初期化処理
