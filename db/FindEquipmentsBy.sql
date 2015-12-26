@@ -21,6 +21,7 @@ BEGIN
     ,e.rating                  AS Rating
     ,e.maker_id                AS MakerID
     ,e.communication_method_id AS CommunicationMethodID
+    ,e.irr_temp_flag           AS IrrTempFlag
     ,e.output_control_flag     AS OutputControlFlag
     ,e.enable_flag             AS EnableFlag
   FROM EQUIPMENTS AS e

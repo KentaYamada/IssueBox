@@ -133,6 +133,7 @@ CREATE TABLE EQUIPMENTS (
   ,rating                  decimal(5, 1) NULL
   ,communication_method_id int           NULL
   ,output_control_flag     bit           NULL
+  ,irr_temp_flag           bit           NULL
   ,maker_id                int           NOT NULL
   ,enable_flag             bit           NOT NULL
   ,upd_date                datetime      NOT NULL

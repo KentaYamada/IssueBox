@@ -21,6 +21,7 @@ CREATE TYPE EQUIPMENTS_T AS TABLE (
   ,rating                  decimal(5, 2)
   ,communication_method_id int
   ,output_control_flag     bit
+  ,irr_temp_flag           bit
   ,maker_id                int
   ,enable_flag             bit
 )
