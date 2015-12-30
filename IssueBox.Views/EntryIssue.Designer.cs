@@ -55,17 +55,21 @@
             this.doneRadioButton1 = new IssueBox.Views.Infrastructure.DoneRadioButton();
             this.originationRadioButton1 = new IssueBox.Views.Infrastructure.OriginationRadioButton();
             this.checkingRadioButton1 = new IssueBox.Views.Infrastructure.CheckingRadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.grpStatus.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnReturn
             // 
-            this.btnReturn.Location = new System.Drawing.Point(400, 567);
+            this.btnReturn.Location = new System.Drawing.Point(575, 487);
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(12, 76);
+            this.label11.Location = new System.Drawing.Point(6, 59);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 28);
             this.label11.TabIndex = 4;
@@ -74,7 +78,7 @@
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(12, 178);
+            this.label10.Location = new System.Drawing.Point(6, 161);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 27);
             this.label10.TabIndex = 10;
@@ -83,7 +87,7 @@
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(12, 350);
+            this.label7.Location = new System.Drawing.Point(18, 270);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 27);
             this.label7.TabIndex = 16;
@@ -92,25 +96,25 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(12, 282);
+            this.label6.Location = new System.Drawing.Point(271, 164);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(85, 27);
+            this.label6.Size = new System.Drawing.Size(78, 28);
             this.label6.TabIndex = 14;
             this.label6.Text = "ステータス";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(12, 216);
+            this.label5.Location = new System.Drawing.Point(6, 128);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 27);
+            this.label5.Size = new System.Drawing.Size(50, 27);
             this.label5.TabIndex = 12;
             this.label5.Text = "担当者";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(12, 110);
+            this.label4.Location = new System.Drawing.Point(6, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 28);
             this.label4.TabIndex = 6;
@@ -119,7 +123,7 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(12, 144);
+            this.label3.Location = new System.Drawing.Point(274, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 28);
             this.label3.TabIndex = 8;
@@ -128,7 +132,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(12, 42);
+            this.label2.Location = new System.Drawing.Point(274, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 27);
             this.label2.TabIndex = 2;
@@ -137,7 +141,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(6, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 27);
             this.label1.TabIndex = 0;
@@ -146,14 +150,14 @@
             // 
             // dtOrigination
             // 
-            this.dtOrigination.Location = new System.Drawing.Point(103, 9);
+            this.dtOrigination.Location = new System.Drawing.Point(62, 26);
             this.dtOrigination.Name = "dtOrigination";
             this.dtOrigination.Size = new System.Drawing.Size(144, 27);
             this.dtOrigination.TabIndex = 1;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(319, 567);
+            this.btnSave.Location = new System.Drawing.Point(494, 487);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 28);
             this.btnSave.TabIndex = 18;
@@ -162,7 +166,7 @@
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(12, 250);
+            this.label8.Location = new System.Drawing.Point(271, 128);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 27);
             this.label8.TabIndex = 21;
@@ -171,7 +175,7 @@
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(12, 315);
+            this.label9.Location = new System.Drawing.Point(6, 194);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 27);
             this.label9.TabIndex = 22;
@@ -181,7 +185,7 @@
             // dtFinishedDate
             // 
             this.dtFinishedDate.GetDate = null;
-            this.dtFinishedDate.Location = new System.Drawing.Point(103, 315);
+            this.dtFinishedDate.Location = new System.Drawing.Point(62, 194);
             this.dtFinishedDate.Mask = "0000/00/00";
             this.dtFinishedDate.Name = "dtFinishedDate";
             this.dtFinishedDate.Size = new System.Drawing.Size(100, 27);
@@ -193,7 +197,7 @@
             this.cmbCheckedMember.DisplayMember = "Value";
             this.cmbCheckedMember.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCheckedMember.FormattingEnabled = true;
-            this.cmbCheckedMember.Location = new System.Drawing.Point(103, 245);
+            this.cmbCheckedMember.Location = new System.Drawing.Point(356, 129);
             this.cmbCheckedMember.Name = "cmbCheckedMember";
             this.cmbCheckedMember.Size = new System.Drawing.Size(186, 28);
             this.cmbCheckedMember.TabIndex = 20;
@@ -202,7 +206,7 @@
             // dtDeadLine
             // 
             this.dtDeadLine.GetDate = null;
-            this.dtDeadLine.Location = new System.Drawing.Point(103, 178);
+            this.dtDeadLine.Location = new System.Drawing.Point(62, 161);
             this.dtDeadLine.Mask = "0000/00/00";
             this.dtDeadLine.Name = "dtDeadLine";
             this.dtDeadLine.Size = new System.Drawing.Size(100, 27);
@@ -214,7 +218,7 @@
             this.cmbIssuingMember.DisplayMember = "Value";
             this.cmbIssuingMember.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIssuingMember.FormattingEnabled = true;
-            this.cmbIssuingMember.Location = new System.Drawing.Point(103, 42);
+            this.cmbIssuingMember.Location = new System.Drawing.Point(356, 26);
             this.cmbIssuingMember.Name = "cmbIssuingMember";
             this.cmbIssuingMember.Size = new System.Drawing.Size(186, 28);
             this.cmbIssuingMember.TabIndex = 3;
@@ -225,7 +229,7 @@
             this.cmbProject.DisplayMember = "Value";
             this.cmbProject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProject.FormattingEnabled = true;
-            this.cmbProject.Location = new System.Drawing.Point(103, 76);
+            this.cmbProject.Location = new System.Drawing.Point(62, 59);
             this.cmbProject.Name = "cmbProject";
             this.cmbProject.Size = new System.Drawing.Size(186, 28);
             this.cmbProject.TabIndex = 5;
@@ -236,7 +240,7 @@
             this.cmbProduct.DisplayMember = "Value";
             this.cmbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProduct.FormattingEnabled = true;
-            this.cmbProduct.Location = new System.Drawing.Point(103, 110);
+            this.cmbProduct.Location = new System.Drawing.Point(62, 93);
             this.cmbProduct.Name = "cmbProduct";
             this.cmbProduct.Size = new System.Drawing.Size(186, 28);
             this.cmbProduct.TabIndex = 7;
@@ -247,7 +251,7 @@
             this.cmbCategory.DisplayMember = "Value";
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(103, 144);
+            this.cmbCategory.Location = new System.Drawing.Point(356, 60);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(186, 28);
             this.cmbCategory.TabIndex = 9;
@@ -258,7 +262,7 @@
             this.cmbResponcedMember.DisplayMember = "Value";
             this.cmbResponcedMember.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbResponcedMember.FormattingEnabled = true;
-            this.cmbResponcedMember.Location = new System.Drawing.Point(103, 211);
+            this.cmbResponcedMember.Location = new System.Drawing.Point(62, 127);
             this.cmbResponcedMember.Name = "cmbResponcedMember";
             this.cmbResponcedMember.Size = new System.Drawing.Size(186, 28);
             this.cmbResponcedMember.TabIndex = 13;
@@ -266,10 +270,10 @@
             // 
             // txtComment
             // 
-            this.txtComment.Location = new System.Drawing.Point(103, 350);
+            this.txtComment.Location = new System.Drawing.Point(90, 270);
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(372, 211);
+            this.txtComment.Size = new System.Drawing.Size(560, 211);
             this.txtComment.TabIndex = 17;
             // 
             // grpStatus
@@ -279,7 +283,7 @@
             this.grpStatus.Controls.Add(this.doneRadioButton1);
             this.grpStatus.Controls.Add(this.originationRadioButton1);
             this.grpStatus.Controls.Add(this.checkingRadioButton1);
-            this.grpStatus.Location = new System.Drawing.Point(103, 281);
+            this.grpStatus.Location = new System.Drawing.Point(356, 164);
             this.grpStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grpStatus.Name = "grpStatus";
             this.grpStatus.SelectedStatus = 1;
@@ -330,63 +334,76 @@
             this.checkingRadioButton1.Text = "確認中";
             this.checkingRadioButton1.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.dtFinishedDate);
+            this.groupBox1.Controls.Add(this.grpStatus);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.dtOrigination);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.dtDeadLine);
+            this.groupBox1.Controls.Add(this.cmbCheckedMember);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.cmbCategory);
+            this.groupBox1.Controls.Add(this.cmbIssuingMember);
+            this.groupBox1.Controls.Add(this.cmbProject);
+            this.groupBox1.Controls.Add(this.cmbResponcedMember);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.cmbProduct);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(638, 239);
+            this.groupBox1.TabIndex = 1000;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "基本情報";
+            // 
+            // label12
+            // 
+            this.label12.Location = new System.Drawing.Point(274, 95);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(61, 27);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "優先度";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(356, 95);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(186, 28);
+            this.comboBox2.TabIndex = 12;
+            // 
             // EntryIssue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 602);
-            this.Controls.Add(this.grpStatus);
-            this.Controls.Add(this.dtFinishedDate);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.cmbCheckedMember);
-            this.Controls.Add(this.dtDeadLine);
-            this.Controls.Add(this.cmbIssuingMember);
-            this.Controls.Add(this.cmbProject);
-            this.Controls.Add(this.cmbProduct);
-            this.Controls.Add(this.cmbCategory);
-            this.Controls.Add(this.cmbResponcedMember);
+            this.ClientSize = new System.Drawing.Size(672, 532);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtComment);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtOrigination);
             this.Name = "EntryIssue";
             this.Text = "タスク登録";
-            this.Controls.SetChildIndex(this.dtOrigination, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.label4, 0);
-            this.Controls.SetChildIndex(this.label5, 0);
-            this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.txtComment, 0);
             this.Controls.SetChildIndex(this.label7, 0);
-            this.Controls.SetChildIndex(this.label10, 0);
-            this.Controls.SetChildIndex(this.label11, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
-            this.Controls.SetChildIndex(this.cmbResponcedMember, 0);
-            this.Controls.SetChildIndex(this.cmbCategory, 0);
-            this.Controls.SetChildIndex(this.cmbProduct, 0);
-            this.Controls.SetChildIndex(this.cmbProject, 0);
-            this.Controls.SetChildIndex(this.cmbIssuingMember, 0);
-            this.Controls.SetChildIndex(this.dtDeadLine, 0);
-            this.Controls.SetChildIndex(this.cmbCheckedMember, 0);
-            this.Controls.SetChildIndex(this.label8, 0);
-            this.Controls.SetChildIndex(this.label9, 0);
-            this.Controls.SetChildIndex(this.dtFinishedDate, 0);
-            this.Controls.SetChildIndex(this.grpStatus, 0);
             this.Controls.SetChildIndex(this.btnReturn, 0);
+            this.Controls.SetChildIndex(this.groupBox1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.grpStatus.ResumeLayout(false);
             this.grpStatus.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -421,5 +438,8 @@
         private Infrastructure.ResponcingRadioButton responcingRadioButton1;
         private Infrastructure.CheckingRadioButton checkingRadioButton1;
         private Infrastructure.DoneRadioButton doneRadioButton1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }
