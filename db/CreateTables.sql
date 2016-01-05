@@ -61,6 +61,11 @@ BEGIN
   DROP TABLE dbo.COMMUNICATION_METHOD
 END
 
+IF OBJECT_ID('dbo.HISTORIES') IS NOT NULL
+BEGIN
+  DROP TABLE dbo.HISTORIES
+END
+
 --案件マスタ
 CREATE TABLE PROJECTS (
      id            int          NOT NULL identity
@@ -174,4 +179,14 @@ CREATE TABLE ISSUES (
     ,[comment]             nvarchar(max) NULL
     ,upd_date              datetime      NOT NULL
     ,primary key(id)
+)
+
+--対応履歴テーブル
+CREATE TABLE HISTORIES (
+    post_date        datetime      NOT NULL
+   ,issue_id         int           NOT NULL
+   ,post_member_name nvarchar(20)  NOT NULL
+   ,[comment]        nvarchar(400) NOT NULL
+   ,upd_date         datetime      NOT NULL
+   ,primary key(post_date, issue_id)
 )

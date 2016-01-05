@@ -77,12 +77,6 @@ namespace IssueBox.Views
                 throw;
             }
 
-            if (result)
-            {
-                this._product = null;
-                this._product = new Product();
-            }
-
             return result;
         }
     }

@@ -72,12 +72,6 @@ namespace IssueBox.Views
                 throw;
             }
 
-            if (result)
-            {
-                this._category = null;
-                this._category = new Category();
-            }
-
             return result;
         }
     }

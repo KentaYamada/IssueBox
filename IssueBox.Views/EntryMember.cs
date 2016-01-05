@@ -79,12 +79,6 @@ namespace IssueBox.Views
                 throw;
             }
 
-            if (result)
-            {
-                this._member = null;
-                this._member = new Member();
-            }
-
             return result;
         }
     }

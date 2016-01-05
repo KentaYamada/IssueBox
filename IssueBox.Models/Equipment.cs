@@ -19,6 +19,9 @@ namespace IssueBox.Models
         /// <summary>出力制御可否</summary>
         public bool OutputControlFlag { get; set; }
 
+        /// <summary>日射・気温CH計測可否</summary>
+        public bool IrrTempFlag { get; set; }
+        
         /// <summary>メーカーID</summary>
         public int MakerID { get; set; }
 
@@ -33,6 +36,7 @@ namespace IssueBox.Models
             this.Name = "";
             this.Rating = 0;
             this.OutputControlFlag = false;
+            this.IrrTempFlag = false;
             this.MakerID = 0;
             this.EnableFlag = true;
         }

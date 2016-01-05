@@ -72,12 +72,6 @@ namespace IssueBox.Views
                 throw;
             }
 
-            if (result)
-            {
-                this._comMethod = null;
-                this._comMethod = new CommunicationMethod();
-            }
-
             return result;
         }
     }

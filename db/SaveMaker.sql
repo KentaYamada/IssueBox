@@ -58,6 +58,7 @@ BEGIN TRY
           ,rating = t2.rating
           ,communication_method_id = t2.communication_method_id
           ,output_control_flag = t2.output_control_flag
+          ,irr_temp_flag = t2.irr_temp_flag
           ,maker_id = @ID
           ,enable_flag = t2.enable_flag
           ,upd_date = GETDATE()
@@ -67,6 +68,7 @@ BEGIN TRY
           ,rating
           ,communication_method_id
           ,output_control_flag
+          ,irr_temp_flag
           ,maker_id
           ,enable_flag
           ,upd_date
@@ -76,6 +78,7 @@ BEGIN TRY
           ,t2.rating
           ,t2.communication_method_id
           ,t2.output_control_flag
+          ,t2.irr_temp_flag
           ,@ID
           ,t2.enable_flag
           ,GETDATE()

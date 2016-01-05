@@ -188,12 +188,6 @@ namespace IssueBox.Views
                 throw;
             }
 
-            if (result)
-            {
-                this._project = null;
-                this._project = new Project();
-            }
-
             return result;
         }
     }
