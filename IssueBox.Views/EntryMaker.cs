@@ -102,16 +102,7 @@ namespace IssueBox.Views
             {
                 throw;
             }
-
-            if (result)
-            {
-                this._maker = null;
-                this._equipments = null;
-                this._maker = new Maker();
-                this._equipments = new List<Equipment>();
-
-            }
-
+           
             return result;
         }
     }

@@ -44,11 +44,13 @@ namespace IssueBox.Views.Infrastructure
         {
             if (!this.Validation()) { return; }
 
+            bool result = false;
             string msg = "";
 
             try
             {
-                msg = this.Register() ? "登録しました。" : "登録失敗しました。";
+                result = this.Register();
+                msg = result ? "登録しました。" : "登録失敗しました。";
             }
             catch (SqlException ex)
             {
@@ -57,7 +59,12 @@ namespace IssueBox.Views.Infrastructure
             }
 
             MessageBox.Show(msg, "データ保存", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Initialize();
+
+            if (result)
+            {
+                this.Close();
+                this.Dispose();
+            }
         }
 
 

@@ -73,12 +73,6 @@ namespace IssueBox.Views
                 throw;
             }
 
-            if (result)
-            {
-                this._unit = null;
-                this._unit = new Unit();
-            }
-
             return result;
         }
     }
